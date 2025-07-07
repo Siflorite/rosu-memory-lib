@@ -1,19 +1,13 @@
 mod beatmap;
 mod common;
+mod resultscreen;
 
-
-use eyre::{Report, Result};
-
-use serde_json::Value;
-
+use eyre::{Result};
 use std::path::Path;
-use std::thread;
 use std::time::Duration;
-use tokio::sync::Mutex;
-use rayon::prelude::*;
 
-mod reader_beatmap;
-mod reader_common;
+
+
 mod reader_gameplay;
 mod reader_resultscreen;
 mod structs;

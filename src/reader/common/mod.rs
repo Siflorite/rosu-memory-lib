@@ -1,3 +1,10 @@
+pub mod stable;
+pub enum OsuType{
+    Stable,
+    Lazer
+}
+
+
 
 #[derive( Debug, Default, PartialEq, Eq, Clone, Copy)]
 #[repr(u32)]
@@ -30,4 +37,12 @@ impl From<u32> for GameState {
             _ => Self::Unknown,
         }
     }
+}
+
+
+pub enum GameMode{
+    Osu,
+    Taiko,
+    Catch,
+    Mania,
 }
