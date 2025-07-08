@@ -21,7 +21,7 @@ pub(crate) fn read_from_beatmap_ptr_string(p: &Process, state: &mut State, offse
 }
 
 
-pub(crate) fn read_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
+pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
 {
     let beatmap_addr = get_beatmap_addr(p, state)?;
 

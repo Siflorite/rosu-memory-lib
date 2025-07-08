@@ -45,8 +45,6 @@ pub struct ResultScreenHitsOffset{
     pub _katu: i32,
 }
 
-
-
 pub(crate) fn get_score_base(p: &Process, state: &mut State) -> eyre::Result<i32> {
     let ruleset_addr = p.read_i32(state.addresses.rulesets - RESULT_SCREEN_OFFSET.ptr).unwrap();
     let ruleset_addr = p.read_i32(ruleset_addr + RESULT_SCREEN_OFFSET.addr).unwrap();
