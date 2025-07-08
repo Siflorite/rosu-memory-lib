@@ -3,158 +3,90 @@ mod common;
 mod resultscreen;
 
 use eyre::{Result};
-use std::path::Path;
 use std::time::Duration;
+use crate::reader::common::stable::get_game_state;
+use crate::reader::common::GameState;
+use rosu_mem::process::{Process, ProcessTraits};
+use crate::reader::structs::State;
+use crate::reader::structs::StaticAddresses;
+use rosu_mem::process::ProcessError;
 
-
-
-mod reader_gameplay;
-mod reader_resultscreen;
 mod structs;
 
+static EXCLUDE_WORDS: [&str; 2] = ["umu-run", "waitforexitandrun"];
 
-pub fn waiting_for_play(p: &Process, state: &mut State, weak: Weak<LoginPage>) -> eyre::Result<()> {
-    let mut last_map: MapData = MapData {
-        song: "".into(),
-        author: "".into(),
-        creator: "".into(),
-        cover: slint::Image::default(),
-        link: "".into(),
-        difficulties: "".into(),
-        download_progress: 0.0,
-        md5: "".into(),
-    };
 
+// Use this function to make callback and get anything you need such as map info or user info or even submit shit
+pub fn waiting_for_play<F>(p: &Process, state: &mut State, callback: Option<F>) -> eyre::Result<()> 
+where 
+    F: Fn(&Process, &mut State) -> eyre::Result<()>
+{
     loop {
-        if GameState::from(get_status(p, state)) == GameState::Playing {
+        if get_game_state(p, state)? == GameState::Playing {
             return Ok(());
         }
-
-        if SharedString::from(get_beatmap_md5(p, state)?) != last_map.md5 {
-            println!("New map");
-            let map = get_beatmap(p, state)?;
-            let map_to_move = map.clone();
-            last_map = map.clone();
-            let handle = weak.clone();
-            let path = get_beatmap_path(
-                p,
-                state
-            )?;
-            println!("{}", path);
-            let img = get_cover_path(p, state)?;
-            let audio = get_audio_path(p,state)?;
-
-            std::thread::spawn(move || {
-                let song = map_to_move.song.clone();
-                let author = map_to_move.author.clone();
-                let creator = map_to_move.creator.clone();
-                let link = map_to_move.link.clone();
-                let difficulties = map_to_move.difficulties.clone();
-                let progress = map_to_move.download_progress;
-                let md5 = map_to_move.md5.clone();
-                let (calc_pp, (b, patterns)) = rayon::join(
-                    || calc_pp(&path),
-                    || rayon::join(
-                        || get_nps(&path, 1.0).unwrap(),
-                        || {
-                            let patterns = get_patterns(&path).unwrap();
-                            analyze_patterns(&patterns)
-                        }
-                    )
-                );
-
-
-                let values : Vec<f32> = b.iter().map(|kv| kv.value as f32).collect();
-                let (avg, max) = {
-                    let values: Vec<f32> = b.par_iter()
-                        .map(|kv| kv.value as f32)
-                        .collect();
-
-                    let (sum, max) = values.par_iter()
-                        .fold(
-                            || (0.0f32, f32::NEG_INFINITY),
-                            |(sum, max), &value| (sum + value, max.max(value))
-                        )
-                        .reduce(
-                            || (0.0f32, f32::NEG_INFINITY),
-                            |(sum1, max1), (sum2, max2)| (sum1 + sum2, max1.max(max2))
-                        );
-
-                    (sum / values.len() as f32, max)
-                };
-
-                handle.upgrade_in_event_loop(move |handle| {
-                    let img = Image::load_from_path(Path::new(&img)).unwrap_or_else(|_| {
-                        Image::default()
-                    });
-                    let map_data = MapData {
-                        song,
-                        author,
-                        creator,
-                        cover: img,
-                        link,
-                        difficulties,
-                        download_progress: progress,
-                        md5,
-                    };
-                });
-            });
+        if let Some(f) = &callback {
+            f(p, state)?;
         }
     }
 }
 
-
-pub fn controlla() -> Result<()> {
-    let interval: Duration = Duration::from_millis(300);
+pub fn init_loop(sleep_duration: u64) -> eyre::Result<(State, Process)> {
     let mut state = State {
         addresses: StaticAddresses::default(),
+        };
+    let p = match Process::initialize("osu!.exe", &EXCLUDE_WORDS) {
+        Ok(p) => {
+            println!("Found process, pid - {}", p.pid);
+            p
+        }
+        Err(e) => {
+            std::thread::sleep(Duration::from_millis(sleep_duration));
+            return init_loop(sleep_duration);
+        }
     };
 
-    if interval != Duration::from_millis(300) {
-        println!("Using non default interval: {}", interval.as_millis());
-    }
-
-    'init_loop: loop {
-        let p = match Process::initialize("osu!.exe") {
-            Ok(p) => p,
-            Err(e) => {
-                continue 'init_loop;
+    println!("Reading static signatures...");
+    match StaticAddresses::new(&p) {
+        Ok(v) => state.addresses = v,
+        Err(e) => match e.downcast_ref::<ProcessError>() {
+            Some(&ProcessError::ProcessNotFound) => {
+                std::thread::sleep(Duration::from_millis(sleep_duration));
+                return init_loop(sleep_duration);
             }
-        };
+            #[cfg(target_os = "windows")]
+            Some(&ProcessError::OsError { .. }) => {
+                std::thread::sleep(Duration::from_millis(sleep_duration));
+                return init_loop(sleep_duration);
+            }
+            Some(_) | None => {
+                std::thread::sleep(Duration::from_millis(sleep_duration));
+                return init_loop(sleep_duration);
+            }
+        },
+    };
 
-        println!("Reading static signatures...");
-        match StaticAddresses::new(&p) {
-            Ok(v) => state.addresses = v,
-            Err(e) => match e.downcast_ref::<ProcessError>() {
-                Some(&ProcessError::ProcessNotFound) => {
-                    continue 'init_loop;
-                }
-                #[cfg(target_os = "windows")]
-                Some(&ProcessError::OsError { .. }) => {
-                    println!("{:?}", e);
-                    continue 'init_loop;
-                }
-                Some(_) | None => {
-                    println!("{:?}", e);
-                    continue 'init_loop;
-                }
-            },
-        };
+    Ok((state, p))
+}
+
+pub fn controlla() -> Result<()> {
+
+    let (state, p) = init_loop(300)?;
+
 
         println!("Starting reading loop");
         'main_loop: loop {
             std::thread::sleep(Duration::from_millis(1000));
             println!("Waiting For Play");
-            let weak_clone = weak.clone();
-            if let Err(e) = waiting_for_play(&p, &mut state, weak_clone) {
+            if let Err(e) = waiting_for_play(&p, &mut state, None) {
                 match e.downcast_ref::<ProcessError>() {
                     Some(&ProcessError::ProcessNotFound) => {
-                        continue 'init_loop;
+                        continue 'main_loop;
                     }
                     #[cfg(target_os = "windows")]
                     Some(&ProcessError::OsError { .. }) => {
                         println!("{:?}", e);
-                        continue 'init_loop;
+                        continue 'main_loop;
                     }
                     Some(_) | None => {
                         println!("{:?}", e);
@@ -167,7 +99,7 @@ pub fn controlla() -> Result<()> {
             let a = playing(&p, &mut state);
 
             // let a = wait_result_screen(&p, &mut state) && a;
-        }
+    
     }
 }
 

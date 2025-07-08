@@ -63,12 +63,7 @@ fn main() -> Result<()> {
     let output_values = Arc::new(Mutex::new(OutputValues::default()));
     let inner_values = InnerValues::default();
 
-    let mut state = State {
-        addresses: StaticAddresses::default(),
-        clients: Clients::default(),
-        ivalues: inner_values,
-        values: output_values,
-    };
+
 
     // Spawning Hyper server
     let server_clients = state.clients.clone();
