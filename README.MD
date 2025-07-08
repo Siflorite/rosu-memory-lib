@@ -37,6 +37,47 @@ fn main() -> eyre::Result<()> {
 
 Check out the `examples/` directory for various implementations and use cases.
 
+## Language Bindings
+
+The library provides bindings for multiple programming languages (not finished):
+
+### Python
+Python bindings are available in the `bindings/python` directory. They provide a Pythonic interface to the library's functionality using PyO3.
+
+Example:
+```python
+from rosu_memory import init_loop, get_beatmap_info
+
+# Initialize the memory reader
+state, process = init_loop(500)
+
+# Get current beatmap info
+beatmap = get_beatmap_info(process, state)
+print(f"Playing: {beatmap.metadata.title_romanized}")
+```
+
+### C
+C bindings are available in the `bindings/c` directory. They provide a C-compatible interface that can be used from any language supporting C FFI.
+
+Example:
+```c
+#include "rosu_memory.h"
+
+int main() {
+    State* state;
+    Process* process;
+    rosu_init_loop(500, &state, &process);
+
+    RosuBeatmapInfo* info = rosu_memory_get_beatmap_info(process, state);
+    if (info != NULL) {
+        printf("Playing: %s\n", info->metadata.title_romanized);
+        rosu_free_beatmap_info(info);
+    }
+
+    return 0;
+}
+```
+
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and pull requests.
