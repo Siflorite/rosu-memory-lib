@@ -46,31 +46,37 @@ pub fn init_loop(sleep_duration: u64) -> eyre::Result<(State, Process)> {
                 match StaticAddresses::new(&p) {
                     Ok(v) => {
                         state.addresses = v;
+                        println!("Static addresses read successfully");
                         return Ok((state, p));
                     }
                     Err(e) => {
                         if let Some(pe) = e.downcast_ref::<ProcessError>() {
                             match pe {
                                 &ProcessError::ProcessNotFound => {
+                                    println!("Process not found, sleeping for {}ms", sleep_duration);
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                                 #[cfg(target_os = "windows")]
                                 &ProcessError::OsError { .. } => {
+                                    println!("OS error, sleeping for {}ms", sleep_duration);
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                                 _ => {
+                                    println!("Unknown error, sleeping for {}ms", sleep_duration);
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                             }
                         }
+                        println!("Unknown error, sleeping for {}ms", sleep_duration);
                         std::thread::sleep(Duration::from_millis(sleep_duration));
                     }
                 }
             }
             Err(_) => {
+                println!("Unknown process error, sleeping for {}ms", sleep_duration);
                 std::thread::sleep(Duration::from_millis(sleep_duration));
             }
         }

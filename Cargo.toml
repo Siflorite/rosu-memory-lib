@@ -1,11 +1,16 @@
 [package]
-name = "rosu-memory-lib"
+name = "rosu_memory_lib"
 version = "0.1.0"
 edition = "2021"
 
 
 [lib]
-crate-type = ["cdylib"]
+name = "rosu_memory_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rosu_memory_test"
+path = "src/main.rs"
 
 [dependencies]
 rosu-mem = { git = "https://github.com/486c/rosu-mem.git", tag = "v2.0.0" }
@@ -13,4 +18,3 @@ eyre = "0.6.12"
 serde = { version = "1.0.219", default-features = false, features = ["derive"] }
 serde_json = "1.0.140"
 serde_repr = "0.1.20"
-

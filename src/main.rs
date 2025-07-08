@@ -1,7 +1,5 @@
 use std::time::Duration;
-use crate::reader::{init_loop, common::stable::get_game_state};
-
-mod reader;
+use rosu_memory_lib::{init_loop, common::stable::get_game_state};
 
 fn main() -> eyre::Result<()> {
     println!("Initializing osu! memory reader...");
