@@ -7,6 +7,14 @@ use crate::reader::beatmap::common::BeatmapStats;
 use crate::reader::beatmap::stable::get_beatmap_addr;
 use crate::common::GameMode;
 use crate::reader::beatmap::common::BeatmapStatus;
+use crate::reader::beatmap::stable::location::get_filename;
+use crate::reader::beatmap::stable::location::get_folder;
+use crate::reader::common::stable::get_path_folder;
+use crate::reader::beatmap::common::BeatmapStarRating;
+use crate::reader::beatmap::common::BeatmapInfo;
+use crate::reader::beatmap::common::BeatmapTechnicalInfo;
+use crate::reader::beatmap::common::BeatmapMetadata;
+use crate::reader::beatmap::common::BeatmapLocation;
 
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 {
@@ -106,6 +114,15 @@ pub fn get_beatmap_object_count(p: &Process, state: &mut State) -> eyre::Result<
     Ok(p.read_u32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?)
 }
 
+pub fn get_beatmap_slider_count(p: &Process, state: &mut State) -> eyre::Result<i32>
+{
+    let beatmap_addr = get_beatmap_addr(p, state)?;
+    Ok(p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.slider_count)?)
+}
+
+
+
+
 pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<BeatmapStats>
 {
     let beatmap_addr = get_beatmap_addr(p, state)?;
@@ -114,8 +131,51 @@ pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<Beatmap
         od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,
         cs: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?,
         hp: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?,
-        total_length: 0,
-        star_rating: 0.0,
-        object_count: 0,
+        total_length: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.total_length)?,
+        star_rating: crate::reader::beatmap::stable::file::get_beatmap_star_rating(p, state)?,
+        object_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?,
+        slider_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.slider_count)?,
     })
 }
+
+
+pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
+{
+    let beatmap_addr = get_beatmap_addr(p, state)?;
+
+    // done like that to be more efficient reading the string one by one would need to reload addr everytime which cost more
+    Ok(BeatmapInfo {
+        technical: BeatmapTechnicalInfo{
+            md5: p.read_string(beatmap_addr + BEATMAP_OFFSET.technical.md5)?,
+            id: p.read_i32(beatmap_addr + BEATMAP_OFFSET.technical.id)?,
+            set_id: p.read_i32(beatmap_addr + BEATMAP_OFFSET.technical.set_id)?,
+            mode: GameMode::Osu,
+            ranked_status: BeatmapStatus::from(p.read_i32(beatmap_addr + BEATMAP_OFFSET.technical.ranked_status)?),
+        },
+        metadata: BeatmapMetadata{
+            author: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.author)?,
+            creator: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.creator)?,
+            title_romanized: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.title_romanized)?,
+            title_original: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.title_original)?,
+            difficulty: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.difficulty)?,
+            tags: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.tags)?,
+        },
+        stats: BeatmapStats{
+            ar: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.ar)?,
+            od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,
+            cs: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?,
+            hp: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?,
+            total_length: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.total_length)?,
+            star_rating: crate::reader::beatmap::stable::file::get_beatmap_star_rating(p,state)?,
+            object_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?,
+            slider_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.slider_count)?,
+        },
+        location: BeatmapLocation {
+            folder: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.folder)?,
+            filename: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.filename)?,
+            audio: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.audio)?,
+            cover: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.cover)?,
+        },
+    })
+}
+

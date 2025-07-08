@@ -1,715 +1,2241 @@
-14:36:52 [INFO] Starting memory scan at base address: 0x2b63bddc
-14:36:52 [INFO] Base offset: 0x0
-14:36:52 [INFO] Scanning with step size of 2 bytes
-14:36:52 [INFO] Excluding 21 known offsets
-14:36:52 [INFO] 
-Offset 0x0 (Address: 0x2b63bddc):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 186533076
-14:36:52 [INFO] 
-Offset 0x2 (Address: 0x2b63bdde):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 2846
-14:36:52 [INFO] 
-Offset 0x4 (Address: 0x2b63bde0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x6 (Address: 0x2b63bde2):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1717960704
-14:36:52 [INFO] 
-Offset 0x8 (Address: 0x2b63bde4):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1717986918
-14:36:52 [INFO] 
-Offset 0xa (Address: 0x2b63bde6):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1717986919
-14:36:52 [INFO] Skipping known offset 0xc
-14:36:52 [INFO] 
-Offset 0xe (Address: 0x2b63bdea):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16381
-14:36:52 [INFO] 
-Offset 0x10 (Address: 0x2b63bdec):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x12 (Address: 0x2b63bdee):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x14 (Address: 0x2b63bdf0):
-14:36:52 [INFO]   f32: 2.000
-14:36:52 [INFO]   i32: 1073741824
-14:36:52 [INFO] 
-Offset 0x16 (Address: 0x2b63bdf2):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2094514176
-14:36:52 [INFO] Skipping known offset 0x18
-14:36:52 [INFO] 
-Offset 0x1a (Address: 0x2b63bdf6):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2092934209
-14:36:52 [INFO]   i32: 1539277632
-14:36:52 [INFO]   string: Yooh
-14:36:52 [INFO] 
-Offset 0x1e (Address: 0x2b63bdfa):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2082448449
-14:36:52 [INFO] Skipping known offset 0x20
-14:36:52 [INFO] 
-Offset 0x22 (Address: 0x2b63bdfe):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2098177089
-14:36:52 [INFO] Skipping known offset 0x24
-14:36:52 [INFO] 
-Offset 0x26 (Address: 0x2b63be02):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2096342081
-14:36:52 [INFO] Skipping known offset 0x28
-14:36:52 [INFO] 
-Offset 0x2a (Address: 0x2b63be06):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1717937217
-14:36:52 [INFO] Skipping known offset 0x2c
-14:36:52 [INFO] 
-Offset 0x2e (Address: 0x2b63be0a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16665
-14:36:52 [INFO] Skipping known offset 0x30
-14:36:52 [INFO] 
-Offset 0x32 (Address: 0x2b63be0e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16528
-14:36:52 [INFO] Skipping known offset 0x34
-14:36:52 [INFO] 
-Offset 0x36 (Address: 0x2b63be12):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16448
-14:36:52 [INFO] Skipping known offset 0x38
-14:36:52 [INFO] 
-Offset 0x3a (Address: 0x2b63be16):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16544
-14:36:52 [INFO] 
-Offset 0x3c (Address: 0x2b63be18):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x3e (Address: 0x2b63be1a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x40 (Address: 0x2b63be1c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x42 (Address: 0x2b63be1e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x44 (Address: 0x2b63be20):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x46 (Address: 0x2b63be22):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x48 (Address: 0x2b63be24):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x4a (Address: 0x2b63be26):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x4c (Address: 0x2b63be28):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x4e (Address: 0x2b63be2a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x50 (Address: 0x2b63be2c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x52 (Address: 0x2b63be2e):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2030632960
-14:36:52 [INFO] 
-Offset 0x54 (Address: 0x2b63be30):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1966962953
-14:36:52 [INFO] 
-Offset 0x56 (Address: 0x2b63be32):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 568167106
-14:36:52 [INFO] 
-Offset 0x58 (Address: 0x2b63be34):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 148709853
-14:36:52 [INFO] 
-Offset 0x5a (Address: 0x2b63be36):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 2269
-14:36:52 [INFO] 
-Offset 0x5c (Address: 0x2b63be38):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x5e (Address: 0x2b63be3a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x60 (Address: 0x2b63be3c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x62 (Address: 0x2b63be3e):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2100035584
-14:36:52 [INFO] Skipping known offset 0x64
-14:36:52 [INFO] 
-Offset 0x66 (Address: 0x2b63be42):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2076943425
-14:36:52 [INFO] Skipping known offset 0x68
-14:36:52 [INFO] 
-Offset 0x6a (Address: 0x2b63be46):
-14:36:52 [INFO]   f32: -3.631
-14:36:52 [INFO]   i32: -1066902593
-14:36:52 [INFO] Skipping known offset 0x6c
-14:36:52 [INFO] 
-Offset 0x6e (Address: 0x2b63be4a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 304622435
-14:36:52 [INFO] 
-Offset 0x70 (Address: 0x2b63be4c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 122884648
-14:36:52 [INFO] 
-Offset 0x72 (Address: 0x2b63be4e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 1875
-14:36:52 [INFO] 
-Offset 0x74 (Address: 0x2b63be50):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x76 (Address: 0x2b63be52):
-14:36:52 [INFO]   f32: -896.000
-14:36:52 [INFO]   i32: -1000341504
-14:36:52 [INFO] Skipping known offset 0x78
-14:36:52 [INFO] 
-Offset 0x7a (Address: 0x2b63be56):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2091373725
-14:36:52 [INFO] Skipping known offset 0x7c
-14:36:52 [INFO] 
-Offset 0x7e (Address: 0x2b63be5a):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2039194689
-14:36:52 [INFO]   i32: 1539278452
-14:36:52 [INFO]   string: Yooh - LegenD. [MasteR Catch]
-14:36:52 [INFO] 
-Offset 0x82 (Address: 0x2b63be5e):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2034476097
-14:36:52 [INFO]   i32: 1539278524
-14:36:52 [INFO]   string: SOUND VOLTEX III GRAVITY WARS (Yooh) - LegenD. [MasteR Catch]
-14:36:52 [INFO] 
-Offset 0x86 (Address: 0x2b63be62):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2025563201
-14:36:52 [INFO]   i32: 1539278660
-14:36:52 [INFO]   string: LegenD. [MasteR Catch]
-14:36:52 [INFO] 
-Offset 0x8a (Address: 0x2b63be66):
-14:36:52 [INFO]   f32: -0.892
-14:36:52 [INFO]   i32: -1083941953
-14:36:52 [INFO] 
-Offset 0x8c (Address: 0x2b63be68):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 727957348
-14:36:52 [INFO] 
-Offset 0x8e (Address: 0x2b63be6a):
-14:36:52 [INFO]   f32: -5.755
-14:36:52 [INFO]   i32: -1061672093
-14:36:52 [INFO] Skipping known offset 0x90
-14:36:52 [INFO] 
-Offset 0x92 (Address: 0x2b63be6e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 304622435
-14:36:52 [INFO] 
-Offset 0x94 (Address: 0x2b63be70):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 122884648
-14:36:52 [INFO] 
-Offset 0x96 (Address: 0x2b63be72):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 1875
-14:36:52 [INFO] 
-Offset 0x98 (Address: 0x2b63be74):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x9a (Address: 0x2b63be76):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2021654528
-14:36:52 [INFO]   i32: 1539278720
-14:36:52 [INFO] 
-Offset 0x9e (Address: 0x2b63be7a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 304634815
-14:36:52 [INFO] 
-Offset 0xa0 (Address: 0x2b63be7c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 122884648
-14:36:52 [INFO] 
-Offset 0xa2 (Address: 0x2b63be7e):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2042099885
-14:36:52 [INFO]   i32: 1539278408
-14:36:52 [INFO]   string: Yooh - LegenD.
-14:36:52 [INFO] 
-Offset 0xa6 (Address: 0x2b63be82):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2087167041
-14:36:52 [INFO]   i32: 1539277720
-14:36:52 [INFO]   string: SOUND VOLTEX III GRAVITY WARS
-14:36:52 [INFO] 
-Offset 0xaa (Address: 0x2b63be86):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2089788481
-14:36:52 [INFO] Skipping known offset 0xac
-14:36:52 [INFO] 
-Offset 0xae (Address: 0x2b63be8a):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -2104730689
-14:36:52 [INFO]   i32: 1539277452
-14:36:52 [INFO] 
-Offset 0xb2 (Address: 0x2b63be8e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 23487
-14:36:52 [INFO] 
-Offset 0xb4 (Address: 0x2b63be90):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xb6 (Address: 0x2b63be92):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xb8 (Address: 0x2b63be94):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xba (Address: 0x2b63be96):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xbc (Address: 0x2b63be98):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xbe (Address: 0x2b63be9a):
-14:36:52 [INFO]   f32: -1.188
-14:36:52 [INFO]   i32: -1080557568
-14:36:52 [INFO] 
-Offset 0xc0 (Address: 0x2b63be9c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 727957400
-14:36:52 [INFO]   string:  
-14:36:52 [INFO] 
-Offset 0xc2 (Address: 0x2b63be9e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 11107
-14:36:52 [INFO] 
-Offset 0xc4 (Address: 0x2b63bea0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xc6 (Address: 0x2b63bea2):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1175519232
-14:36:52 [INFO] Skipping known offset 0xc8
-14:36:52 [INFO] 
-Offset 0xca (Address: 0x2b63bea6):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1515978720
-14:36:52 [INFO] Skipping known offset 0xcc
-14:36:52 [INFO] 
-Offset 0xce (Address: 0x2b63beaa):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 15
-14:36:52 [INFO] 
-Offset 0xd0 (Address: 0x2b63beac):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xd2 (Address: 0x2b63beae):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xd4 (Address: 0x2b63beb0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xd6 (Address: 0x2b63beb2):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 917504
-14:36:52 [INFO] 
-Offset 0xd8 (Address: 0x2b63beb4):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 14
-14:36:52 [INFO] 
-Offset 0xda (Address: 0x2b63beb6):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xdc (Address: 0x2b63beb8):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xde (Address: 0x2b63beba):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xe0 (Address: 0x2b63bebc):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xe2 (Address: 0x2b63bebe):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xe4 (Address: 0x2b63bec0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xe6 (Address: 0x2b63bec2):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xe8 (Address: 0x2b63bec4):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xea (Address: 0x2b63bec6):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xec (Address: 0x2b63bec8):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xee (Address: 0x2b63beca):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 7667712
-14:36:52 [INFO] 
-Offset 0xf0 (Address: 0x2b63becc):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 117
-14:36:52 [INFO] 
-Offset 0xf2 (Address: 0x2b63bece):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 7798784
-14:36:52 [INFO] 
-Offset 0xf4 (Address: 0x2b63bed0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 119
-14:36:52 [INFO] 
-Offset 0xf6 (Address: 0x2b63bed2):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 56033280
-14:36:52 [INFO] Skipping known offset 0xf8
-14:36:52 [INFO] 
-Offset 0xfa (Address: 0x2b63bed6):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xfc (Address: 0x2b63bed8):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0xfe (Address: 0x2b63beda):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x100 (Address: 0x2b63bedc):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x102 (Address: 0x2b63bede):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x104 (Address: 0x2b63bee0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x106 (Address: 0x2b63bee2):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x108 (Address: 0x2b63bee4):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x10a (Address: 0x2b63bee6):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 589824
-14:36:52 [INFO] 
-Offset 0x10c (Address: 0x2b63bee8):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 9
-14:36:52 [INFO] 
-Offset 0x10e (Address: 0x2b63beea):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 589824
-14:36:52 [INFO] 
-Offset 0x110 (Address: 0x2b63beec):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 9
-14:36:52 [INFO] 
-Offset 0x112 (Address: 0x2b63beee):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 589824
-14:36:52 [INFO] 
-Offset 0x114 (Address: 0x2b63bef0):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 9
-14:36:52 [INFO] 
-Offset 0x116 (Address: 0x2b63bef2):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 589824
-14:36:52 [INFO] 
-Offset 0x118 (Address: 0x2b63bef4):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 9
-14:36:52 [INFO] 
-Offset 0x11a (Address: 0x2b63bef6):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 131072
-14:36:52 [INFO] 
-Offset 0x11c (Address: 0x2b63bef8):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 2
-14:36:52 [INFO]   i32: -65536
-14:36:52 [INFO]   i32: -1
-14:36:52 [INFO] 
-Offset 0x122 (Address: 0x2b63befe):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 6619135
-14:36:52 [INFO] 
-Offset 0x124 (Address: 0x2b63bf00):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 100
-14:36:52 [INFO] 
-Offset 0x126 (Address: 0x2b63bf02):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 858980352
-14:36:52 [INFO] 
-Offset 0x128 (Address: 0x2b63bf04):
-14:36:52 [INFO]   f32: 0.700
-14:36:52 [INFO]   i32: 1060320051
-14:36:52 [INFO] 
-Offset 0x12a (Address: 0x2b63bf06):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 81715
-14:36:52 [INFO] Skipping known offset 0x12c
-14:36:52 [INFO] 
-Offset 0x12e (Address: 0x2b63bf0a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x130 (Address: 0x2b63bf0c):
-14:36:52 [INFO]   f32: 1.000
-14:36:52 [INFO]   i32: 1065353216
-14:36:52 [INFO]   i32: -724025472
-14:36:52 [INFO] Skipping known offset 0x134
-14:36:52 [INFO] 
-Offset 0x136 (Address: 0x2b63bf12):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 1
-14:36:52 [INFO] 
-Offset 0x138 (Address: 0x2b63bf14):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x13a (Address: 0x2b63bf16):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x13c (Address: 0x2b63bf18):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x13e (Address: 0x2b63bf1a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x140 (Address: 0x2b63bf1c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x142 (Address: 0x2b63bf1e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 34275328
-14:36:52 [INFO] 
-Offset 0x144 (Address: 0x2b63bf20):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 21627403
-14:36:52 [INFO] 
-Offset 0x146 (Address: 0x2b63bf22):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 131402
-14:36:52 [INFO] 
-Offset 0x148 (Address: 0x2b63bf24):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16777218
-14:36:52 [INFO] 
-Offset 0x14a (Address: 0x2b63bf26):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 256
-14:36:52 [INFO] 
-Offset 0x14c (Address: 0x2b63bf28):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16842752
-14:36:52 [INFO] 
-Offset 0x14e (Address: 0x2b63bf2a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16777473
-14:36:52 [INFO] 
-Offset 0x150 (Address: 0x2b63bf2c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 256
-14:36:52 [INFO] 
-Offset 0x152 (Address: 0x2b63bf2e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16777216
-14:36:52 [INFO] 
-Offset 0x154 (Address: 0x2b63bf30):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 16843008
-14:36:52 [INFO] 
-Offset 0x156 (Address: 0x2b63bf32):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 257
-14:36:52 [INFO] 
-Offset 0x158 (Address: 0x2b63bf34):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x15a (Address: 0x2b63bf36):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x15c (Address: 0x2b63bf38):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x15e (Address: 0x2b63bf3a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x160 (Address: 0x2b63bf3c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x162 (Address: 0x2b63bf3e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x164 (Address: 0x2b63bf40):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x166 (Address: 0x2b63bf42):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x168 (Address: 0x2b63bf44):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x16a (Address: 0x2b63bf46):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x16c (Address: 0x2b63bf48):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x16e (Address: 0x2b63bf4a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x170 (Address: 0x2b63bf4c):
-14:36:52 [INFO]   f32: 2.000
-14:36:52 [INFO]   i32: 1073741824
-14:36:52 [INFO] 
-Offset 0x172 (Address: 0x2b63bf4e):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1337507840
-14:36:52 [INFO] 
-Offset 0x174 (Address: 0x2b63bf50):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1661423545
-14:36:52 [INFO] 
-Offset 0x176 (Address: 0x2b63bf52):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 657759480
-14:36:52 [INFO]   i32: 1222059828
-14:36:52 [INFO] 
-Offset 0x17a (Address: 0x2b63bf56):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 18647
-14:36:52 [INFO] 
-Offset 0x17c (Address: 0x2b63bf58):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x17e (Address: 0x2b63bf5a):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x180 (Address: 0x2b63bf5c):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x182 (Address: 0x2b63bf5e):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x184 (Address: 0x2b63bf60):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 0
-14:36:52 [INFO] 
-Offset 0x186 (Address: 0x2b63bf62):
-14:36:52 [INFO]   f32: -0.000
-14:36:52 [INFO]   i32: -1708654592
-14:36:52 [INFO] 
-Offset 0x188 (Address: 0x2b63bf64):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 120822312
-14:36:52 [INFO] 
-Offset 0x18a (Address: 0x2b63bf66):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 263987
-14:36:52 [INFO] 
-Offset 0x18c (Address: 0x2b63bf68):
-14:36:52 [INFO]   f32: 0.000
-14:36:52 [INFO]   i32: 4
-14:36:52 [INFO] 
-Offset 0x18e (Address: 0x2b63bf6a):
-14:36:52 [INFO]   f32: -9.500
-14:36:52 [INFO]   i32: -1055391744
-14:36:52 [WARN] 
-No target values found in scan.
-14:36:52 [INFO] Scan complete. Results saved to memory_scan.log
+
+=== New Scan ===
+Base beatmap address: 0x271DDFF8
+
+Testing offset 0x0:
+  star_rating_struct: 0xB1E44D4
+  entries (base + 0x8): 0x73440C0
+  entries_data: 0x56CEB80
+  NoMod: 0.00
+  DT: 0.00
+  HT: 0.00
+-------------------
+
+Testing offset 0x1:
+  star_rating_struct: 0xB1E44
+  Failed to read entries: Got OS error
+
+Testing offset 0x2:
+  star_rating_struct: 0xB1E
+  Failed to read entries: Got OS error
+
+Testing offset 0x3:
+  star_rating_struct: 0xB
+  Failed to read entries: Got OS error
+
+Testing offset 0x4:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x5:
+  star_rating_struct: 0x66000000
+  entries (base + 0x8): 0x1A74D28D
+  entries_data: 0x0
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x6:
+  star_rating_struct: 0x66660000
+  entries (base + 0x8): 0x1AFF1
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x7:
+  star_rating_struct: 0x66666600
+  entries (base + 0x8): 0x4418B98
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x8:
+  star_rating_struct: 0x66666666
+  entries (base + 0x8): 0x4015FF0C
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x9:
+  star_rating_struct: 0x66666666
+  entries (base + 0x8): 0x4015FF0C
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xA:
+  star_rating_struct: 0x66666666
+  entries (base + 0x8): 0x4015FF0C
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xB:
+  star_rating_struct: 0xF6666666
+  Failed to read entries: Got OS error
+
+Testing offset 0xC:
+  star_rating_struct: 0x3FF66666
+  Failed to read entries: Got OS error
+
+Testing offset 0xD:
+  star_rating_struct: 0x3FF666
+  Failed to read entries: Got OS error
+
+Testing offset 0xE:
+  star_rating_struct: 0x3FF6
+  Failed to read entries: Got OS error
+
+Testing offset 0xF:
+  star_rating_struct: 0x3F
+  Failed to read entries: Got OS error
+
+Testing offset 0x10:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x11:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x12:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13:
+  star_rating_struct: 0xF0000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x14:
+  star_rating_struct: 0x3FF00000
+  Failed to read entries: Got OS error
+
+Testing offset 0x15:
+  star_rating_struct: 0x83FF000
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x16:
+  star_rating_struct: 0x99083FF0
+  Failed to read entries: Got OS error
+
+Testing offset 0x17:
+  star_rating_struct: 0xD599083F
+  Failed to read entries: Got OS error
+
+Testing offset 0x18:
+  star_rating_struct: 0x54D59908
+  entries (base + 0x8): 0x77
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x19:
+  star_rating_struct: 0x2454D599
+  entries (base + 0x8): 0x982454E0
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1A:
+  star_rating_struct: 0x992454D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B:
+  star_rating_struct: 0xD5992454
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C:
+  star_rating_struct: 0x54D59924
+  entries (base + 0x8): 0x77
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1D:
+  star_rating_struct: 0x2854D599
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1E:
+  star_rating_struct: 0x122854D5
+  entries (base + 0x8): 0x65EC7288
+  entries_data: 0xCBB090A3
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x1F:
+  star_rating_struct: 0x53122854
+  Failed to read entries: Got OS error
+
+Testing offset 0x20:
+  star_rating_struct: 0x7531228
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x21:
+  star_rating_struct: 0x78075312
+  Failed to read entries: Got OS error
+
+Testing offset 0x22:
+  star_rating_struct: 0x98780753
+  Failed to read entries: Got OS error
+
+Testing offset 0x23:
+  star_rating_struct: 0xD5987807
+  Failed to read entries: Got OS error
+
+Testing offset 0x24:
+  star_rating_struct: 0x54D59878
+  entries (base + 0x8): 0x740028
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x25:
+  star_rating_struct: 0xC054D598
+  Failed to read entries: Got OS error
+
+Testing offset 0x26:
+  star_rating_struct: 0x98C054D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x27:
+  star_rating_struct: 0xD598C054
+  Failed to read entries: Got OS error
+
+Testing offset 0x28:
+  star_rating_struct: 0x54D598C0
+  entries (base + 0x8): 0x740028
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x29:
+  star_rating_struct: 0x54D598
+  Failed to read entries: Got OS error
+
+Testing offset 0x2A:
+  star_rating_struct: 0x54D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x2B:
+  star_rating_struct: 0xA0000054
+  Failed to read entries: Got OS error
+
+Testing offset 0x2C:
+  star_rating_struct: 0x40A00000
+  Failed to read entries: Got OS error
+
+Testing offset 0x2D:
+  star_rating_struct: 0x40A000
+  Failed to read entries: Got OS error
+
+Testing offset 0x2E:
+  star_rating_struct: 0x40A0
+  Failed to read entries: Got OS error
+
+Testing offset 0x2F:
+  star_rating_struct: 0x80000040
+  Failed to read entries: Got OS error
+
+Testing offset 0x30:
+  star_rating_struct: 0x40800000
+  Failed to read entries: Got OS error
+
+Testing offset 0x31:
+  star_rating_struct: 0x408000
+  Failed to read entries: Got OS error
+
+Testing offset 0x32:
+  star_rating_struct: 0x4080
+  Failed to read entries: Got OS error
+
+Testing offset 0x33:
+  star_rating_struct: 0xC0000040
+  Failed to read entries: Got OS error
+
+Testing offset 0x34:
+  star_rating_struct: 0x40C00000
+  Failed to read entries: Got OS error
+
+Testing offset 0x35:
+  star_rating_struct: 0x40C000
+  Failed to read entries: Got OS error
+
+Testing offset 0x36:
+  star_rating_struct: 0x40C0
+  Failed to read entries: Got OS error
+
+Testing offset 0x37:
+  star_rating_struct: 0x40000040
+  Failed to read entries: Got OS error
+
+Testing offset 0x38:
+  star_rating_struct: 0x40400000
+  Failed to read entries: Got OS error
+
+Testing offset 0x39:
+  star_rating_struct: 0x404000
+  Failed to read entries: Got OS error
+
+Testing offset 0x3A:
+  star_rating_struct: 0x4040
+  Failed to read entries: Got OS error
+
+Testing offset 0x3B:
+  star_rating_struct: 0x40
+  Failed to read entries: Got OS error
+
+Testing offset 0x3C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x3D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x3E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x3F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x40:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x41:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x42:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x43:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x44:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x45:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x46:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x47:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x48:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x49:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4A:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4B:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x4F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x50:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x51:
+  star_rating_struct: 0x14000000
+  entries (base + 0x8): 0xA7346407
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x52:
+  star_rating_struct: 0x5F140000
+  entries (base + 0x8): 0x50BC4595
+  entries_data: 0x0
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x53:
+  star_rating_struct: 0x6D5F1400
+  Failed to read entries: Got OS error
+
+Testing offset 0x54:
+  star_rating_struct: 0x726D5F14
+  entries (base + 0x8): 0x85F08B08
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x55:
+  star_rating_struct: 0x40726D5F
+  Failed to read entries: Got OS error
+
+Testing offset 0x56:
+  star_rating_struct: 0xBE40726D
+  Failed to read entries: Got OS error
+
+Testing offset 0x57:
+  star_rating_struct: 0xDDBE4072
+  Failed to read entries: Got OS error
+
+Testing offset 0x58:
+  star_rating_struct: 0x8DDBE40
+  entries (base + 0x8): 0x1E561908
+  entries_data: 0x41C95CA2
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x59:
+  star_rating_struct: 0x8DDBE
+  Failed to read entries: Got OS error
+
+Testing offset 0x5A:
+  star_rating_struct: 0x8DD
+  Failed to read entries: Got OS error
+
+Testing offset 0x5B:
+  star_rating_struct: 0x8
+  Failed to read entries: Got OS error
+
+Testing offset 0x5C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x5D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x5E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x5F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x60:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x61:
+  star_rating_struct: 0x58000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x62:
+  star_rating_struct: 0x98580000
+  Failed to read entries: Got OS error
+
+Testing offset 0x63:
+  star_rating_struct: 0xD5985800
+  Failed to read entries: Got OS error
+
+Testing offset 0x64:
+  star_rating_struct: 0x54D59858
+  entries (base + 0x8): 0x700075
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x65:
+  star_rating_struct: 0x7854D598
+  Failed to read entries: Got OS error
+
+Testing offset 0x66:
+  star_rating_struct: 0x997854D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x67:
+  star_rating_struct: 0xD5997854
+  Failed to read entries: Got OS error
+
+Testing offset 0x68:
+  star_rating_struct: 0x54D59978
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x69:
+  star_rating_struct: 0xA854D599
+  Failed to read entries: Got OS error
+
+Testing offset 0x6A:
+  star_rating_struct: 0xE1A854D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x6B:
+  star_rating_struct: 0x1DE1A854
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x6C:
+  star_rating_struct: 0x271DE1A8
+  entries (base + 0x8): 0x66003F
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x6D:
+  star_rating_struct: 0x28271DE1
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x6E:
+  star_rating_struct: 0x1228271D
+  entries (base + 0x8): 0x8B553308
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x6F:
+  star_rating_struct: 0x53122827
+  Failed to read entries: Got OS error
+
+Testing offset 0x70:
+  star_rating_struct: 0x7531228
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x71:
+  star_rating_struct: 0x75312
+  Failed to read entries: Got OS error
+
+Testing offset 0x72:
+  star_rating_struct: 0x753
+  Failed to read entries: Got OS error
+
+Testing offset 0x73:
+  star_rating_struct: 0x7
+  Failed to read entries: Got OS error
+
+Testing offset 0x74:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x75:
+  star_rating_struct: 0xB0000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x76:
+  star_rating_struct: 0xE4B00000
+  Failed to read entries: Got OS error
+
+Testing offset 0x77:
+  star_rating_struct: 0x1DE4B000
+  entries (base + 0x8): 0x6824ABE4
+  entries_data: 0x73016E
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x78:
+  star_rating_struct: 0x271DE4B0
+  entries (base + 0x8): 0x530028
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x79:
+  star_rating_struct: 0x40271DE4
+  Failed to read entries: Got OS error
+
+Testing offset 0x7A:
+  star_rating_struct: 0x9940271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x7B:
+  star_rating_struct: 0xD5994027
+  Failed to read entries: Got OS error
+
+Testing offset 0x7C:
+  star_rating_struct: 0x54D59940
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x7D:
+  star_rating_struct: 0x3C54D599
+  entries (base + 0x8): 0x502CB52D
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x7E:
+  star_rating_struct: 0x9A3C54D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x7F:
+  star_rating_struct: 0xD59A3C54
+  Failed to read entries: Got OS error
+
+Testing offset 0x80:
+  star_rating_struct: 0x54D59A3C
+  entries (base + 0x8): 0x200077
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x81:
+  star_rating_struct: 0xB054D59A
+  Failed to read entries: Got OS error
+
+Testing offset 0x82:
+  star_rating_struct: 0x9AB054D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x83:
+  star_rating_struct: 0xD59AB054
+  Failed to read entries: Got OS error
+
+Testing offset 0x84:
+  star_rating_struct: 0x54D59AB0
+  entries (base + 0x8): 0x200077
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x85:
+  star_rating_struct: 0x2454D59A
+  entries (base + 0x8): 0xD898245C
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x86:
+  star_rating_struct: 0x9B2454D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x87:
+  star_rating_struct: 0xD59B2454
+  Failed to read entries: Got OS error
+
+Testing offset 0x88:
+  star_rating_struct: 0x54D59B24
+  entries (base + 0x8): 0x740028
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x89:
+  star_rating_struct: 0x8054D59B
+  Failed to read entries: Got OS error
+
+Testing offset 0x8A:
+  star_rating_struct: 0xE18054D5
+  Failed to read entries: Got OS error
+
+Testing offset 0x8B:
+  star_rating_struct: 0x1DE18054
+  entries (base + 0x8): 0x7
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x8C:
+  star_rating_struct: 0x271DE180
+  entries (base + 0x8): 0x271DE31C
+  entries_data: 0x271DE394
+  NoMod: NaN
+  DT: 21776.77
+  HT: NaN
+-------------------
+
+Testing offset 0x8D:
+  star_rating_struct: 0xF8271DE1
+  Failed to read entries: Got OS error
+
+Testing offset 0x8E:
+  star_rating_struct: 0xE1F8271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x8F:
+  star_rating_struct: 0x1DE1F827
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x90:
+  star_rating_struct: 0x271DE1F8
+  entries (base + 0x8): 0x200077
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x91:
+  star_rating_struct: 0x28271DE1
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x92:
+  star_rating_struct: 0x1228271D
+  entries (base + 0x8): 0x8B553308
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x93:
+  star_rating_struct: 0x53122827
+  Failed to read entries: Got OS error
+
+Testing offset 0x94:
+  star_rating_struct: 0x7531228
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x95:
+  star_rating_struct: 0x75312
+  Failed to read entries: Got OS error
+
+Testing offset 0x96:
+  star_rating_struct: 0x753
+  Failed to read entries: Got OS error
+
+Testing offset 0x97:
+  star_rating_struct: 0x7
+  Failed to read entries: Got OS error
+
+Testing offset 0x98:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x99:
+  star_rating_struct: 0x3C000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x9A:
+  star_rating_struct: 0xC63C0000
+  Failed to read entries: Got OS error
+
+Testing offset 0x9B:
+  star_rating_struct: 0x77C63C00
+  entries (base + 0x8): 0x4EE98
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x9C:
+  star_rating_struct: 0x2E77C63C
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x9D:
+  star_rating_struct: 0x282E77C6
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x9E:
+  star_rating_struct: 0x12282E77
+  entries (base + 0x8): 0x50084593
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x9F:
+  star_rating_struct: 0x5312282E
+  Failed to read entries: Got OS error
+
+Testing offset 0xA0:
+  star_rating_struct: 0x7531228
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xA1:
+  star_rating_struct: 0xE0075312
+  Failed to read entries: Got OS error
+
+Testing offset 0xA2:
+  star_rating_struct: 0x99E00753
+  Failed to read entries: Got OS error
+
+Testing offset 0xA3:
+  star_rating_struct: 0xD599E007
+  Failed to read entries: Got OS error
+
+Testing offset 0xA4:
+  star_rating_struct: 0x54D599E0
+  entries (base + 0x8): 0x200077
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xA5:
+  star_rating_struct: 0x2854D599
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xA6:
+  star_rating_struct: 0x122854D5
+  entries (base + 0x8): 0x65EC7288
+  entries_data: 0xCBB090A3
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0xA7:
+  star_rating_struct: 0x53122854
+  Failed to read entries: Got OS error
+
+Testing offset 0xA8:
+  star_rating_struct: 0x7531228
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xA9:
+  star_rating_struct: 0x58075312
+  Failed to read entries: Got OS error
+
+Testing offset 0xAA:
+  star_rating_struct: 0x99580753
+  Failed to read entries: Got OS error
+
+Testing offset 0xAB:
+  star_rating_struct: 0xD5995807
+  Failed to read entries: Got OS error
+
+Testing offset 0xAC:
+  star_rating_struct: 0x54D59958
+  entries (base + 0x8): 0x2E0039
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xAD:
+  star_rating_struct: 0x4054D599
+  Failed to read entries: Got OS error
+
+Testing offset 0xAE:
+  star_rating_struct: 0x984054D5
+  Failed to read entries: Got OS error
+
+Testing offset 0xAF:
+  star_rating_struct: 0xD5984054
+  Failed to read entries: Got OS error
+
+Testing offset 0xB0:
+  star_rating_struct: 0x54D59840
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xB1:
+  star_rating_struct: 0x54D598
+  Failed to read entries: Got OS error
+
+Testing offset 0xB2:
+  star_rating_struct: 0x54D5
+  Failed to read entries: Got OS error
+
+Testing offset 0xB3:
+  star_rating_struct: 0x54
+  Failed to read entries: Got OS error
+
+Testing offset 0xB4:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xB5:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xB6:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xB7:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xB8:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xB9:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xBA:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xBB:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xBC:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xBD:
+  star_rating_struct: 0x9C000000
+  Failed to read entries: Got OS error
+
+Testing offset 0xBE:
+  star_rating_struct: 0xE19C0000
+  Failed to read entries: Got OS error
+
+Testing offset 0xBF:
+  star_rating_struct: 0x1DE19C00
+  entries (base + 0x8): 0x650075
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xC0:
+  star_rating_struct: 0x271DE19C
+  entries (base + 0x8): 0x61003A
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xC1:
+  star_rating_struct: 0x271DE1
+  Failed to read entries: Got OS error
+
+Testing offset 0xC2:
+  star_rating_struct: 0x271D
+  Failed to read entries: Got OS error
+
+Testing offset 0xC3:
+  star_rating_struct: 0x27
+  Failed to read entries: Got OS error
+
+Testing offset 0xC4:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xC5:
+  star_rating_struct: 0x62000000
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xC6:
+  star_rating_struct: 0x98620000
+  Failed to read entries: Got OS error
+
+Testing offset 0xC7:
+  star_rating_struct: 0x1F986200
+  entries (base + 0x8): 0xBA617A0F
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xC8:
+  star_rating_struct: 0x1F9862
+  Failed to read entries: Got OS error
+
+Testing offset 0xC9:
+  star_rating_struct: 0xA8001F98
+  Failed to read entries: Got OS error
+
+Testing offset 0xCA:
+  star_rating_struct: 0x1AA8001F
+  entries (base + 0x8): 0x200078
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xCB:
+  star_rating_struct: 0xF1AA800
+  entries (base + 0x8): 0x8F811ACD
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xCC:
+  star_rating_struct: 0xF1AA8
+  Failed to read entries: Got OS error
+
+Testing offset 0xCD:
+  star_rating_struct: 0xF1A
+  Failed to read entries: Got OS error
+
+Testing offset 0xCE:
+  star_rating_struct: 0xF
+  Failed to read entries: Got OS error
+
+Testing offset 0xCF:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD0:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD1:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD2:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD3:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD4:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xD5:
+  star_rating_struct: 0xE000000
+  entries (base + 0x8): 0x2000A
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xD6:
+  star_rating_struct: 0xE0000
+  Failed to read entries: Got OS error
+
+Testing offset 0xD7:
+  star_rating_struct: 0xE00
+  Failed to read entries: Got OS error
+
+Testing offset 0xD8:
+  star_rating_struct: 0xE
+  Failed to read entries: Got OS error
+
+Testing offset 0xD9:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xDA:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xDB:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xDC:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xDD:
+  star_rating_struct: 0xF000000
+  entries (base + 0x8): 0x8000808
+  entries_data: 0x0
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0xDE:
+  star_rating_struct: 0xF0000
+  Failed to read entries: Got OS error
+
+Testing offset 0xDF:
+  star_rating_struct: 0xF00
+  Failed to read entries: Got OS error
+
+Testing offset 0xE0:
+  star_rating_struct: 0xF
+  Failed to read entries: Got OS error
+
+Testing offset 0xE1:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE2:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE3:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE4:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE5:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE6:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE7:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE8:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xE9:
+  star_rating_struct: 0x2000000
+  Failed to read entries: Got OS error
+
+Testing offset 0xEA:
+  star_rating_struct: 0x20000
+  Failed to read entries: Got OS error
+
+Testing offset 0xEB:
+  star_rating_struct: 0x200
+  Failed to read entries: Got OS error
+
+Testing offset 0xEC:
+  star_rating_struct: 0x2
+  Failed to read entries: Got OS error
+
+Testing offset 0xED:
+  star_rating_struct: 0x58000000
+  Failed to read entries: Got OS error
+
+Testing offset 0xEE:
+  star_rating_struct: 0x580000
+  Failed to read entries: Got OS error
+
+Testing offset 0xEF:
+  star_rating_struct: 0x5800
+  Failed to read entries: Got OS error
+
+Testing offset 0xF0:
+  star_rating_struct: 0x58
+  Failed to read entries: Got OS error
+
+Testing offset 0xF1:
+  star_rating_struct: 0x58000000
+  Failed to read entries: Got OS error
+
+Testing offset 0xF2:
+  star_rating_struct: 0x580000
+  Failed to read entries: Got OS error
+
+Testing offset 0xF3:
+  star_rating_struct: 0x5800
+  Failed to read entries: Got OS error
+
+Testing offset 0xF4:
+  star_rating_struct: 0x58
+  Failed to read entries: Got OS error
+
+Testing offset 0xF5:
+  star_rating_struct: 0x26000000
+  entries (base + 0x8): 0x40E48428
+  Failed to read entries_data: Got OS error
+
+Testing offset 0xF6:
+  star_rating_struct: 0x7260000
+  Failed to read entries: Got OS error
+
+Testing offset 0xF7:
+  star_rating_struct: 0x72600
+  Failed to read entries: Got OS error
+
+Testing offset 0xF8:
+  star_rating_struct: 0x726
+  Failed to read entries: Got OS error
+
+Testing offset 0xF9:
+  star_rating_struct: 0x7
+  Failed to read entries: Got OS error
+
+Testing offset 0xFA:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xFB:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xFC:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xFD:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xFE:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0xFF:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x100:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x101:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x102:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x103:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x104:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x105:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x106:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x107:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x108:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x109:
+  star_rating_struct: 0x9000000
+  entries (base + 0x8): 0x36330A15
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x10A:
+  star_rating_struct: 0x90000
+  Failed to read entries: Got OS error
+
+Testing offset 0x10B:
+  star_rating_struct: 0x900
+  Failed to read entries: Got OS error
+
+Testing offset 0x10C:
+  star_rating_struct: 0x9
+  Failed to read entries: Got OS error
+
+Testing offset 0x10D:
+  star_rating_struct: 0x9000000
+  entries (base + 0x8): 0x36330A15
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x10E:
+  star_rating_struct: 0x90000
+  Failed to read entries: Got OS error
+
+Testing offset 0x10F:
+  star_rating_struct: 0x900
+  Failed to read entries: Got OS error
+
+Testing offset 0x110:
+  star_rating_struct: 0x9
+  Failed to read entries: Got OS error
+
+Testing offset 0x111:
+  star_rating_struct: 0x9000000
+  entries (base + 0x8): 0x36330A15
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x112:
+  star_rating_struct: 0x90000
+  Failed to read entries: Got OS error
+
+Testing offset 0x113:
+  star_rating_struct: 0x900
+  Failed to read entries: Got OS error
+
+Testing offset 0x114:
+  star_rating_struct: 0x9
+  Failed to read entries: Got OS error
+
+Testing offset 0x115:
+  star_rating_struct: 0x9000000
+  entries (base + 0x8): 0x36330A15
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x116:
+  star_rating_struct: 0x90000
+  Failed to read entries: Got OS error
+
+Testing offset 0x117:
+  star_rating_struct: 0x900
+  Failed to read entries: Got OS error
+
+Testing offset 0x118:
+  star_rating_struct: 0x9
+  Failed to read entries: Got OS error
+
+Testing offset 0x119:
+  star_rating_struct: 0x3000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x11A:
+  star_rating_struct: 0x30000
+  Failed to read entries: Got OS error
+
+Testing offset 0x11B:
+  star_rating_struct: 0x300
+  Failed to read entries: Got OS error
+
+Testing offset 0x11C:
+  star_rating_struct: 0x3
+  Failed to read entries: Got OS error
+
+Testing offset 0x11D:
+  star_rating_struct: 0x4000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x11E:
+  star_rating_struct: 0xEC040000
+  Failed to read entries: Got OS error
+
+Testing offset 0x11F:
+  star_rating_struct: 0xEC0400
+  entries (base + 0x8): 0x33230C39
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x120:
+  star_rating_struct: 0xEC04
+  Failed to read entries: Got OS error
+
+Testing offset 0x121:
+  star_rating_struct: 0x640000EC
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x122:
+  star_rating_struct: 0x640000
+  Failed to read entries: Got OS error
+
+Testing offset 0x123:
+  star_rating_struct: 0x6400
+  Failed to read entries: Got OS error
+
+Testing offset 0x124:
+  star_rating_struct: 0x64
+  Failed to read entries: Got OS error
+
+Testing offset 0x125:
+  star_rating_struct: 0x33000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x126:
+  star_rating_struct: 0x33330000
+  Failed to read entries: Got OS error
+
+Testing offset 0x127:
+  star_rating_struct: 0x33333300
+  Failed to read entries: Got OS error
+
+Testing offset 0x128:
+  star_rating_struct: 0x3F333333
+  Failed to read entries: Got OS error
+
+Testing offset 0x129:
+  star_rating_struct: 0x23F3333
+  Failed to read entries: Got OS error
+
+Testing offset 0x12A:
+  star_rating_struct: 0x23F33
+  Failed to read entries: Got OS error
+
+Testing offset 0x12B:
+  star_rating_struct: 0x23F
+  Failed to read entries: Got OS error
+
+Testing offset 0x12C:
+  star_rating_struct: 0x2
+  Failed to read entries: Got OS error
+
+Testing offset 0x12D:
+  star_rating_struct: 0x33000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x12E:
+  star_rating_struct: 0x33330000
+  Failed to read entries: Got OS error
+
+Testing offset 0x12F:
+  star_rating_struct: 0xF3333300
+  Failed to read entries: Got OS error
+
+Testing offset 0x130:
+  star_rating_struct: 0x3FF33333
+  Failed to read entries: Got OS error
+
+Testing offset 0x131:
+  star_rating_struct: 0x863FF333
+  Failed to read entries: Got OS error
+
+Testing offset 0x132:
+  star_rating_struct: 0x75863FF3
+  entries (base + 0x8): 0x3784F33
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x133:
+  star_rating_struct: 0x175863F
+  Failed to read entries: Got OS error
+
+Testing offset 0x134:
+  star_rating_struct: 0x17586
+  Failed to read entries: Got OS error
+
+Testing offset 0x135:
+  star_rating_struct: 0x175
+  Failed to read entries: Got OS error
+
+Testing offset 0x136:
+  star_rating_struct: 0x1
+  Failed to read entries: Got OS error
+
+Testing offset 0x137:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x138:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x139:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13A:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13B:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x13F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x140:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x141:
+  star_rating_struct: 0xB0000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x142:
+  star_rating_struct: 0x2B00000
+  entries (base + 0x8): 0x7
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x143:
+  star_rating_struct: 0x7602B000
+  entries (base + 0x8): 0x109
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x144:
+  star_rating_struct: 0x47602B0
+  Failed to read entries: Got OS error
+
+Testing offset 0x145:
+  star_rating_struct: 0x47602
+  Failed to read entries: Got OS error
+
+Testing offset 0x146:
+  star_rating_struct: 0x476
+  Failed to read entries: Got OS error
+
+Testing offset 0x147:
+  star_rating_struct: 0x4
+  Failed to read entries: Got OS error
+
+Testing offset 0x148:
+  star_rating_struct: 0x1000000
+  entries (base + 0x8): 0x87404AEF
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x149:
+  star_rating_struct: 0x10000
+  Failed to read entries: Got OS error
+
+Testing offset 0x14A:
+  star_rating_struct: 0x100
+  Failed to read entries: Got OS error
+
+Testing offset 0x14B:
+  star_rating_struct: 0x1000001
+  entries (base + 0x8): 0x1B874052
+  entries_data: 0x0
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x14C:
+  star_rating_struct: 0x10000
+  Failed to read entries: Got OS error
+
+Testing offset 0x14D:
+  star_rating_struct: 0x100
+  Failed to read entries: Got OS error
+
+Testing offset 0x14E:
+  star_rating_struct: 0x1000001
+  entries (base + 0x8): 0x1B874052
+  entries_data: 0x0
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x14F:
+  star_rating_struct: 0x10000
+  Failed to read entries: Got OS error
+
+Testing offset 0x150:
+  star_rating_struct: 0x100
+  Failed to read entries: Got OS error
+
+Testing offset 0x151:
+  star_rating_struct: 0x1
+  Failed to read entries: Got OS error
+
+Testing offset 0x152:
+  star_rating_struct: 0x1000000
+  entries (base + 0x8): 0x87404AEF
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x153:
+  star_rating_struct: 0x1010000
+  entries (base + 0x8): 0x47FD
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x154:
+  star_rating_struct: 0x1010100
+  entries (base + 0x8): 0x5241
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x155:
+  star_rating_struct: 0x10101
+  Failed to read entries: Got OS error
+
+Testing offset 0x156:
+  star_rating_struct: 0x1000101
+  entries (base + 0x8): 0x83000008
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x157:
+  star_rating_struct: 0x10001
+  Failed to read entries: Got OS error
+
+Testing offset 0x158:
+  star_rating_struct: 0x100
+  Failed to read entries: Got OS error
+
+Testing offset 0x159:
+  star_rating_struct: 0x1
+  Failed to read entries: Got OS error
+
+Testing offset 0x15A:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x15B:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x15C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x15D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x15E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x15F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x160:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x161:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x162:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x163:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x164:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x165:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x166:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x167:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x168:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x169:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16A:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16B:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x16F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x170:
+  star_rating_struct: 0x40000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x171:
+  star_rating_struct: 0xAE400000
+  Failed to read entries: Got OS error
+
+Testing offset 0x172:
+  star_rating_struct: 0xE4AE4000
+  Failed to read entries: Got OS error
+
+Testing offset 0x173:
+  star_rating_struct: 0x47E4AE40
+  Failed to read entries: Got OS error
+
+Testing offset 0x174:
+  star_rating_struct: 0xD747E4AE
+  Failed to read entries: Got OS error
+
+Testing offset 0x175:
+  star_rating_struct: 0xF9D747E4
+  Failed to read entries: Got OS error
+
+Testing offset 0x176:
+  star_rating_struct: 0xF7F9D747
+  Failed to read entries: Got OS error
+
+Testing offset 0x177:
+  star_rating_struct: 0xD6F7F9D7
+  Failed to read entries: Got OS error
+
+Testing offset 0x178:
+  star_rating_struct: 0x48D6F7F9
+  Failed to read entries: Got OS error
+
+Testing offset 0x179:
+  star_rating_struct: 0x48D6F7
+  Failed to read entries: Got OS error
+
+Testing offset 0x17A:
+  star_rating_struct: 0x48D6
+  Failed to read entries: Got OS error
+
+Testing offset 0x17B:
+  star_rating_struct: 0x48
+  Failed to read entries: Got OS error
+
+Testing offset 0x17C:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x17D:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x17E:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x17F:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x180:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x181:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x182:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x183:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x184:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x185:
+  star_rating_struct: 0x28000000
+  entries (base + 0x8): 0x7
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x186:
+  star_rating_struct: 0x9A280000
+  Failed to read entries: Got OS error
+
+Testing offset 0x187:
+  star_rating_struct: 0x339A2800
+  Failed to read entries: Got OS error
+
+Testing offset 0x188:
+  star_rating_struct: 0x7339A28
+  entries (base + 0x8): 0x681D1008
+  entries_data: 0x56BFFC0
+  NoMod: 0.00
+  DT: 0.00
+  HT: 0.00
+-------------------
+
+Testing offset 0x189:
+  star_rating_struct: 0x407339A
+  Failed to read entries: Got OS error
+
+Testing offset 0x18A:
+  star_rating_struct: 0x40733
+  Failed to read entries: Got OS error
+
+Testing offset 0x18B:
+  star_rating_struct: 0x407
+  Failed to read entries: Got OS error
+
+Testing offset 0x18C:
+  star_rating_struct: 0x4
+  Failed to read entries: Got OS error
+
+Testing offset 0x18D:
+  star_rating_struct: 0x84000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x18E:
+  star_rating_struct: 0xE2840000
+  Failed to read entries: Got OS error
+
+Testing offset 0x18F:
+  star_rating_struct: 0x1DE28400
+  entries (base + 0x8): 0x4110BA89
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x190:
+  star_rating_struct: 0x271DE284
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x191:
+  star_rating_struct: 0xB4271DE2
+  Failed to read entries: Got OS error
+
+Testing offset 0x192:
+  star_rating_struct: 0xE2B4271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x193:
+  star_rating_struct: 0x1DE2B427
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x194:
+  star_rating_struct: 0x271DE2B4
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x195:
+  star_rating_struct: 0xE4271DE2
+  Failed to read entries: Got OS error
+
+Testing offset 0x196:
+  star_rating_struct: 0xE2E4271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x197:
+  star_rating_struct: 0x1DE2E427
+  entries (base + 0x8): 0x48
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x198:
+  star_rating_struct: 0x271DE2E4
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x199:
+  star_rating_struct: 0x14271DE2
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x19A:
+  star_rating_struct: 0xE314271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x19B:
+  star_rating_struct: 0x1DE31427
+  entries (base + 0x8): 0x61006F08
+  entries_data: 0xCCCCCCCC
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x19C:
+  star_rating_struct: 0x271DE314
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x19D:
+  star_rating_struct: 0x271DE3
+  Failed to read entries: Got OS error
+
+Testing offset 0x19E:
+  star_rating_struct: 0x271D
+  Failed to read entries: Got OS error
+
+Testing offset 0x19F:
+  star_rating_struct: 0x27
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A0:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1A1:
+  star_rating_struct: 0xBC000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A2:
+  star_rating_struct: 0x7BBC0000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A3:
+  star_rating_struct: 0x247BBC00
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1A4:
+  star_rating_struct: 0x68247BBC
+  entries (base + 0x8): 0x681D1008
+  entries_data: 0x56BFFC0
+  NoMod: 0.00
+  DT: 0.00
+  HT: 0.00
+-------------------
+
+Testing offset 0x1A5:
+  star_rating_struct: 0x168247B
+  entries (base + 0x8): 0x7
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1A6:
+  star_rating_struct: 0x16824
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A7:
+  star_rating_struct: 0x168
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A8:
+  star_rating_struct: 0x1
+  Failed to read entries: Got OS error
+
+Testing offset 0x1A9:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1AA:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1AB:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1AC:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1AD:
+  star_rating_struct: 0xDC000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1AE:
+  star_rating_struct: 0xABDC0000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1AF:
+  star_rating_struct: 0x24ABDC00
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1B0:
+  star_rating_struct: 0x6824ABDC
+  entries (base + 0x8): 0x681D1008
+  entries_data: 0x56BFFC0
+  NoMod: 0.00
+  DT: 0.00
+  HT: 0.00
+-------------------
+
+Testing offset 0x1B1:
+  star_rating_struct: 0x206824AB
+  entries (base + 0x8): 0x7FFFFFBB
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1B2:
+  star_rating_struct: 0x206824
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B3:
+  star_rating_struct: 0x2068
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B4:
+  star_rating_struct: 0x20
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B5:
+  star_rating_struct: 0x32000000
+  entries (base + 0x8): 0xFF444B67
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1B6:
+  star_rating_struct: 0x320000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B7:
+  star_rating_struct: 0x61003200
+  entries (base + 0x8): 0xCCCCCCD4
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1B8:
+  star_rating_struct: 0x610032
+  Failed to read entries: Got OS error
+
+Testing offset 0x1B9:
+  star_rating_struct: 0x32006100
+  entries (base + 0x8): 0xFF494E65
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1BA:
+  star_rating_struct: 0x320061
+  Failed to read entries: Got OS error
+
+Testing offset 0x1BB:
+  star_rating_struct: 0x35003200
+  entries (base + 0x8): 0x35003F50
+  entries_data: 0x2EB745B3
+  NoMod: 0.00
+  DT: 0.00
+  HT: 0.00
+-------------------
+
+Testing offset 0x1BC:
+  star_rating_struct: 0x350032
+  Failed to read entries: Got OS error
+
+Testing offset 0x1BD:
+  star_rating_struct: 0x36003500
+  entries (base + 0x8): 0xB50086
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1BE:
+  star_rating_struct: 0x360035
+  Failed to read entries: Got OS error
+
+Testing offset 0x1BF:
+  star_rating_struct: 0x34003600
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1C0:
+  star_rating_struct: 0x340036
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C1:
+  star_rating_struct: 0x37003400
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C2:
+  star_rating_struct: 0x370034
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C3:
+  star_rating_struct: 0x66003700
+  entries (base + 0x8): 0x5E5BF46D
+  entries_data: 0x4F8BFFE8
+  Failed to read NoMod: Got OS error
+  Failed to read DT: Got OS error
+  Failed to read HT: Got OS error
+-------------------
+
+Testing offset 0x1C4:
+  star_rating_struct: 0x660037
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C5:
+  star_rating_struct: 0x37006600
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C6:
+  star_rating_struct: 0x370066
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C7:
+  star_rating_struct: 0x64003700
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1C8:
+  star_rating_struct: 0x640037
+  Failed to read entries: Got OS error
+
+Testing offset 0x1C9:
+  star_rating_struct: 0x64006400
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1CA:
+  star_rating_struct: 0x640064
+  Failed to read entries: Got OS error
+
+Testing offset 0x1CB:
+  star_rating_struct: 0x32006400
+  entries (base + 0x8): 0xFF171436
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1CC:
+  star_rating_struct: 0x320064
+  Failed to read entries: Got OS error
+
+Testing offset 0x1CD:
+  star_rating_struct: 0x65003200
+  entries (base + 0x8): 0x74007A
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1CE:
+  star_rating_struct: 0x650032
+  Failed to read entries: Got OS error
+
+Testing offset 0x1CF:
+  star_rating_struct: 0x66006500
+  entries (base + 0x8): 0x74F68510
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1D0:
+  star_rating_struct: 0x660065
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D1:
+  star_rating_struct: 0x31006600
+  entries (base + 0x8): 0x11A62F
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1D2:
+  star_rating_struct: 0x310066
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D3:
+  star_rating_struct: 0x38003100
+  entries (base + 0x8): 0xFFC1A8BA
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1D4:
+  star_rating_struct: 0x380031
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D5:
+  star_rating_struct: 0x38003800
+  entries (base + 0x8): 0xFF242124
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1D6:
+  star_rating_struct: 0x380038
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D7:
+  star_rating_struct: 0x39003800
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D8:
+  star_rating_struct: 0x390038
+  Failed to read entries: Got OS error
+
+Testing offset 0x1D9:
+  star_rating_struct: 0x34003900
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1DA:
+  star_rating_struct: 0x340039
+  Failed to read entries: Got OS error
+
+Testing offset 0x1DB:
+  star_rating_struct: 0x34003400
+  entries (base + 0x8): 0x10007
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1DC:
+  star_rating_struct: 0x340034
+  Failed to read entries: Got OS error
+
+Testing offset 0x1DD:
+  star_rating_struct: 0x61003400
+  entries (base + 0x8): 0xCCCCCCD4
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1DE:
+  star_rating_struct: 0x610034
+  Failed to read entries: Got OS error
+
+Testing offset 0x1DF:
+  star_rating_struct: 0x32006100
+  entries (base + 0x8): 0xFF494E65
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1E0:
+  star_rating_struct: 0x320061
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E1:
+  star_rating_struct: 0x65003200
+  entries (base + 0x8): 0x74007A
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1E2:
+  star_rating_struct: 0x650032
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E3:
+  star_rating_struct: 0x34006500
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1E4:
+  star_rating_struct: 0x340065
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E5:
+  star_rating_struct: 0x37003400
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E6:
+  star_rating_struct: 0x370034
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E7:
+  star_rating_struct: 0x64003700
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1E8:
+  star_rating_struct: 0x640037
+  Failed to read entries: Got OS error
+
+Testing offset 0x1E9:
+  star_rating_struct: 0x38006400
+  entries (base + 0x8): 0xFF2C2835
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1EA:
+  star_rating_struct: 0x380064
+  Failed to read entries: Got OS error
+
+Testing offset 0x1EB:
+  star_rating_struct: 0x61003800
+  entries (base + 0x8): 0xCCCCCCD4
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1EC:
+  star_rating_struct: 0x610038
+  Failed to read entries: Got OS error
+
+Testing offset 0x1ED:
+  star_rating_struct: 0x35006100
+  Failed to read entries: Got OS error
+
+Testing offset 0x1EE:
+  star_rating_struct: 0x350061
+  Failed to read entries: Got OS error
+
+Testing offset 0x1EF:
+  star_rating_struct: 0x34003500
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1F0:
+  star_rating_struct: 0x340035
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F1:
+  star_rating_struct: 0x33003400
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F2:
+  star_rating_struct: 0x330034
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F3:
+  star_rating_struct: 0x32003300
+  entries (base + 0x8): 0xFF00003F
+  Failed to read entries_data: Got OS error
+
+Testing offset 0x1F4:
+  star_rating_struct: 0x320033
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F5:
+  star_rating_struct: 0x3200
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F6:
+  star_rating_struct: 0x32
+  Failed to read entries: Got OS error
+
+Testing offset 0x1F7:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1F8:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1F9:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1FA:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1FB:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1FC:
+  star_rating_struct: 0x0
+  star_rating_struct is null
+
+Testing offset 0x1FD:
+  star_rating_struct: 0xDC000000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1FE:
+  star_rating_struct: 0xABDC0000
+  Failed to read entries: Got OS error
+
+Testing offset 0x1FF:
+  star_rating_struct: 0x24ABDC00
+  entries (base + 0x8): 0x8
+  Failed to read entries_data: Got OS error

@@ -18,8 +18,9 @@ pub(crate) const BEATMAP_STATS_OFFSET: BeatmapStatsOffset = BeatmapStatsOffset {
     hp: 0x38,
     object_count: 0xf8,
     total_length: 0x134, 
-    drain_time: 0x12a, // TODO testing
+    drain_time: 0x0, // TODO 
     star_rating: 0x0, // TODO
+    slider_count: 0x146,
 };
 
 pub(crate) const BEATMAP_TECHNICAL_OFFSET: BeatmapTechnicalOffset = BeatmapTechnicalOffset {

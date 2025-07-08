@@ -51,15 +51,26 @@ impl BeatmapLocation {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BeatmapStarRating{
+    pub no_mod: f64,
+    pub dt: f64,
+    pub ht: f64,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BeatmapStats{
     pub ar: f32,
     pub od: f32,
     pub cs: f32,
     pub hp: f32,
     pub total_length: i32,
-    pub star_rating: f32,
+    pub star_rating: BeatmapStarRating,
     pub object_count: i32,
+    pub slider_count: i32,
 }
+
+
+
 
 #[derive(Debug, Default, PartialEq, Eq, Copy, Clone, Serialize, Deserialize)]
 #[repr(i16)]
@@ -117,6 +128,7 @@ pub struct BeatmapStatsOffset{
     pub total_length: i32,
     pub drain_time: i32,
     pub star_rating: i32,
+    pub slider_count: i32,
 }
 
 pub struct BeatmapLocationOffset{
