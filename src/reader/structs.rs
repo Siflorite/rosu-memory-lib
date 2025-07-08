@@ -89,13 +89,3 @@ pub struct State {
 
 
 
-
-#[derive(Debug, Default)]
-pub struct ResultScreenValues {
-    pub username: String,
-    pub mode: u8,
-    pub max_combo: i16,
-    pub score: i32,
-    pub hit : Hit,
-    pub accuracy: f64,
-}
