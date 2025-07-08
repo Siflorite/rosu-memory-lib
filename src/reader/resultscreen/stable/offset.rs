@@ -20,7 +20,7 @@ pub struct ResultScreenOffset {
     pub hits_katu : i32,
 }
 
-pub(crate) static RESULT_SCREEN_OFFSET: ResultScreenOffset = ResultScreenOffset {
+pub(crate) const RESULT_SCREEN_OFFSET: ResultScreenOffset = ResultScreenOffset {
     ptr: 0xb,
     addr: 0x4,
     score_base: 0x38,

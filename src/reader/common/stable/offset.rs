@@ -9,7 +9,7 @@ pub struct CommonOffset {
 }
 
 
-pub(crate) static COMMON_OFFSET: CommonOffset = CommonOffset {
+pub(crate) const COMMON_OFFSET: CommonOffset = CommonOffset {
     settings_ptr: 0x8,
     settings_addr: 0xb8,
     path: 0x4,

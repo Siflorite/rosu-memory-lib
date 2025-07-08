@@ -11,7 +11,7 @@ pub(crate) struct BeatmapOffset {
     pub cover: i32,
 }
 
-pub(crate) static BEATMAP_OFFSET: BeatmapOffset = BeatmapOffset {
+pub(crate) const BEATMAP_OFFSET: BeatmapOffset = BeatmapOffset {
     ptr: 0xC,
     md5: 0x6c,
     author: 0x18,
