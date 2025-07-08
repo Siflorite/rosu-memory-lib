@@ -1,5 +1,4 @@
 use rosu_mem::process::{Process, ProcessTraits};
-use crate::reader::structs::State;
 
 pub struct CommonOffset {
     pub settings_ptr: i32,
