@@ -55,7 +55,7 @@ pub struct BeatmapStats{
     pub od: f32,
     pub cs: f32,
     pub hp: f32,
-    pub total_length: u32,
+    pub total_length: i32,
     pub star_rating: f32,
     pub object_count: i32,
 }

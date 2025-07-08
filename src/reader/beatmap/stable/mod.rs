@@ -51,7 +51,7 @@ pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapI
             od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,
             cs: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?,
             hp: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?,
-            total_length: 0,
+            total_length: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.total_length)?,
             star_rating: 0.0,
             object_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?,
         },
