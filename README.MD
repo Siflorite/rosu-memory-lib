@@ -1,6 +1,6 @@
 # rosu-memory-lib
 
-A modular Rust library for reading osu! memory, forked from [rosu_memory](https://github.com/486c/rosu_memory).
+A modular Rust library for reading osu! memory, forked from [rosu-memory](https://github.com/486c/rosu-memory).
 
 ## Overview
 
