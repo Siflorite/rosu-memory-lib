@@ -13,21 +13,29 @@ pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
     Ok(read_from_beatmap_ptr_string(p,state, BEATMAP_OFFSET.technical.md5)?)
 }
 
-pub fn get_beatmap_id(p: &Process, state: &mut State) -> eyre::Result<u32>
+pub fn get_beatmap_id(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_u32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.id)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.id)?)
 }
 
 
-pub fn get_beatmap_set_id(p: &Process, state: &mut State) -> eyre::Result<u32>
+pub fn get_beatmap_set_id(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_u32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.set_id)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.set_id)?)
 }
 
+
+/// TODO REALLY IMPORTANT
 pub fn get_beatmap_mode(p: &Process, state: &mut State) -> eyre::Result<GameMode>
 {
-    Ok(GameMode::from(p.read_i32(state.addresses.base - 0x33)?))
+    Ok(GameMode::from(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.mode)?))
 }
+
+pub fn get_beatmap_length(p: &Process, state: &mut State) -> eyre::Result<i32>
+{
+    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.stats.total_length)?)
+}
+
 
 pub fn get_beatmap_status(p: &Process, state: &mut State) -> eyre::Result<BeatmapStatus>
 {

@@ -24,8 +24,8 @@ pub struct BeatmapMetadata{
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BeatmapTechnicalInfo{
     pub md5: String,
-    pub id: u32,
-    pub set_id: u32,
+    pub id: i32,
+    pub set_id: i32,
     pub mode: GameMode,
     pub ranked_status: BeatmapStatus,
 }

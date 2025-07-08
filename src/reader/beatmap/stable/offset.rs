@@ -17,7 +17,7 @@ pub(crate) const BEATMAP_STATS_OFFSET: BeatmapStatsOffset = BeatmapStatsOffset {
     cs: 0x34,
     hp: 0x38,
     object_count: 0xf8,
-    total_length: 0x0, // TODO
+    total_length: 0x134, 
     star_rating: 0x0, // TODO
 };
 
@@ -25,7 +25,7 @@ pub(crate) const BEATMAP_TECHNICAL_OFFSET: BeatmapTechnicalOffset = BeatmapTechn
     md5: 0x6c,
     id: 0xc8,
     set_id: 0xcc,
-    mode: 0x0, // TODO
+    mode: 0x118, // TODO IMPORTANT its wrong based on gosumemory which was update in 1992
     ranked_status: 0x12c,
 };
 
