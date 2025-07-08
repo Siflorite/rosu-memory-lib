@@ -22,6 +22,7 @@ pub(crate) static RESULT_SCREEN_OFFSET: ResultScreenOffset = ResultScreenOffset 
     hits_miss: 0x92,
     hits_50: 0x8C,
     hits_geki: 0x8E,
+    hits_katu: 0x90,
 };
 
 pub struct ResultScreenHitsOffset{
@@ -32,6 +33,7 @@ pub struct ResultScreenHitsOffset{
     pub _geki: i32,
     pub _katu: i32,
 }
+
 
 
 pub(crate) fn get_score_base(p: &Process, state: &mut State) -> eyre::Result<i32> {
@@ -54,74 +56,60 @@ pub fn get_result_mode(p: &Process, state: &mut State) -> GameMode {
 }
 
 pub fn get_result_hit_300(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x8A).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_300).unwrap();
 }
 pub fn get_result_hit_100(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x88).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_100).unwrap();
 }
 pub fn get_result_hit_50(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x8C).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_50).unwrap();
 }
 pub fn get_result_hit_geki(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x8E).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_geki).unwrap();
 }
 pub fn get_result_hit_katu(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x90).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_katu).unwrap();
 }
 pub fn get_result_hit_miss(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let result_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    return p.read_i16(result_base + 0x92).unwrap();
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_miss).unwrap();
 }
 
 
 pub fn get_result_hits(p: &Process, state: &mut State) -> Hit {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let base = p.read_i32(ruleset_addr + 0x38).unwrap();
+    let score_base = get_score_base(p, state)?;
     Hit {
-        _300: p.read_i16(base + 0x8A).unwrap(),
-        _100: p.read_i16(base + 0x88).unwrap(),
-        _50: p.read_i16(base + 0x8C).unwrap(),
-        _miss: p.read_i16(base + 0x92).unwrap(),
-        _geki: p.read_i16(base + 0x8E).unwrap(),
-        _katu: p.read_i16(base + 0x90).unwrap(),
+        _300: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_300).unwrap(),
+        _100: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_100).unwrap(),
+        _50: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_50).unwrap(),
+        _miss: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_miss).unwrap(),
+        _geki: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_geki).unwrap(),
+        _katu: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_katu).unwrap(),
     }
 }
 fn calculate_accuracy(
-    gamemode: u8,
+    gamemode: GameMode,
     hit: Hit
 ) -> f64 {
     let (numerator, denominator) = match gamemode {
-        0 => (
+        GameMode::Osu => (
                 hit._300 as f64 * 6.0 + hit._100 as f64 * 2.0 + hit._50 as f64,
                 (hit._300 + hit._100 + hit._50 + hit._miss) as f64 * 6.0
         ),
-        1 => (
+        GameMode::Taiko => (
                 hit._300 as f64 * 2.0 + hit._100 as f64,
                 (hit._300 + hit._100 + hit._50 + hit._miss) as f64 * 2.0
         ),
-        2 => (
+        GameMode::Ctb => (
                 (hit._300 + hit._100 + hit._50) as f64,
                 (hit._300 + hit._100 + hit._50 + hit._katu + hit._miss) as f64
         ),
-        3 => (
+        GameMode::Mania => (
                 (hit._geki + hit._300) as f64 * 6.0 + hit._katu as f64 * 4.0 + hit._100 as f64 * 2.0 + hit._50 as f64,
                 (hit._geki + hit._300 + hit._katu + hit._100 + hit._50 + hit._miss) as f64 * 6.0
         ),
@@ -138,19 +126,25 @@ pub fn get_result_accuracy(p: &Process, state: &mut State) -> f64 {
     )
 }
 pub fn get_result_max_combo(p: &Process, state: &mut State) -> i16 {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - 0xb).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + 0x4).unwrap();
-    let score_base = p.read_i32(ruleset_addr + 0x38).unwrap();
-    p.read_i16(score_base + 0x68).unwrap()
+    let score_base = get_score_base(p, state)?;
+    return p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo).unwrap();
 }
 
 pub fn get_result_screen(p: &Process, state: &mut State) -> ResultScreenValues {
+    let score_base = get_score_base(p, state)?;
     ResultScreenValues{
-            username: get_result_username(p,state),
-            mode :  get_result_mode(p,state),
-            max_combo : get_result_max_combo(p,state),
-            score : get_result_score(p,state),
-            hit : get_result_hits(p,state),
-            accuracy : get_result_accuracy(p,state),
+            username: p.read_string(score_base + RESULT_SCREEN_OFFSET.username).unwrap(),
+            mode :  GameMode::from(p.read_i32(score_base + RESULT_SCREEN_OFFSET.mode).unwrap()),
+            max_combo : p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo).unwrap(),
+            score : p.read_i32(score_base + RESULT_SCREEN_OFFSET.score).unwrap(),
+            hit : Hit {
+                _300: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_300).unwrap(),
+                _100: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_100).unwrap(),
+                _50: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_50).unwrap(),
+                _miss: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_miss).unwrap(),
+                _geki: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_geki).unwrap(),
+                _katu: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits_katu).unwrap(),
+            },
+            accuracy : calculate_accuracy(GameMode::from(p.read_i32(score_base + RESULT_SCREEN_OFFSET.mode).unwrap()), get_result_hits(p,state)),
     }
 }
