@@ -8,7 +8,7 @@ While rosu_memory was originally designed as a binary application, this fork tra
 
 ## Features
 
-- Memory reading for both stable and lazer versions of osu!
+- Memory reading for stable (lazer support may come soon)
 - Modular design allowing custom implementations
 - Callback system for real-time data processing
 - Type-safe memory access
