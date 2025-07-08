@@ -1,0 +1,12 @@
+[package]
+name = "rosu-memory-python"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rosu_memory_python"
+crate-type = ["cdylib"]
+
+[dependencies]
+rosu_memory_lib = { path = "../.." }
+pyo3 = { version = "0.25", features = ["extension-module"] } 
