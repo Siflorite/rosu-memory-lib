@@ -1,0 +1,22 @@
+language = "C"
+header = "/* rosu-memory C bindings */"
+include_guard = "ROSU_MEMORY_H"
+style = "both"
+cpp_compat = true
+
+[export]
+prefix = "rosu_"
+include = ["Process", "State"]
+
+[defines]
+"target_os = windows" = "ROSU_WINDOWS"
+"target_os = linux" = "ROSU_LINUX"
+"target_os = macos" = "ROSU_MACOS"
+
+[enum]
+prefix_with_name = true
+rename_variants = "ScreamingSnakeCase"
+
+[parse]
+parse_deps = true
+include = ["rosu_memory_lib"] 
