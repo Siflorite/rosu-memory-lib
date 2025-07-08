@@ -1,5 +1,5 @@
-mod common;
-mod stable;
+pub mod common;
+pub mod stable;
 
 use rosu_mem::process::{Process};
 use crate::reader::beatmap::common::BeatmapInfo;

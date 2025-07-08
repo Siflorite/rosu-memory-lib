@@ -1,12 +1,16 @@
-mod info;
-mod offset;
-mod location;
+pub mod info;
+pub mod offset;
+pub mod location;
 
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::beatmap::common::BeatmapInfo;
 use crate::reader::structs::State;
 use crate::reader::beatmap::stable::offset::BEATMAP_OFFSET;
-
+use crate::reader::beatmap::common::BeatmapLocation;
+use crate::reader::beatmap::common::BeatmapStats;
+use crate::reader::beatmap::common::BeatmapTechnicalInfo;
+use crate::common::GameMode;
+use crate::reader::beatmap::common::BeatmapStatus;
 
 pub(crate) fn get_beatmap_addr(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
@@ -27,13 +31,32 @@ pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapI
 
     // done like that to be more efficient reading the string one by one would need to reload addr everytime which cost more
     Ok(BeatmapInfo {
+        technical: BeatmapTechnicalInfo{
+            md5: p.read_string(beatmap_addr + BEATMAP_OFFSET.technical.md5)?,
+            id: p.read_u32(beatmap_addr + BEATMAP_OFFSET.technical.id)?,
+            set_id: p.read_u32(beatmap_addr + BEATMAP_OFFSET.technical.set_id)?,
+            mode: GameMode::Osu,
+            ranked_status: BeatmapStatus::from(p.read_i32(beatmap_addr + BEATMAP_OFFSET.technical.ranked_status)?),
+        },
         author: p.read_string(beatmap_addr + BEATMAP_OFFSET.author)?,
-        cover: p.read_string(beatmap_addr + BEATMAP_OFFSET.cover)?,
         creator: p.read_string(beatmap_addr + BEATMAP_OFFSET.creator)?,
-        title: p.read_string(beatmap_addr + BEATMAP_OFFSET.title)?,
+        title_romanized: p.read_string(beatmap_addr + BEATMAP_OFFSET.title_romanized)?,
+        title_original: p.read_string(beatmap_addr + BEATMAP_OFFSET.title_original)?,
         difficulty: p.read_string(beatmap_addr + BEATMAP_OFFSET.difficulty)?,
-        folder: p.read_string(beatmap_addr + BEATMAP_OFFSET.folder)?,
-        filename: p.read_string(beatmap_addr + BEATMAP_OFFSET.filename)?,
-        audio: p.read_string(beatmap_addr + BEATMAP_OFFSET.audio)?,
+        stats: BeatmapStats{
+            ar: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.ar)?,
+            od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,
+            cs: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?,
+            hp: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?,
+            total_length: 0,
+            star_rating: 0.0,
+            object_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?,
+        },
+        location: BeatmapLocation {
+            folder: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.folder)?,
+            filename: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.filename)?,
+            audio: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.audio)?,
+            cover: p.read_string(beatmap_addr + BEATMAP_OFFSET.location.cover)?,
+        },
     })
 }

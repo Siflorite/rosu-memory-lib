@@ -1,4 +1,5 @@
 pub mod stable;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Default)]
 pub enum OsuType{
@@ -7,7 +8,7 @@ pub enum OsuType{
     Lazer
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Default)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Default, Serialize, Deserialize)]
 pub enum GameMode{
     Osu,
     Taiko,
@@ -18,6 +19,7 @@ pub enum GameMode{
 }
 impl From<u32> for GameMode {
     fn from(value: u32) -> Self {
+        println!("GameMode: {}", value);
         match value {
             0 => Self::Osu,
             1 => Self::Taiko,

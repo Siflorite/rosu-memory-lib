@@ -1,5 +1,6 @@
 use std::time::Duration;
-use rosu_memory_lib::{init_loop, common::stable::get_game_state, common::GameState, common::OsuType, reader::beatmap::get_beatmap_info};
+use rosu_memory_lib::{init_loop, common::stable::get_game_state, common::GameState};
+use rosu_memory_lib::reader::beatmap::stable::info::get_beatmap_status;
 
 fn main() -> eyre::Result<()> {
     println!("Initializing osu! memory reader...");
@@ -8,9 +9,11 @@ fn main() -> eyre::Result<()> {
 
     loop {
         let game_state = get_game_state(&process, &mut state)?;
-        if game_state == GameState::ResultScreen {
-            let beamtap = get_beatmap_info(&process, &mut state, OsuType::Stable)?;
-            println!("Beatmap info: {:?}", beamtap);
+        if game_state == GameState::SongSelect {
+            match get_beatmap_status(&process, &mut state) {
+                Ok(beatmap_status) => println!("Current beatmap status: {:?}", beatmap_status),
+                Err(_) => (), // ignore l'erreur silencieusement
+            }
         }
         
         // Sleep a bit to avoid hammering the CPU

@@ -1,19 +1,60 @@
 use serde::{Deserialize, Serialize};
 
+use crate::common::GameMode;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub(crate) struct BeatmapInfo {
+pub struct BeatmapInfo {
     pub author: String,
     pub creator: String,
-    pub title: String,
+    pub title_romanized: String,
+    pub title_original: String,
     pub difficulty: String,
+    pub location: BeatmapLocation,
+    pub stats: BeatmapStats,
+    pub technical: BeatmapTechnicalInfo,
+}
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BeatmapTechnicalInfo{
+    pub md5: String,
+    pub id: u32,
+    pub set_id: u32,
+    pub mode: GameMode,
+    pub ranked_status: BeatmapStatus,
+}
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BeatmapLocation {
     pub folder: String,
     pub filename: String,
     pub audio: String,
     pub cover: String,
 }
 
+impl BeatmapLocation {
+    pub fn get_file_path(&self) -> String {
+        format!("{}/{}", self.folder, self.filename)
+    }
+    pub fn get_audio_path(&self) -> String {
+        format!("{}/{}", self.folder, self.audio)
+    }
+    pub fn get_cover_path(&self) -> String {
+        format!("{}/{}", self.folder, self.cover)
+    }
+}
 
-#[derive(Debug, Default, PartialEq, Eq, Copy, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BeatmapStats{
+    pub ar: f32,
+    pub od: f32,
+    pub cs: f32,
+    pub hp: f32,
+    pub total_length: u32,
+    pub star_rating: f32,
+    pub object_count: i32,
+}
+
+#[derive(Debug, Default, PartialEq, Eq, Copy, Clone, Serialize, Deserialize)]
 #[repr(i16)]
 pub enum BeatmapStatus {
     #[default]
@@ -42,4 +83,49 @@ impl From<i16> for BeatmapStatus {
             _ => Self::Unknown,
         }
     }
+}
+
+impl From<i32> for BeatmapStatus {
+    fn from(value: i32) -> Self {
+        Self::from(value as i16)
+    }
+}
+
+
+
+pub(crate) struct BeatmapOffset {
+    pub ptr: i32,
+    pub author: i32,
+    pub creator: i32,
+    pub title_romanized: i32,
+    pub title_original: i32,
+    pub difficulty: i32,
+    pub location: BeatmapLocationOffset,
+    pub stats: BeatmapStatsOffset,
+    pub technical: BeatmapTechnicalOffset,
+}
+
+pub struct BeatmapStatsOffset{
+    pub ar: i32,
+    pub od: i32,
+    pub cs: i32,
+    pub hp: i32,
+    pub object_count: i32,
+    pub total_length: i32,
+    pub star_rating: i32,
+}
+
+pub struct BeatmapLocationOffset{
+    pub folder: i32,
+    pub filename: i32,
+    pub audio: i32,
+    pub cover: i32,
+}
+
+pub struct BeatmapTechnicalOffset{
+    pub md5: i32,
+    pub id: i32,
+    pub set_id: i32,
+    pub mode: i32,
+    pub ranked_status: i32,
 }
