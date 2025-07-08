@@ -115,6 +115,7 @@ pub struct BeatmapStatsOffset{
     pub hp: i32,
     pub object_count: i32,
     pub total_length: i32,
+    pub drain_time: i32,
     pub star_rating: i32,
 }
 

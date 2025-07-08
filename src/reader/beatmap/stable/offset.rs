@@ -18,6 +18,7 @@ pub(crate) const BEATMAP_STATS_OFFSET: BeatmapStatsOffset = BeatmapStatsOffset {
     hp: 0x38,
     object_count: 0xf8,
     total_length: 0x134, 
+    drain_time: 0x12a, // TODO testing
     star_rating: 0x0, // TODO
 };
 
@@ -25,7 +26,7 @@ pub(crate) const BEATMAP_TECHNICAL_OFFSET: BeatmapTechnicalOffset = BeatmapTechn
     md5: 0x6c,
     id: 0xc8,
     set_id: 0xcc,
-    mode: 0x11c, // TODO IMPORTANT its wrong based on gosumemory which was update in 1992
+    mode: 0x11c, 
     ranked_status: 0x12c,
 };
 
@@ -46,5 +47,4 @@ pub(crate) const BEATMAP_METADATA_OFFSET: BeatmapMetadataOffset = BeatmapMetadat
     tags: 0x20,
 };
 
-// 0x12a Could be draintime 
-// 0x11c could be map mode
+// 0x12a Could be draintime -> 
