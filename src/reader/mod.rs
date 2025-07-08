@@ -1,6 +1,6 @@
-mod beatmap;
-mod common;
-mod resultscreen;
+pub mod beatmap;
+pub mod common;
+pub mod resultscreen;
 
 use eyre::{Result};
 use std::time::Duration;
@@ -11,7 +11,7 @@ use crate::reader::structs::State;
 use crate::reader::structs::StaticAddresses;
 use rosu_mem::error::ProcessError;
 
-mod structs;
+pub mod structs;
 
 static EXCLUDE_WORDS: [&str; 2] = ["umu-run", "waitforexitandrun"];
 

@@ -29,27 +29,57 @@ pub struct Hit{
     pub _miss:i16,
 }
 
+#[derive(Debug, Clone)]
+pub(crate) struct SignatureBase {
+    base_sig: &'static str,
+    status_sig: &'static str,
+    menu_mods_sig: &'static str,
+    rulesets_sig: &'static str,
+    playtime_sig: &'static str,
+    skin_sig: &'static str,
+    chat_checker_sig: &'static str,
+    audio_time_base_sig: &'static str,
+    ig_time_base_sig: &'static str,
+    settings_sig: &'static str,
+}
+
+pub(crate) const SIGNATURES: SignatureBase = SignatureBase {
+    base_sig: "F8 01 74 04 83 65",
+    status_sig: "48 83 F8 04 73 1E",
+    menu_mods_sig: "C8 FF ?? ?? ?? ?? ?? 81 0D ?? ?? ?? ?? 00 08 00 00",
+    rulesets_sig: "7D 15 A1 ?? ?? ?? ?? 85 C0",
+    playtime_sig: "5E 5F 5D C3 A1 ?? ?? ?? ?? 89 ?? 04",
+    skin_sig: "75 21 8B 1D",
+    chat_checker_sig: "0A D7 23 3C 00 00 ?? 01",
+    audio_time_base_sig: "DB 5C 24 34 8B 44 24 34",
+    ig_time_base_sig: "EB 0A A1 ?? ?? ?? ?? A3",
+    settings_sig: "83 E0 20 85 C0 7E 2F",
+};
+
+
+
+
 impl StaticAddresses {
     pub fn new(p: &Process) -> Result<Self,Box<dyn std::error::Error>> {
 
-        let base_sign = Signature::from_str("F8 01 74 04 83 65")?;
-        let status_sign = Signature::from_str("48 83 F8 04 73 1E")?;
+        let base_sign = Signature::from_str(&SIGNATURES.base_sig)?;
+        let status_sign = Signature::from_str(&SIGNATURES.status_sig)?;
         let menu_mods_sign =
-            Signature::from_str("C8 FF ?? ?? ?? ?? ?? 81 0D ?? ?? ?? ?? 00 08 00 00")?;
+            Signature::from_str(&SIGNATURES.menu_mods_sig)?;
 
-        let rulesets_sign = Signature::from_str("7D 15 A1 ?? ?? ?? ?? 85 C0")?;
+        let rulesets_sign = Signature::from_str(&SIGNATURES.rulesets_sig)?;
 
-        let playtime_sign = Signature::from_str("5E 5F 5D C3 A1 ?? ?? ?? ?? 89 ?? 04")?;
+        let playtime_sign = Signature::from_str(&SIGNATURES.playtime_sig)?;
 
-        let skin_sign = Signature::from_str("75 21 8B 1D")?;
+        let skin_sign = Signature::from_str(&SIGNATURES.skin_sig)?;
 
-        let chat_checker = Signature::from_str("0A D7 23 3C 00 00 ?? 01")?;
+        let chat_checker = Signature::from_str(&SIGNATURES.chat_checker_sig)?;
 
-        let audio_time_base = Signature::from_str("DB 5C 24 34 8B 44 24 34")?;
+        let audio_time_base = Signature::from_str(&SIGNATURES.audio_time_base_sig)?;
 
-        let ig_time_base = Signature::from_str("EB 0A A1 ?? ?? ?? ?? A3")?;
+        let ig_time_base = Signature::from_str(&SIGNATURES.ig_time_base_sig)?;
 
-        let settings_base = Signature::from_str("83 E0 20 85 C0 7E 2F")?;
+        let settings_base = Signature::from_str(&SIGNATURES.settings_sig)?;
         Ok(Self {
             base: p.read_signature(&base_sign)?,
             status: p.read_signature(&status_sign)?,
