@@ -36,29 +36,29 @@ pub fn get_beatmap_status(p: &Process, state: &mut State) -> eyre::Result<Beatma
 
 pub fn get_author(p: &Process, state: &mut State) -> eyre::Result<String>
 {
-    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.author)?)
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.author)?)
 }
 
 pub fn get_creator(p: &Process, state: &mut State) -> eyre::Result<String>
 {
-    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.creator)?)
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.creator)?)
 
 }
 
 pub fn get_title_romanized(p: &Process, state: &mut State) -> eyre::Result<String>
 {
-    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.title_romanized)?)
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.title_romanized)?)
 
 }
 
 pub fn get_title_original(p: &Process, state: &mut State) -> eyre::Result<String>
 {
-    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.title_original)?)
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.title_original)?)
 }
 
 pub fn get_difficulty(p: &Process, state: &mut State) -> eyre::Result<String>
 {
-    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.difficulty)?)
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.difficulty)?)
 }
 
 pub fn get_beatmap_od(p: &Process, state: &mut State) -> eyre::Result<f32>

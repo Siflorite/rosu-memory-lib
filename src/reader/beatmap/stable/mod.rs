@@ -11,6 +11,7 @@ use crate::reader::beatmap::common::BeatmapStats;
 use crate::reader::beatmap::common::BeatmapTechnicalInfo;
 use crate::common::GameMode;
 use crate::reader::beatmap::common::BeatmapStatus;
+use crate::reader::beatmap::common::BeatmapMetadata;
 
 pub(crate) fn get_beatmap_addr(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
@@ -38,11 +39,13 @@ pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapI
             mode: GameMode::Osu,
             ranked_status: BeatmapStatus::from(p.read_i32(beatmap_addr + BEATMAP_OFFSET.technical.ranked_status)?),
         },
-        author: p.read_string(beatmap_addr + BEATMAP_OFFSET.author)?,
-        creator: p.read_string(beatmap_addr + BEATMAP_OFFSET.creator)?,
-        title_romanized: p.read_string(beatmap_addr + BEATMAP_OFFSET.title_romanized)?,
-        title_original: p.read_string(beatmap_addr + BEATMAP_OFFSET.title_original)?,
-        difficulty: p.read_string(beatmap_addr + BEATMAP_OFFSET.difficulty)?,
+        metadata: BeatmapMetadata{
+            author: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.author)?,
+            creator: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.creator)?,
+            title_romanized: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.title_romanized)?,
+            title_original: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.title_original)?,
+            difficulty: p.read_string(beatmap_addr + BEATMAP_OFFSET.metadata.difficulty)?,
+        },
         stats: BeatmapStats{
             ar: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.ar)?,
             od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,

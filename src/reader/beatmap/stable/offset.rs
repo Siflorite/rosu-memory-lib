@@ -2,6 +2,7 @@ use crate::reader::beatmap::common::BeatmapLocationOffset;
 use crate::reader::beatmap::common::BeatmapStatsOffset;
 use crate::reader::beatmap::common::BeatmapOffset;
 use crate::reader::beatmap::common::BeatmapTechnicalOffset;
+use crate::reader::beatmap::common::BeatmapMetadataOffset;
 
 pub(crate) const BEATMAP_LOCATION_OFFSET: BeatmapLocationOffset = BeatmapLocationOffset {
     folder: 0x78,
@@ -22,22 +23,25 @@ pub(crate) const BEATMAP_STATS_OFFSET: BeatmapStatsOffset = BeatmapStatsOffset {
 
 pub(crate) const BEATMAP_TECHNICAL_OFFSET: BeatmapTechnicalOffset = BeatmapTechnicalOffset {
     md5: 0x6c,
-    id: 0x70,
-    set_id: 0x74,
+    id: 0xc8,
+    set_id: 0xcc,
     mode: 0x0, // TODO
     ranked_status: 0x12c,
 };
 
 pub(crate) const BEATMAP_OFFSET: BeatmapOffset = BeatmapOffset {
     ptr: 0xC,
-    author: 0x18,
-    creator: 0x7C,
-    title_romanized: 0x24,
-    title_original: 0x28,
-    difficulty: 0xAC,
+    metadata: BEATMAP_METADATA_OFFSET,
     location: BEATMAP_LOCATION_OFFSET,
     stats: BEATMAP_STATS_OFFSET,
     technical: BEATMAP_TECHNICAL_OFFSET,
 };
 
+pub(crate) const BEATMAP_METADATA_OFFSET: BeatmapMetadataOffset = BeatmapMetadataOffset {
+    author: 0x18,
+    creator: 0x7C,
+    title_romanized: 0x24,
+    title_original: 0x28,
+    difficulty: 0xAC,
+};
 

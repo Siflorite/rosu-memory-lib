@@ -2,19 +2,25 @@ use serde::{Deserialize, Serialize};
 
 use crate::common::GameMode;
 
+
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BeatmapInfo {
-    pub author: String,
-    pub creator: String,
-    pub title_romanized: String,
-    pub title_original: String,
-    pub difficulty: String,
+    pub metadata: BeatmapMetadata,
     pub location: BeatmapLocation,
     pub stats: BeatmapStats,
     pub technical: BeatmapTechnicalInfo,
 }
 
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BeatmapMetadata{
+    pub author: String,
+    pub creator: String,
+    pub title_romanized: String,
+    pub title_original: String,
+    pub difficulty: String,
+}
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BeatmapTechnicalInfo{
     pub md5: String,
@@ -95,11 +101,7 @@ impl From<i32> for BeatmapStatus {
 
 pub(crate) struct BeatmapOffset {
     pub ptr: i32,
-    pub author: i32,
-    pub creator: i32,
-    pub title_romanized: i32,
-    pub title_original: i32,
-    pub difficulty: i32,
+    pub metadata: BeatmapMetadataOffset,
     pub location: BeatmapLocationOffset,
     pub stats: BeatmapStatsOffset,
     pub technical: BeatmapTechnicalOffset,
@@ -128,4 +130,12 @@ pub struct BeatmapTechnicalOffset{
     pub set_id: i32,
     pub mode: i32,
     pub ranked_status: i32,
+}
+
+pub struct BeatmapMetadataOffset{
+    pub author: i32,
+    pub creator: i32,
+    pub title_romanized: i32,
+    pub title_original: i32,
+    pub difficulty: i32,
 }
