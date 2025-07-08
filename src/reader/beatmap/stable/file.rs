@@ -43,7 +43,7 @@ pub fn get_audio_path(p: &Process, state: &mut State) -> eyre::Result<String>
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 {
     // TODO: implement this for now will get from memory
-    Ok(get_beatmap_md5(p, state)?)
+    Ok(crate::reader::beatmap::stable::memory::get_beatmap_md5(p, state)?)
 }
 
 pub fn get_beatmap_id(p: &Process, state: &mut State) -> eyre::Result<i32>
@@ -94,7 +94,7 @@ pub fn get_beatmap_drain_time(p: &Process, state: &mut State) -> eyre::Result<i3
 pub fn get_beatmap_status(p: &Process, state: &mut State) -> eyre::Result<BeatmapStatus>
 {
     // cant do this in file mode 
-    Ok(get_beatmap_status(p, state)?)
+    Ok(crate::reader::beatmap::stable::memory::get_beatmap_status(p, state)?)
 }
 
 pub fn get_author(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -219,6 +219,7 @@ pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<Beatmap
 pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
 {
     let beatmap_file = get_beatmap_path(p, state)?;
+    println!("Beatmap file: {}", beatmap_file);
     let beatmap_addr = get_beatmap_addr(p, state)?;
     let b = RmBeatmap::from_path(beatmap_file)?;
        // done like that to be more efficient reading the string one by one would need to reload addr everytime which cost more
