@@ -31,6 +31,11 @@ pub fn get_beatmap_mode(p: &Process, state: &mut State) -> eyre::Result<GameMode
     Ok(GameMode::from(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.mode)?))
 }
 
+pub fn get_beatmap_tags(p: &Process, state: &mut State) -> eyre::Result<String>
+{
+    Ok(read_from_beatmap_ptr_string(p,state,BEATMAP_OFFSET.metadata.tags)?)
+}
+
 pub fn get_beatmap_length(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
     Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.stats.total_length)?)

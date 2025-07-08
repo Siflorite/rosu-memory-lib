@@ -20,6 +20,7 @@ pub struct BeatmapMetadata{
     pub title_romanized: String,
     pub title_original: String,
     pub difficulty: String,
+    pub tags: String,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BeatmapTechnicalInfo{
@@ -138,4 +139,5 @@ pub struct BeatmapMetadataOffset{
     pub title_romanized: i32,
     pub title_original: i32,
     pub difficulty: i32,
+    pub tags: i32,
 }

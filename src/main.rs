@@ -1,6 +1,7 @@
 use std::time::Duration;
 use rosu_memory_lib::{init_loop, common::stable::get_game_state, common::GameState};
-use rosu_memory_lib::reader::beatmap::stable::info::get_beatmap_length;
+use rosu_memory_lib::reader::beatmap::stable::test_get_memory_dump;
+use rosu_memory_lib::reader::beatmap::stable::info::get_beatmap_mode;
 
 fn main() -> eyre::Result<()> {
     println!("Initializing osu! memory reader...");
@@ -10,13 +11,13 @@ fn main() -> eyre::Result<()> {
     loop {
         let game_state = get_game_state(&process, &mut state)?;
         if game_state == GameState::SongSelect {
-            match get_beatmap_length(&process, &mut state) {
-                Ok(beatmap_length) => println!("Current beatmap length: {:?}", beatmap_length),
-                Err(_) => (), 
-            }
+                match get_beatmap_mode(&process, &mut state) {
+                    Ok(beatmap_mode) => println!("Current beatmap mode: {:?}", beatmap_mode),
+                    Err(_) => (), 
+                }
 
-            // test_get_memory_dump(&process, &mut state)?;
-            // std::process::exit(0);
+            //     test_get_memory_dump(&process, &mut state)?;
+            //     std::process::exit(0);
         }
         
         // Sleep a bit to avoid hammering the CPU

@@ -25,7 +25,7 @@ pub(crate) const BEATMAP_TECHNICAL_OFFSET: BeatmapTechnicalOffset = BeatmapTechn
     md5: 0x6c,
     id: 0xc8,
     set_id: 0xcc,
-    mode: 0x118, // TODO IMPORTANT its wrong based on gosumemory which was update in 1992
+    mode: 0x11c, // TODO IMPORTANT its wrong based on gosumemory which was update in 1992
     ranked_status: 0x12c,
 };
 
@@ -43,5 +43,8 @@ pub(crate) const BEATMAP_METADATA_OFFSET: BeatmapMetadataOffset = BeatmapMetadat
     title_romanized: 0x24,
     title_original: 0x28,
     difficulty: 0xAC,
+    tags: 0x20,
 };
 
+// 0x12a Could be draintime 
+// 0x11c could be map mode
