@@ -35,39 +35,46 @@ where
 pub fn init_loop(sleep_duration: u64) -> eyre::Result<(State, Process)> {
     let mut state = State {
         addresses: StaticAddresses::default(),
-        };
-    let p = match Process::initialize("osu!.exe", &EXCLUDE_WORDS) {
-        Ok(p) => {
-            println!("Found process, pid - {}", p.pid);
-            p
-        }
-        Err(e) => {
-            std::thread::sleep(Duration::from_millis(sleep_duration));
-            return init_loop(sleep_duration);
-        }
     };
-
-    println!("Reading static signatures...");
-    match StaticAddresses::new(&p) {
-        Ok(v) => state.addresses = v,
-        Err(e) => match e.downcast_ref::<ProcessError>() {
-            Some(&ProcessError::ProcessNotFound) => {
-                std::thread::sleep(Duration::from_millis(sleep_duration));
-                return init_loop(sleep_duration);
+    
+    loop {
+        match Process::initialize("osu!.exe", &EXCLUDE_WORDS) {
+            Ok(p) => {
+                println!("Found process, pid - {}", p.pid);
+                
+                println!("Reading static signatures...");
+                match StaticAddresses::new(&p) {
+                    Ok(v) => {
+                        state.addresses = v;
+                        return Ok((state, p));
+                    }
+                    Err(e) => {
+                        if let Some(pe) = e.downcast_ref::<ProcessError>() {
+                            match pe {
+                                &ProcessError::ProcessNotFound => {
+                                    std::thread::sleep(Duration::from_millis(sleep_duration));
+                                    continue;
+                                }
+                                #[cfg(target_os = "windows")]
+                                &ProcessError::OsError { .. } => {
+                                    std::thread::sleep(Duration::from_millis(sleep_duration));
+                                    continue;
+                                }
+                                _ => {
+                                    std::thread::sleep(Duration::from_millis(sleep_duration));
+                                    continue;
+                                }
+                            }
+                        }
+                        std::thread::sleep(Duration::from_millis(sleep_duration));
+                    }
+                }
             }
-            #[cfg(target_os = "windows")]
-            Some(&ProcessError::OsError { .. }) => {
+            Err(_) => {
                 std::thread::sleep(Duration::from_millis(sleep_duration));
-                return init_loop(sleep_duration);
             }
-            Some(_) | None => {
-                std::thread::sleep(Duration::from_millis(sleep_duration));
-                return init_loop(sleep_duration);
-            }
-        },
-    };
-
-    Ok((state, p))
+        }
+    }
 }
 
 
