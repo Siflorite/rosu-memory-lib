@@ -53,30 +53,30 @@ pub fn init_loop(sleep_duration: u64) -> eyre::Result<(State, Process)> {
                         if let Some(pe) = e.downcast_ref::<ProcessError>() {
                             match pe {
                                 &ProcessError::ProcessNotFound => {
-                                    println!("Process not found, sleeping for {}ms", sleep_duration);
+                                    println!("Process not found, sleeping for {sleep_duration}ms");
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                                 #[cfg(target_os = "windows")]
                                 &ProcessError::OsError { .. } => {
-                                    println!("OS error, sleeping for {}ms", sleep_duration);
+                                    println!("OS error, sleeping for {sleep_duration}ms");
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                                 _ => {
-                                    println!("Unknown error, sleeping for {}ms", sleep_duration);
+                                    println!("Unknown error, sleeping for {sleep_duration}ms");
                                     std::thread::sleep(Duration::from_millis(sleep_duration));
                                     continue;
                                 }
                             }
                         }
-                        println!("Unknown error, sleeping for {}ms", sleep_duration);
+                        println!("Unknown error, sleeping for {sleep_duration}ms");
                         std::thread::sleep(Duration::from_millis(sleep_duration));
                     }
                 }
             }
             Err(_) => {
-                println!("Unknown process error, sleeping for {}ms", sleep_duration);
+                println!("Unknown process error, sleeping for {sleep_duration}ms");
                 std::thread::sleep(Duration::from_millis(sleep_duration));
             }
         }
