@@ -208,7 +208,6 @@ pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<Beatmap
 pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
 {
     let beatmap_file = get_beatmap_path(p, state)?;
-    println!("Beatmap file: {}", beatmap_file);
     let beatmap_addr = get_beatmap_addr(p, state)?;
     let b = RmBeatmap::from_path(beatmap_file)?;
        // done like that to be more efficient reading the string one by one would need to reload addr everytime which cost more

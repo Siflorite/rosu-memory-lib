@@ -19,7 +19,6 @@ pub enum GameMode{
 }
 impl From<u32> for GameMode {
     fn from(value: u32) -> Self {
-        println!("GameMode: {}", value);
         match value {
             0 => Self::Osu,
             1 => Self::Taiko,
@@ -110,7 +109,7 @@ pub enum Error {
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Error::NotAvailable(msg) => write!(f, "{}", msg),
+            Error::NotAvailable(msg) => write!(f, "{msg}"),
         }
     }
 }
