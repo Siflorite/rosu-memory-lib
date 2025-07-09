@@ -3,7 +3,6 @@ pub mod common;
 pub mod resultscreen;
 pub mod gameplay;
 
-use eyre::{Result};
 use std::time::Duration;
 use crate::reader::common::stable::get_game_state;
 use crate::reader::common::GameState;

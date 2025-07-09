@@ -1,5 +1,5 @@
 use std::time::{Duration, Instant};
-use rosu_memory_lib::{init_loop, common::stable::get_game_state, common::GameState};
+use rosu_memory_lib::{init_loop};
 use rosu_memory_lib::reader::resultscreen::stable::memory::get_result_screen;
 
 fn main() -> eyre::Result<()> {

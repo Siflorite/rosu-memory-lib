@@ -87,6 +87,7 @@ pub enum BeatmapStatus {
 }
 
 impl BeatmapStatus {
+    #[allow(clippy::inherent_to_string)]
     pub fn to_string(&self) -> String {
         match self {
             BeatmapStatus::Unknown => "unknown".to_string(),

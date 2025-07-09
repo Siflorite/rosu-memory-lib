@@ -1,8 +1,4 @@
 
-use rosu_mem::process::{Process, ProcessTraits};
-use crate::reader::structs::{Hit, State};
-
-
 pub struct ResultScreenOffset {
     pub ptr : i32,
     pub addr : i32,

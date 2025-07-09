@@ -2,6 +2,12 @@
 name = "rosu_memory_lib"
 version = "1.0.0"
 edition = "2021"
+description = "A library to read osu! memory"
+license = "MIT"
+repository = "https://github.com/Glubus/rosu-memory-lib"
+authors = ["Glubus", "486c"]
+keywords = ["osu", "memory", "game"]
+categories = ["games", "memory-management"]
 
 
 [lib]
@@ -22,4 +28,3 @@ log = "0.4"
 simplelog = "0.12"
 rosu-pp = "3.1.0"
 rosu-map = "0.2.1"
-symphonia = { version = "0.5.3", features = ["mp3", "ogg", "wav"] }

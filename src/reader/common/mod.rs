@@ -36,6 +36,7 @@ impl From<i32> for GameMode {
     }
 }
 impl GameMode {
+    #[allow(clippy::inherent_to_string)]
     pub fn to_string(&self) -> String {
         match self {
             GameMode::Osu => "std".to_string(),

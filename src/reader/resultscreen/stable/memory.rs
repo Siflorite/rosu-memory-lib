@@ -120,10 +120,10 @@ pub fn get_result_screen(p: &Process, state: &mut State) -> eyre::Result<ResultS
     let accuracy = calculate_accuracy(&mode, &hit)?;
     Ok(ResultScreenInfo{
             username: p.read_string(score_base + RESULT_SCREEN_OFFSET.username)?,
-            mode :  mode,
+            mode,
             max_combo : p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo)?,
             score : p.read_i32(score_base + RESULT_SCREEN_OFFSET.score)?,
-            hit : hit,
-            accuracy : accuracy,
+            hit,
+            accuracy,
     })
 }

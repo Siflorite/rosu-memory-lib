@@ -18,10 +18,10 @@ pub fn get_gameplay_info(p: &Process, state: &mut State) -> Result<GameplayInfo,
     Ok(
         GameplayInfo {
         score: p.read_i32(base2 + GAMEPLAY_OFFSET.score).unwrap(),
-        mods: mods,
+        mods,
         combo: p.read_i16(base2 + GAMEPLAY_OFFSET.combo).unwrap(),
         max_combo: p.read_i16(base2 + GAMEPLAY_OFFSET.max_combo).unwrap(),
-        hp: hp,
+        hp,
         username: p.read_string(base2 + GAMEPLAY_OFFSET.username).unwrap(),
         ig_time: memory::get_ig_time(p, state)?, // different base
         retries: memory::get_retries(p, state)?, // different base

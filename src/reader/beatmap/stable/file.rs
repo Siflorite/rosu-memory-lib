@@ -1,25 +1,15 @@
 
 
 
-use rosu_mem::process::{Process};
-use crate::reader::structs::State;
-use crate::reader::beatmap::stable::offset::BEATMAP_OFFSET;
-use rosu_mem::process::ProcessTraits;
-use crate::reader::beatmap::common::BeatmapStats;
-use crate::reader::beatmap::stable::get_beatmap_addr;
-use crate::common::GameMode;
-use crate::reader::beatmap::common::BeatmapStatus;
-use crate::reader::beatmap::stable::location::get_filename;
-use crate::reader::beatmap::stable::location::get_folder;
-use crate::reader::common::stable::get_path_folder;
-use crate::reader::beatmap::common::BeatmapStarRating;
+use rosu_mem::process::{Process, ProcessTraits};
 use rosu_map::Beatmap as RmBeatmap;
-use crate::reader::beatmap::stable::location::get_audio;
 use rosu_map::section::hit_objects::HitObjectKind;
-use crate::reader::beatmap::common::BeatmapInfo;
-use crate::reader::beatmap::common::BeatmapTechnicalInfo;
-use crate::reader::beatmap::common::BeatmapMetadata;
-use crate::reader::beatmap::common::BeatmapLocation;
+use crate::reader::structs::State;
+use crate::reader::common::stable::get_path_folder;
+use crate::reader::beatmap::common::{BeatmapInfo, BeatmapTechnicalInfo, BeatmapMetadata, BeatmapLocation, BeatmapStatus, BeatmapStats, BeatmapStarRating};
+use crate::reader::beatmap::stable::location::{get_audio, get_filename, get_folder};
+use crate::reader::beatmap::stable::{offset::BEATMAP_OFFSET, get_beatmap_addr};
+use crate::common::GameMode;
 
 
 
@@ -43,7 +33,7 @@ pub fn get_audio_path(p: &Process, state: &mut State) -> eyre::Result<String>
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 {
     // TODO: implement this for now will get from memory
-    Ok(crate::reader::beatmap::stable::memory::get_beatmap_md5(p, state)?)
+    crate::reader::beatmap::stable::memory::get_beatmap_md5(p, state)
 }
 
 pub fn get_beatmap_id(p: &Process, state: &mut State) -> eyre::Result<i32>
@@ -80,7 +70,7 @@ pub fn get_beatmap_length(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
 
     // implement this later for now will get from memory
-    Ok(crate::reader::beatmap::stable::memory::get_beatmap_length(p, state)?)
+    crate::reader::beatmap::stable::memory::get_beatmap_length(p, state)
 }
 
 pub fn get_beatmap_drain_time(p: &Process, state: &mut State) -> eyre::Result<i32>
@@ -94,7 +84,7 @@ pub fn get_beatmap_drain_time(p: &Process, state: &mut State) -> eyre::Result<i3
 pub fn get_beatmap_status(p: &Process, state: &mut State) -> eyre::Result<BeatmapStatus>
 {
     // cant do this in file mode 
-    Ok(crate::reader::beatmap::stable::memory::get_beatmap_status(p, state)?)
+    crate::reader::beatmap::stable::memory::get_beatmap_status(p, state)
 }
 
 pub fn get_author(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -178,7 +168,6 @@ pub fn get_beatmap_slider_count(p: &Process, state: &mut State) -> eyre::Result<
 
 pub fn get_beatmap_star_rating(p: &Process, state: &mut State) -> eyre::Result<BeatmapStarRating>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
     let folder = get_folder(p, state)?;
     let filename = get_filename(p, state)?;
     let song_path = get_path_folder(p, state)?;
@@ -191,9 +180,9 @@ pub fn get_beatmap_star_rating(p: &Process, state: &mut State) -> eyre::Result<B
     let dt = diff_dt.stars();
     let ht = diff_ht.stars();
     Ok(BeatmapStarRating{
-        no_mod: no_mod,
-        dt: dt,
-        ht: ht,
+        no_mod,
+        dt,
+        ht,
     })
 
 }

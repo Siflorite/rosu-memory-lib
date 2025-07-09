@@ -1,4 +1,3 @@
-use rosu_mem::process::{Process, ProcessTraits};
 
 pub struct CommonOffset {
     pub settings_ptr: i32,
