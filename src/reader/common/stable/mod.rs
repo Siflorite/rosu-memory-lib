@@ -9,8 +9,7 @@ pub fn get_game_state(p: &Process, state: &mut State) -> eyre::Result<GameState>
     Ok(GameState::from(p.read_u32(status_ptr)?))
 }
 
-pub fn check_game_state(p: &Process, state: &mut State, g_state: GameState) -> eyre::Result<bool> {
-    
+pub fn check_game_state(p: &Process, state: &mut State, g_state: GameState) -> eyre::Result<bool> { 
     Ok(get_game_state(p, state)? == g_state)
 }
 

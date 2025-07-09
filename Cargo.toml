@@ -1,6 +1,6 @@
 [package]
-name = "rosu_memory_lib"
-version = "1.0.0"
+name = "rosu-memory-lib"
+version = "1.0.2"
 edition = "2021"
 description = "A library to read osu! memory"
 license = "MIT"
@@ -13,14 +13,6 @@ categories = ["games", "memory-management"]
 path = "src/lib.rs"
 name = "rosu_memory_lib"
 crate-type = ["cdylib", "rlib"]
-
-[[bin]]
-name = "rosu_memory_test"
-path = "src/main.rs"
-required-features = ["binary"]
-
-[features]
-binary = []
 
 [dependencies]
 rosu-mem = "2.0.0"
