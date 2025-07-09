@@ -9,7 +9,7 @@ fn main() -> eyre::Result<()> {
         match get_beatmap_info(&process, &mut state) {
                 Ok(beatmap_info) => println!("Current beatmap info: {:?}", beatmap_info),
                 Err(e) => println!("Error: {}", e),
-
         }
+        std::thread::sleep(std::time::Duration::from_millis(1000));
     }
 }
