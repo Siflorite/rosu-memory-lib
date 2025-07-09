@@ -3,6 +3,8 @@ use crate::reader::beatmap::stable::{offset::BEATMAP_OFFSET, get_beatmap_addr, r
 use crate::reader::beatmap::common::{BeatmapInfo, BeatmapTechnicalInfo, BeatmapMetadata, BeatmapLocation, BeatmapStatus, BeatmapStats};
 use crate::common::GameMode;
 use crate::reader::structs::State;
+use crate::reader::common::GameState;
+use crate::reader::beatmap::common::BeatmapStarRating;
 
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 {
@@ -11,17 +13,17 @@ pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 
 pub fn get_beatmap_id(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.id)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.technical.id)?)
 }
 
 pub fn get_beatmap_set_id(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.set_id)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.technical.set_id)?)
 }
 
 pub fn get_beatmap_mode(p: &Process, state: &mut State) -> eyre::Result<GameMode>
 {
-    Ok(GameMode::from(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.mode)?))
+    Ok(GameMode::from(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.technical.mode)?))
 }
 
 pub fn get_beatmap_tags(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -31,17 +33,17 @@ pub fn get_beatmap_tags(p: &Process, state: &mut State) -> eyre::Result<String>
 
 pub fn get_beatmap_length(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.stats.total_length)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.stats.total_length)?)
 }
 
 pub fn get_beatmap_drain_time(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    Ok(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.stats.drain_time)?)
+    Ok(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.stats.drain_time)?)
 }
 
 pub fn get_beatmap_status(p: &Process, state: &mut State) -> eyre::Result<BeatmapStatus>
 {
-    Ok(BeatmapStatus::from(p.read_i32(get_beatmap_addr(p, state)? + BEATMAP_OFFSET.technical.ranked_status)?))
+    Ok(BeatmapStatus::from(p.read_i32(get_beatmap_addr(p, state, None)? + BEATMAP_OFFSET.technical.ranked_status)?))
 }
 
 pub fn get_author(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -73,37 +75,37 @@ pub fn get_difficulty(p: &Process, state: &mut State) -> eyre::Result<String>
 
 pub fn get_beatmap_od(p: &Process, state: &mut State) -> eyre::Result<f32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?)
 }
 
 pub fn get_beatmap_ar(p: &Process, state: &mut State) -> eyre::Result<f32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.ar)?)
 }
 
 pub fn get_beatmap_cs(p: &Process, state: &mut State) -> eyre::Result<f32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?)
 }
 
 pub fn get_beatmap_hp(p: &Process, state: &mut State) -> eyre::Result<f32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?)
 }
 
 pub fn get_beatmap_object_count(p: &Process, state: &mut State) -> eyre::Result<u32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_u32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?)
 }
 
 pub fn get_beatmap_slider_count(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.slider_count)?)
 }
 
@@ -112,7 +114,7 @@ pub fn get_beatmap_slider_count(p: &Process, state: &mut State) -> eyre::Result<
 
 pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<BeatmapStats>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    let beatmap_addr = get_beatmap_addr(p, state, None)?;
     Ok(BeatmapStats{
         ar: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.ar)?,
         od: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.od)?,
@@ -126,10 +128,16 @@ pub fn get_beatmap_stats(p: &Process, state: &mut State) -> eyre::Result<Beatmap
 }
 
 
-pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapInfo>
+pub fn get_beatmap_info(p: &Process, state: &mut State, game_state: Option<GameState>) -> eyre::Result<BeatmapInfo>
 {
-    let beatmap_addr = get_beatmap_addr(p, state)?;
+    println!("game_state: {game_state:?}");
+    let beatmap_addr = get_beatmap_addr(p, state, game_state)?;
 
+    let star_rating = BeatmapStarRating{
+        no_mod: 0.0,
+        dt: 0.0,
+        ht: 0.0,
+    };
     // done like that to be more efficient reading the string one by one would need to reload addr everytime which cost more
     Ok(BeatmapInfo {
         technical: BeatmapTechnicalInfo{
@@ -153,7 +161,7 @@ pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapI
             cs: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.cs)?,
             hp: p.read_f32(beatmap_addr + BEATMAP_OFFSET.stats.hp)?,
             total_length: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.total_length)?,
-            star_rating: crate::reader::beatmap::stable::file::get_beatmap_star_rating(p,state)?,
+            star_rating: star_rating,
             object_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.object_count)?,
             slider_count: p.read_i32(beatmap_addr + BEATMAP_OFFSET.stats.slider_count)?,
         },
