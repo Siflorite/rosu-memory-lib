@@ -19,7 +19,7 @@ pub struct StaticAddresses {
     pub settings : i32,
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub struct Hit{
     pub _geki:i16,
     pub _300:i16,

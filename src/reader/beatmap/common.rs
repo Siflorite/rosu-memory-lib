@@ -86,6 +86,22 @@ pub enum BeatmapStatus {
     Loved = 7,
 }
 
+impl BeatmapStatus {
+    pub fn to_string(&self) -> String {
+        match self {
+            BeatmapStatus::Unknown => "unknown".to_string(),
+            BeatmapStatus::Unsubmitted => "unsubmitted".to_string(),
+            BeatmapStatus::Unranked => "unranked".to_string(),
+            BeatmapStatus::Unused => "unused".to_string(),
+            BeatmapStatus::Ranked => "ranked".to_string(),
+            BeatmapStatus::Approved => "approved".to_string(),
+            BeatmapStatus::Qualified => "qualified".to_string(),
+            BeatmapStatus::Loved => "loved".to_string(),
+        }
+    }
+}
+
+
 
 
 impl From<i16> for BeatmapStatus {

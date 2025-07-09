@@ -1,6 +1,7 @@
 pub mod beatmap;
 pub mod common;
 pub mod resultscreen;
+pub mod gameplay;
 
 use eyre::{Result};
 use std::time::Duration;

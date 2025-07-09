@@ -1,0 +1,128 @@
+use rosu_mem::process::{Process, ProcessTraits};
+use crate::reader::structs::State;
+use crate::reader::gameplay::stable::offset::GAMEPLAY_OFFSET;
+use crate::reader::structs::Hit;
+
+pub fn get_base(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
+    let ruleset_addr = p.read_i32(state.addresses.rulesets - GAMEPLAY_OFFSET.ptr)?;
+    let ruleset_addr = p.read_i32(ruleset_addr + GAMEPLAY_OFFSET.addr)?;
+    let gameplay_base = p.read_i32(ruleset_addr + GAMEPLAY_OFFSET.base)?;
+    Ok(gameplay_base)
+}
+
+pub fn get_base2(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
+    let gameplay_base = get_base(p, state)?;
+    let score_base = p.read_i32(gameplay_base + GAMEPLAY_OFFSET.base2)?;
+    Ok(score_base)
+}
+
+
+pub fn get_score_gameplay(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let score = p.read_i32(base2 + GAMEPLAY_OFFSET.score)?;
+    Ok(score)
+}
+
+
+pub fn get_mods(p: &Process, state: &mut State) -> Result<u32, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let mods_xor_base = p.read_i32(base2 + GAMEPLAY_OFFSET.mods)?;
+    let mods_xor1 = p.read_u64(mods_xor_base + GAMEPLAY_OFFSET.mods_xor)?;
+    let mods_xor2 =  p.read_u64(mods_xor_base + GAMEPLAY_OFFSET.mods_xor2)?;
+    Ok((mods_xor1 ^ mods_xor2) as u32)
+}
+
+pub fn get_combo(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let combo = p.read_i16(base2 + GAMEPLAY_OFFSET.combo)?;
+    Ok(combo)
+}
+
+
+pub fn get_max_combo(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let max_combo = p.read_i16(base2 + GAMEPLAY_OFFSET.max_combo)?;
+    Ok(max_combo)
+}
+
+
+
+pub fn get_current_hp(p: &Process, state: &mut State) -> Result<f64, eyre::Error> {
+    let base = get_base(p, state)?;
+    let hp_base = p.read_i32(base + GAMEPLAY_OFFSET.hp_base)?;
+    let hp = p.read_f64(hp_base + GAMEPLAY_OFFSET.hp)?;
+    Ok(hp)
+}
+
+pub fn get_username(p: &Process, state: &mut State) -> Result<String, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let username = p.read_string(base2 + GAMEPLAY_OFFSET.username)?;
+    Ok(username)
+}
+
+
+pub fn get_ig_time(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
+    let playtime_ptr = p.read_i32(state.addresses.playtime + GAMEPLAY_OFFSET.ig_time)?;
+    let ig_time = p.read_i32(playtime_ptr)?;
+    Ok(ig_time)
+}
+
+
+pub fn get_retries(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
+    let igt_addr = p.read_i32(state.addresses.base - GAMEPLAY_OFFSET.ruleset)?;
+    let retries = p.read_i32(igt_addr+GAMEPLAY_OFFSET.retries)?;
+    Ok(retries)
+}
+
+
+pub fn get_hits_300(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_300 = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._300)?;
+    Ok(hits_300)
+}
+
+
+pub fn get_hits_100(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_100 = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._100)?;
+    Ok(hits_100)
+}
+
+
+pub fn get_hits_50(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_50 = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._50)?;
+    Ok(hits_50)
+}
+
+pub fn get_hits_miss(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_miss = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._miss)?;
+    Ok(hits_miss)
+}
+
+pub fn get_hits_geki(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_geki = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._geki)?;
+    Ok(hits_geki)
+}
+
+pub fn get_hits_katu(p: &Process, state: &mut State) -> Result<i16, eyre::Error> {
+    let base2 = get_base2(p, state)?;
+    let hits_katu = p.read_i16(base2 + GAMEPLAY_OFFSET.hits._katu)?;
+    Ok(hits_katu)
+}
+
+pub fn get_hits(p: &Process, state: &mut State) -> Result<Hit, eyre::Error> {
+
+    let base2 = get_base2(p, state)?;
+    Ok(Hit {
+        _300: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._300)?,
+        _100: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._100)?,
+        _50: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._50)?,
+        _miss: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._miss)?,
+        _geki: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._geki)?,
+        _katu: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._katu)?,
+    })
+}
+

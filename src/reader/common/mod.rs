@@ -35,6 +35,17 @@ impl From<i32> for GameMode {
         Self::from(value as u32)
     }
 }
+impl GameMode {
+    pub fn to_string(&self) -> String {
+        match self {
+            GameMode::Osu => "std".to_string(),
+            GameMode::Taiko => "taiko".to_string(),
+            GameMode::Catch => "catch".to_string(),
+            GameMode::Mania => "mania".to_string(),
+            GameMode::Unknown => "unknown".to_string(),
+        }
+    }
+}
 
 #[derive( Debug, Default, PartialEq, Eq, Clone, Copy)]
 #[repr(u32)]

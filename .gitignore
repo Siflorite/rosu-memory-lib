@@ -1,2 +1,16 @@
 /target/*
 perf.data
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+bindings/python/.venv/
+bindings/python/target/
