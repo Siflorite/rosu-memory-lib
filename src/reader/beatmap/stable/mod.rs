@@ -6,15 +6,19 @@ pub mod file;
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::State;
 use crate::reader::beatmap::stable::offset::*;
-
+use crate::reader::common::GameState;
+use crate::reader::common::Error;
 
 
 
 
 pub(crate) fn get_beatmap_addr(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    let beatmap_ptr = p.read_i32(state.addresses.base - BEATMAP_OFFSET.ptr)?;
-    Ok(p.read_i32(beatmap_ptr)?)
+    match crate::reader::common::stable::check_game_state(p, state, GameState::SongSelect) {
+        Ok(true) => Ok(p.read_i32(p.read_i32(state.addresses.base - BEATMAP_OFFSET.ptr)?)?),
+        Ok(false) => Err(eyre::eyre!(Error::NotAvailable("Not in song select".to_string()))),
+        Err(e) => Err(e),
+    }
 }
 
 pub(crate) fn read_from_beatmap_ptr_string(p: &Process, state: &mut State, offset: i32) -> eyre::Result<String>

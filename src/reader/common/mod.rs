@@ -99,3 +99,17 @@ impl From<u32> for GameState {
         }
     }
 }
+
+
+#[derive(Debug, Clone)]
+pub enum Error {
+    NotAvailable(String),
+}
+
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Error::NotAvailable(msg) => write!(f, "{}", msg),
+        }
+    }
+}

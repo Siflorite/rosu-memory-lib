@@ -9,14 +9,12 @@ fn main() -> eyre::Result<()> {
     println!("Successfully initialized!");
 
     loop {
-        let game_state = get_game_state(&process, &mut state)?;
-        if game_state == GameState::Playing {
-            let start = Instant::now();
-            match get_gameplay_info(&process, &mut state) {
-                Ok(gameplay_info) => println!("Current gameplay info: {:?}\nTime taken: {:?}", gameplay_info, start.elapsed()),
-                Err(e) => println!("Error during scan: {}", e),
-            }
+        let start = Instant::now();
+        match get_gameplay_info(&process, &mut state) {
+                Ok(beatmap_info) => println!("Current beatmap info: {:?}\nTime taken: {:?}", beatmap_info, start.elapsed()),
+                Err(e) => println!("Error: {}", e),
         }
+    
         
         // Sleep a bit to avoid hammering the CPU
         std::thread::sleep(Duration::from_millis(100));

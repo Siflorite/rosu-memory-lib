@@ -2,18 +2,39 @@ use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::State;
 use crate::reader::gameplay::stable::offset::GAMEPLAY_OFFSET;
 use crate::reader::structs::Hit;
+use crate::reader::common::GameState;
+use crate::reader::common::Error;
+use crate::reader::common::stable::check_game_state;
 
 pub fn get_base(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - GAMEPLAY_OFFSET.ptr)?;
-    let ruleset_addr = p.read_i32(ruleset_addr + GAMEPLAY_OFFSET.addr)?;
-    let gameplay_base = p.read_i32(ruleset_addr + GAMEPLAY_OFFSET.base)?;
-    Ok(gameplay_base)
+    if check_game_state(p, state, GameState::Playing)? {
+        let rulesets = match p.read_i32(state.addresses.rulesets - GAMEPLAY_OFFSET.ptr) {
+            Ok(val) => val,
+            Err(_) => return Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+        };
+        
+        let ruleset_addr = match p.read_i32(rulesets + GAMEPLAY_OFFSET.addr) {
+            Ok(val) => val,
+            Err(_) => return Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+        };
+        
+        let gameplay_base = match p.read_i32(ruleset_addr + GAMEPLAY_OFFSET.base) {
+            Ok(val) => val,
+            Err(_) => return Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+        };
+        
+        Ok(gameplay_base)
+    } else {
+        Err(eyre::eyre!(Error::NotAvailable("Not in Playing".to_string())))
+    }
 }
 
 pub fn get_base2(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
     let gameplay_base = get_base(p, state)?;
-    let score_base = p.read_i32(gameplay_base + GAMEPLAY_OFFSET.base2)?;
-    Ok(score_base)
+    match p.read_i32(gameplay_base + GAMEPLAY_OFFSET.base2) {
+        Ok(val) => Ok(val),
+        Err(_) => Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+    }
 }
 
 

@@ -7,14 +7,15 @@ use crate::reader::beatmap::common::BeatmapStats;
 use crate::reader::beatmap::stable::get_beatmap_addr;
 use crate::common::GameMode;
 use crate::reader::beatmap::common::BeatmapStatus;
-use crate::reader::beatmap::stable::location::get_filename;
-use crate::reader::beatmap::stable::location::get_folder;
-use crate::reader::common::stable::get_path_folder;
-use crate::reader::beatmap::common::BeatmapStarRating;
+
 use crate::reader::beatmap::common::BeatmapInfo;
 use crate::reader::beatmap::common::BeatmapTechnicalInfo;
 use crate::reader::beatmap::common::BeatmapMetadata;
 use crate::reader::beatmap::common::BeatmapLocation;
+use crate::reader::common::GameState;
+
+
+
 
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
 {

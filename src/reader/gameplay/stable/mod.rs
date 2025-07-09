@@ -5,12 +5,11 @@ use crate::reader::gameplay::stable::offset::GAMEPLAY_OFFSET;
 use rosu_mem::process::Process;
 use rosu_mem::process::ProcessTraits;
 use crate::reader::gameplay::common::GameplayInfo;
-
 use crate::reader::structs::Hit;
 
 pub fn get_gameplay_info(p: &Process, state: &mut State) -> Result<GameplayInfo, eyre::Error> {
     let base = memory::get_base(p, state)?;
-    let base2 = p.read_i32(base + GAMEPLAY_OFFSET.base2).unwrap();
+    let base2 = memory::get_base2(p, state)?;
 
     let hp = p.read_f64(p.read_i32(base + GAMEPLAY_OFFSET.hp_base)?+ GAMEPLAY_OFFSET.hp)?;
     let mods = memory::get_mods(p, state)?;

@@ -18,12 +18,12 @@ static EXCLUDE_WORDS: [&str; 2] = ["umu-run", "waitforexitandrun"];
 
 #[allow(dead_code)]
 // Use this function to make callback and get anything you need such as map info or user info or even submit shit
-pub fn waiting_for_play<F>(p: &Process, state: &mut State, callback: Option<F>) -> eyre::Result<()> 
+pub fn waiting_for_gamestate<F>(p: &Process, state: &mut State, g_state: GameState, callback: Option<F>) -> eyre::Result<()> 
 where 
     F: Fn(&Process, &mut State) -> eyre::Result<()>
 {
     loop {
-        if get_game_state(p, state)? == GameState::Playing {
+        if get_game_state(p, state)? == g_state {
             return Ok(());
         }
         if let Some(f) = &callback {
