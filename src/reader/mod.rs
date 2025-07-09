@@ -2,6 +2,7 @@ pub mod beatmap;
 pub mod common;
 pub mod resultscreen;
 pub mod gameplay;
+pub mod user;
 
 use std::time::Duration;
 use crate::reader::common::stable::get_game_state;

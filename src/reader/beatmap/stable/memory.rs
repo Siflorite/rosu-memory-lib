@@ -166,4 +166,3 @@ pub fn get_beatmap_info(p: &Process, state: &mut State) -> eyre::Result<BeatmapI
         },
     })
 }
-

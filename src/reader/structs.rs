@@ -3,7 +3,10 @@ use rosu_mem::{
     process::{Process, ProcessTraits},
     signature::Signature,
 };
-
+use rayon::prelude::*;
+use eyre::Result;
+use std::collections::HashMap;
+use std::time::Instant;
 
 #[derive(Default, Clone)]
 pub struct StaticAddresses {
@@ -15,8 +18,9 @@ pub struct StaticAddresses {
     pub skin: i32,
     pub chat_checker: i32,
     pub audio_time_base: i32,
-    pub ig_time_base : i32,
-    pub settings : i32,
+    pub ig_time_base: i32,
+    pub settings: i32,
+    pub user_profile: i32,
 }
 
 #[derive(Debug, Default, Clone)]
@@ -41,6 +45,7 @@ pub(crate) struct SignatureBase {
     audio_time_base_sig: &'static str,
     ig_time_base_sig: &'static str,
     settings_sig: &'static str,
+    user_profile_sig: &'static str,
 }
 
 pub(crate) const SIGNATURES: SignatureBase = SignatureBase {
@@ -54,76 +59,85 @@ pub(crate) const SIGNATURES: SignatureBase = SignatureBase {
     audio_time_base_sig: "DB 5C 24 34 8B 44 24 34",
     ig_time_base_sig: "EB 0A A1 ?? ?? ?? ?? A3",
     settings_sig: "83 E0 20 85 C0 7E 2F",
+    user_profile_sig: "FF 15 ?? ?? ?? ?? A1 ?? ?? ?? ?? 8B 48 54 33 D2",
 };
 
 
 
 
 impl StaticAddresses {
-    pub fn new(p: &Process) -> Result<Self,Box<dyn std::error::Error>> {
-        println!("Reading base signature...");
-        let base_sign = Signature::from_str(SIGNATURES.base_sig)?;
-        let base = p.read_signature(&base_sign)?;
-        println!("Base signature found at: {base:#x}");
+    pub fn new(p: &Process) -> Result<Self> {
+        let start = Instant::now();
+        println!("Reading signatures in parallel...");
+        
+        let signatures = [
+            ("base", SIGNATURES.base_sig),
+            ("status", SIGNATURES.status_sig),
+            ("menu_mods", SIGNATURES.menu_mods_sig),
+            ("rulesets", SIGNATURES.rulesets_sig),
+            ("playtime", SIGNATURES.playtime_sig),
+            ("skin", SIGNATURES.skin_sig),
+            ("chat_checker", SIGNATURES.chat_checker_sig),
+            ("audio_time_base", SIGNATURES.audio_time_base_sig),
+            ("ig_time_base", SIGNATURES.ig_time_base_sig),
+            ("settings", SIGNATURES.settings_sig),
+            ("user_profile", SIGNATURES.user_profile_sig),
+        ];
 
-        println!("Reading status signature...");
-        let status_sign = Signature::from_str(SIGNATURES.status_sig)?;
-        let status = p.read_signature(&status_sign)?;
-        println!("Status signature found at: {status:#x}");
+        let results: HashMap<&str, i32> = signatures.par_iter()
+            .map(|(name, sig)| {
+                let signature = Signature::from_str(sig)?;
+                let addr = p.read_signature(&signature)?;
+                Ok::<_, eyre::Error>((*name, addr))
+            })
+            .collect::<Result<_>>()?;
 
-        println!("Reading menu mods signature...");
-        let menu_mods_sign = Signature::from_str(SIGNATURES.menu_mods_sig)?;
-        let menu_mods = p.read_signature(&menu_mods_sign)?;
-        println!("Menu mods signature found at: {menu_mods:#x}");
-
-        println!("Reading rulesets signature...");
-        let rulesets_sign = Signature::from_str(SIGNATURES.rulesets_sig)?;
-        let rulesets = p.read_signature(&rulesets_sign)?;
-        println!("Rulesets signature found at: {rulesets:#x}");
-
-        println!("Reading playtime signature...");
-        let playtime_sign = Signature::from_str(SIGNATURES.playtime_sig)?;
-        let playtime = p.read_signature(&playtime_sign)?;
-        println!("Playtime signature found at: {playtime:#x}");
-
-        println!("Reading skin signature...");
-        let skin_sign = Signature::from_str(SIGNATURES.skin_sig)?;
-        let skin = p.read_signature(&skin_sign)?;
-        println!("Skin signature found at: {skin:#x}");
-
-        println!("Reading chat checker signature...");
-        let chat_checker_sign = Signature::from_str(SIGNATURES.chat_checker_sig)?;
-        let chat_checker = p.read_signature(&chat_checker_sign)?;
-        println!("Chat checker signature found at: {chat_checker:#x}");
-
-        println!("Reading audio time base signature...");
-        let audio_time_base_sign = Signature::from_str(SIGNATURES.audio_time_base_sig)?;
-        let audio_time_base = p.read_signature(&audio_time_base_sign)?;
-        println!("Audio time base signature found at: {audio_time_base:#x}");
-
-        println!("Reading in-game time base signature...");
-        let ig_time_base_sign = Signature::from_str(SIGNATURES.ig_time_base_sig)?;
-        let ig_time_base = p.read_signature(&ig_time_base_sign)?;
-        println!("In-game time base signature found at: {ig_time_base:#x}");
-
-        println!("Reading settings signature...");
-        let settings_sign = Signature::from_str(SIGNATURES.settings_sig)?;
-        let settings = p.read_signature(&settings_sign)?;
-        println!("Settings signature found at: {settings:#x}");
+        println!("Time taken: {:?}", start.elapsed());
 
         Ok(Self {
-            base,
-            status,
-            menu_mods,
-            rulesets,
-            playtime,
-            skin,
-            chat_checker,
-            audio_time_base,
-            ig_time_base,
-            settings,
+            base: results["base"],
+            status: results["status"],
+            menu_mods: results["menu_mods"],
+            rulesets: results["rulesets"],
+            playtime: results["playtime"],
+            skin: results["skin"],
+            chat_checker: results["chat_checker"],
+            audio_time_base: results["audio_time_base"],
+            ig_time_base: results["ig_time_base"],
+            settings: results["settings"],
+            user_profile: results["user_profile"],
         })
     }
+
+    pub fn new_old(p: &Process) -> Result<Self> {
+        let start = Instant::now();
+        let base = p.read_signature(&Signature::from_str(SIGNATURES.base_sig)?)?;
+        let status = p.read_signature(&Signature::from_str(SIGNATURES.status_sig)?)?;
+        let menu_mods = p.read_signature(&Signature::from_str(SIGNATURES.menu_mods_sig)?)?;
+        let rulesets = p.read_signature(&Signature::from_str(SIGNATURES.rulesets_sig)?)?;
+        let playtime = p.read_signature(&Signature::from_str(SIGNATURES.playtime_sig)?)?;
+        let skin = p.read_signature(&Signature::from_str(SIGNATURES.skin_sig)?)?;
+        let chat_checker = p.read_signature(&Signature::from_str(SIGNATURES.chat_checker_sig)?)?;
+        let audio_time_base = p.read_signature(&Signature::from_str(SIGNATURES.audio_time_base_sig)?)?;
+        let ig_time_base = p.read_signature(&Signature::from_str(SIGNATURES.ig_time_base_sig)?)?;
+        let settings = p.read_signature(&Signature::from_str(SIGNATURES.settings_sig)?)?;
+        let user_profile = p.read_signature(&Signature::from_str(SIGNATURES.user_profile_sig)?)?;
+        println!("Time taken: {:?}", start.elapsed());
+        Ok(Self {
+            base: base,
+            status: status,
+            menu_mods: menu_mods,
+            rulesets: rulesets,
+            playtime: playtime,
+            skin: skin,
+            chat_checker: chat_checker,
+            audio_time_base: audio_time_base,
+            ig_time_base: ig_time_base,
+            settings: settings,
+            user_profile: user_profile,
+        })
+    }
+
 }
 
 /* for pp counter for later
