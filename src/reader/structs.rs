@@ -109,35 +109,6 @@ impl StaticAddresses {
         })
     }
 
-    pub fn new_old(p: &Process) -> Result<Self> {
-        let start = Instant::now();
-        let base = p.read_signature(&Signature::from_str(SIGNATURES.base_sig)?)?;
-        let status = p.read_signature(&Signature::from_str(SIGNATURES.status_sig)?)?;
-        let menu_mods = p.read_signature(&Signature::from_str(SIGNATURES.menu_mods_sig)?)?;
-        let rulesets = p.read_signature(&Signature::from_str(SIGNATURES.rulesets_sig)?)?;
-        let playtime = p.read_signature(&Signature::from_str(SIGNATURES.playtime_sig)?)?;
-        let skin = p.read_signature(&Signature::from_str(SIGNATURES.skin_sig)?)?;
-        let chat_checker = p.read_signature(&Signature::from_str(SIGNATURES.chat_checker_sig)?)?;
-        let audio_time_base = p.read_signature(&Signature::from_str(SIGNATURES.audio_time_base_sig)?)?;
-        let ig_time_base = p.read_signature(&Signature::from_str(SIGNATURES.ig_time_base_sig)?)?;
-        let settings = p.read_signature(&Signature::from_str(SIGNATURES.settings_sig)?)?;
-        let user_profile = p.read_signature(&Signature::from_str(SIGNATURES.user_profile_sig)?)?;
-        println!("Time taken: {:?}", start.elapsed());
-        Ok(Self {
-            base: base,
-            status: status,
-            menu_mods: menu_mods,
-            rulesets: rulesets,
-            playtime: playtime,
-            skin: skin,
-            chat_checker: chat_checker,
-            audio_time_base: audio_time_base,
-            ig_time_base: ig_time_base,
-            settings: settings,
-            user_profile: user_profile,
-        })
-    }
-
 }
 
 /* for pp counter for later
