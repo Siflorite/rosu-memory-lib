@@ -1,6 +1,6 @@
 [package]
 name = "rosu_memory_lib"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2021"
 description = "A library to read osu! memory"
 license = "MIT"
