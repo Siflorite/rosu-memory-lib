@@ -19,7 +19,7 @@ pub fn get_beatmap_path(p: &Process, state: &mut State) -> eyre::Result<String>
     let folder = get_folder(p, state)?;
     let filename = get_filename(p, state)?;
     let song_path = get_path_folder(p, state)?;
-    Ok(format!("{}/{}/{}", song_path, folder, filename))
+    Ok(format!("{song_path}/{folder}/{filename}"))
 }
 
 pub fn get_audio_path(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -27,7 +27,7 @@ pub fn get_audio_path(p: &Process, state: &mut State) -> eyre::Result<String>
     let folder = get_folder(p, state)?;
     let audio = get_audio(p, state)?;
     let song_path = get_path_folder(p, state)?;
-    Ok(format!("{}/{}/{}", song_path, folder, audio))
+    Ok(format!("{song_path}/{folder}/{audio}"))
 }
 
 pub fn get_beatmap_md5(p: &Process, state: &mut State) -> eyre::Result<String>
@@ -171,7 +171,7 @@ pub fn get_beatmap_star_rating(p: &Process, state: &mut State) -> eyre::Result<B
     let folder = get_folder(p, state)?;
     let filename = get_filename(p, state)?;
     let song_path = get_path_folder(p, state)?;
-    let path = format!("{}/{}/{}", song_path, folder, filename);
+    let path = format!("{song_path}/{folder}/{filename}");
     let b = rosu_pp::Beatmap::from_path(path)?;
     let diff_attrs = rosu_pp::Difficulty::new().calculate(&b);
     let diff_dt = rosu_pp::Difficulty::new().mods(64).calculate(&b);
