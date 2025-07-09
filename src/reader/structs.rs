@@ -64,52 +64,52 @@ impl StaticAddresses {
         println!("Reading base signature...");
         let base_sign = Signature::from_str(SIGNATURES.base_sig)?;
         let base = p.read_signature(&base_sign)?;
-        println!("Base signature found at: {:#x}", base);
+        println!("Base signature found at: {base:#x}");
 
         println!("Reading status signature...");
         let status_sign = Signature::from_str(SIGNATURES.status_sig)?;
         let status = p.read_signature(&status_sign)?;
-        println!("Status signature found at: {:#x}", status);
+        println!("Status signature found at: {status:#x}");
 
         println!("Reading menu mods signature...");
         let menu_mods_sign = Signature::from_str(SIGNATURES.menu_mods_sig)?;
         let menu_mods = p.read_signature(&menu_mods_sign)?;
-        println!("Menu mods signature found at: {:#x}", menu_mods);
+        println!("Menu mods signature found at: {menu_mods:#x}");
 
         println!("Reading rulesets signature...");
         let rulesets_sign = Signature::from_str(SIGNATURES.rulesets_sig)?;
         let rulesets = p.read_signature(&rulesets_sign)?;
-        println!("Rulesets signature found at: {:#x}", rulesets);
+        println!("Rulesets signature found at: {rulesets:#x}");
 
         println!("Reading playtime signature...");
         let playtime_sign = Signature::from_str(SIGNATURES.playtime_sig)?;
         let playtime = p.read_signature(&playtime_sign)?;
-        println!("Playtime signature found at: {:#x}", playtime);
+        println!("Playtime signature found at: {playtime:#x}");
 
         println!("Reading skin signature...");
         let skin_sign = Signature::from_str(SIGNATURES.skin_sig)?;
         let skin = p.read_signature(&skin_sign)?;
-        println!("Skin signature found at: {:#x}", skin);
+        println!("Skin signature found at: {skin:#x}");
 
         println!("Reading chat checker signature...");
         let chat_checker_sign = Signature::from_str(SIGNATURES.chat_checker_sig)?;
         let chat_checker = p.read_signature(&chat_checker_sign)?;
-        println!("Chat checker signature found at: {:#x}", chat_checker);
+        println!("Chat checker signature found at: {chat_checker:#x}");
 
         println!("Reading audio time base signature...");
         let audio_time_base_sign = Signature::from_str(SIGNATURES.audio_time_base_sig)?;
         let audio_time_base = p.read_signature(&audio_time_base_sign)?;
-        println!("Audio time base signature found at: {:#x}", audio_time_base);
+        println!("Audio time base signature found at: {audio_time_base:#x}");
 
         println!("Reading in-game time base signature...");
         let ig_time_base_sign = Signature::from_str(SIGNATURES.ig_time_base_sig)?;
         let ig_time_base = p.read_signature(&ig_time_base_sign)?;
-        println!("In-game time base signature found at: {:#x}", ig_time_base);
+        println!("In-game time base signature found at: {ig_time_base:#x}");
 
         println!("Reading settings signature...");
         let settings_sign = Signature::from_str(SIGNATURES.settings_sig)?;
         let settings = p.read_signature(&settings_sign)?;
-        println!("Settings signature found at: {:#x}", settings);
+        println!("Settings signature found at: {settings:#x}");
 
         Ok(Self {
             base,
