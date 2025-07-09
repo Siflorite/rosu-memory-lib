@@ -10,8 +10,8 @@ fn main() -> eyre::Result<()> {
     loop {
         let start: Instant = Instant::now();
         match get_result_screen(&process, &mut state) {
-                Ok(beatmap_info) => println!("Current beatmap info: {:?}\nTime taken: {:?}", beatmap_info, start.elapsed()),
-                Err(e) => println!("Error: {}", e),
+                Ok(beatmap_info) => println!("Current beatmap info: {beatmap_info:?}\nTime taken: {:?}", start.elapsed()),
+                Err(e) => println!("Error: {e}"),
         }
     
         

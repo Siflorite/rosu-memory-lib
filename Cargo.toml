@@ -9,14 +9,17 @@ authors = ["Glubus", "486c"]
 keywords = ["osu", "memory", "game"]
 categories = ["games", "memory-management"]
 
-
 [lib]
-name = "rosu_memory_lib"
 path = "src/lib.rs"
+name = "rosu_memory_lib"
 
 [[bin]]
 name = "rosu_memory_test"
 path = "src/main.rs"
+required-features = ["binary"]
+
+[features]
+binary = []
 
 [dependencies]
 rosu-mem = { git = "https://github.com/486c/rosu-mem.git", tag = "v2.0.0" }
