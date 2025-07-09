@@ -2,13 +2,26 @@
 use crate::reader::common::GameMode;
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::{Hit, State};
-use crate::reader::resultscreen::ResultScreenValues;
+use crate::reader::resultscreen::common::ResultScreenInfo;
 use crate::reader::resultscreen::stable::offset::RESULT_SCREEN_OFFSET;
+use crate::reader::common::GameState;
+use crate::reader::common::stable::check_game_state;
+use crate::reader::common::Error;
 
 pub(crate) fn get_score_base(p: &Process, state: &mut State) -> eyre::Result<i32> {
-    let ruleset_addr = p.read_i32(state.addresses.rulesets - RESULT_SCREEN_OFFSET.ptr).unwrap();
-    let ruleset_addr = p.read_i32(ruleset_addr + RESULT_SCREEN_OFFSET.addr).unwrap();
-    Ok(p.read_i32(ruleset_addr + RESULT_SCREEN_OFFSET.score_base)?)
+    if check_game_state(p, state, GameState::ResultScreen)? {
+        let ruleset_addr = match p.read_i32(state.addresses.rulesets - RESULT_SCREEN_OFFSET.ptr) {
+            Ok(val) => val,
+            Err(_) => return Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+        };
+        let ruleset_addr = match p.read_i32(ruleset_addr + RESULT_SCREEN_OFFSET.addr) {
+            Ok(val) => val,
+            Err(_) => return Err(eyre::eyre!(Error::NotAvailable("Still loading".to_string())))
+        };
+        Ok(p.read_i32(ruleset_addr + RESULT_SCREEN_OFFSET.score_base)?)
+    } else {
+        Err(eyre::eyre!(Error::NotAvailable("Not in ResultScreen".to_string())))
+    }
 }
 
 pub fn get_result_username(p: &Process, state: &mut State) -> eyre::Result<String> {
@@ -53,12 +66,12 @@ pub fn get_result_hit_miss(p: &Process, state: &mut State) -> eyre::Result<i16> 
 pub fn get_result_hits(p: &Process, state: &mut State) -> eyre::Result<Hit> {
     let score_base = get_score_base(p, state)?;
     Ok(Hit {
-        _300: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._300).unwrap(),
-        _100: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._100).unwrap(),
-        _50: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._50).unwrap(),
-        _miss: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._miss).unwrap(),
-        _geki: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._geki).unwrap(),
-        _katu: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._katu).unwrap(),
+        _300: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._300)?,
+        _100: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._100)?,
+        _50: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._50)?,
+        _miss: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._miss)?,
+        _geki: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._geki)?,
+        _katu: p.read_i16(score_base + RESULT_SCREEN_OFFSET.hits._katu)?,
     })
 }
 fn calculate_accuracy(
@@ -85,7 +98,7 @@ fn calculate_accuracy(
         _ => (0.0, 0.0)
     };
 
-    Ok(numerator / denominator)
+    Ok((numerator / denominator) * 100.0)
 }
 
 pub fn get_result_accuracy(p: &Process, state: &mut State) -> eyre::Result<f64> {
@@ -99,13 +112,13 @@ pub fn get_result_max_combo(p: &Process, state: &mut State) -> eyre::Result<i16>
     Ok(p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo)?)
 }
 
-pub fn get_result_screen(p: &Process, state: &mut State) -> eyre::Result<ResultScreenValues> {
+pub fn get_result_screen(p: &Process, state: &mut State) -> eyre::Result<ResultScreenInfo> {
     let score_base = get_score_base(p, state)?;
 
     let hit = get_result_hits(p, state)?;
     let mode = get_result_mode(p, state)?;
     let accuracy = calculate_accuracy(&mode, &hit)?;
-    Ok(ResultScreenValues{
+    Ok(ResultScreenInfo{
             username: p.read_string(score_base + RESULT_SCREEN_OFFSET.username)?,
             mode :  mode,
             max_combo : p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo)?,

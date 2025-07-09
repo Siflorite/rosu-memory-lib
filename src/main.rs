@@ -1,7 +1,6 @@
 use std::time::{Duration, Instant};
 use rosu_memory_lib::{init_loop, common::stable::get_game_state, common::GameState};
-use rosu_memory_lib::reader::beatmap::stable::file::get_beatmap_info;
-use rosu_memory_lib::reader::gameplay::stable::get_gameplay_info;
+use rosu_memory_lib::reader::resultscreen::stable::memory::get_result_screen;
 
 fn main() -> eyre::Result<()> {
     println!("Initializing osu! memory reader...");
@@ -9,8 +8,8 @@ fn main() -> eyre::Result<()> {
     println!("Successfully initialized!");
 
     loop {
-        let start = Instant::now();
-        match get_gameplay_info(&process, &mut state) {
+        let start: Instant = Instant::now();
+        match get_result_screen(&process, &mut state) {
                 Ok(beatmap_info) => println!("Current beatmap info: {:?}\nTime taken: {:?}", beatmap_info, start.elapsed()),
                 Err(e) => println!("Error: {}", e),
         }

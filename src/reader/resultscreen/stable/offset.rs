@@ -1,8 +1,7 @@
 
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::{Hit, State};
-use crate::reader::resultscreen::ResultScreenValues;
-use crate::reader::common::GameMode;
+
 
 pub struct ResultScreenOffset {
     pub ptr : i32,
