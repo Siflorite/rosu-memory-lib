@@ -9,4 +9,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 rosu_memory_lib = { path = "../.." }
+rosu-mem = { git = "https://github.com/486c/rosu-mem.git", tag = "v2.0.0" }
 pyo3 = { version = "0.25", features = ["extension-module"] } 

@@ -1,159 +1,317 @@
+use rosu_memory_lib::reader::structs::State;
+use rosu_memory_lib::reader::beatmap::common::BeatmapInfo;
+use rosu_mem::process::Process;
 use pyo3::prelude::*;
-use rosu_memory_lib::reader::{
-    beatmap::{
-        common::{BeatmapInfo, BeatmapLocation, BeatmapMetadata, BeatmapStats, BeatmapStatus, BeatmapTechnicalInfo},
-        stable::memory as rust_memory,
-    },
-    structs::State,
-};
-use rosu_memory_lib::common::GameMode;
-use crate::reader::beatmap::common::{PyBeatmapInfo, PyBeatmapLocation, PyBeatmapMetadata, PyBeatmapStats, PyBeatmapStatus, PyBeatmapTechnicalInfo};
-use crate::reader::common::PyGameMode;
+use rosu_memory_lib::reader::beatmap::common::BeatmapLocation;
+use rosu_memory_lib::reader::beatmap::common::BeatmapStats;
+use rosu_memory_lib::reader::beatmap::common::BeatmapStarRating;
+use rosu_memory_lib::reader::beatmap::common::BeatmapMetadata;
+use rosu_memory_lib::reader::beatmap::common::BeatmapTechnicalInfo;
+use crate::common::{PyProcess, PyState};
 
-#[pyfunction]
-pub fn get_beatmap_md5(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_beatmap_md5(process, state)?)
+#[pyclass]
+#[derive(Debug)]
+pub struct PyBeatmapInfo {
+    pub metadata: PyBeatmapMetadata,
+    pub location: PyBeatmapLocation,
+    pub stats: PyBeatmapStats,
+    pub technical: PyBeatmapTechnicalInfo,
+}
+
+#[pymethods]
+impl PyBeatmapInfo {
+    #[getter]
+    fn metadata(&self) -> PyResult<PyBeatmapMetadata> {
+        Ok(PyBeatmapMetadata::from(self.metadata.clone()))
+    }
+
+    #[getter]
+    fn location(&self) -> PyResult<PyBeatmapLocation> {
+        Ok(PyBeatmapLocation::from(self.location.clone()))
+    }
+
+    #[getter]
+    fn stats(&self) -> PyResult<PyBeatmapStats> {
+        Ok(PyBeatmapStats::from(self.stats.clone()))
+    }
+
+    #[getter]
+    fn technical(&self) -> PyResult<PyBeatmapTechnicalInfo> {
+        Ok(PyBeatmapTechnicalInfo::from(self.technical.clone()))
+    }
+}
+
+impl From<BeatmapInfo> for PyBeatmapInfo {
+    fn from(info: BeatmapInfo) -> Self {
+        PyBeatmapInfo {
+            metadata: PyBeatmapMetadata::from(info.metadata),
+            location: PyBeatmapLocation::from(info.location),
+            stats: PyBeatmapStats::from(info.stats),
+            technical: PyBeatmapTechnicalInfo::from(info.technical),
+        }
+    }
+}
+
+#[pyclass]
+#[derive(Debug, Clone)]
+pub struct PyBeatmapMetadata {
+    pub author: String,
+    pub creator: String,
+    pub title_romanized: String,
+    pub title_original: String,
+    pub difficulty: String,
+    pub tags: String,
+}
+
+#[pymethods]
+impl PyBeatmapMetadata {
+    #[getter]
+    fn author(&self) -> PyResult<String> {
+        Ok(self.author.clone())
+    }
+
+    #[getter]
+    fn creator(&self) -> PyResult<String> {
+        Ok(self.creator.clone())
+    }
+
+    #[getter]
+    fn title_romanized(&self) -> PyResult<String> {
+        Ok(self.title_romanized.clone())
+    }
+
+    #[getter]
+    fn title_original(&self) -> PyResult<String> {
+        Ok(self.title_original.clone())
+    }
+
+    #[getter]
+    fn difficulty(&self) -> PyResult<String> {
+        Ok(self.difficulty.clone())
+    }
+
+    #[getter]
+    fn tags(&self) -> PyResult<String> {
+        Ok(self.tags.clone())
+    }
+}
+
+impl From<BeatmapMetadata> for PyBeatmapMetadata {
+    fn from(metadata: BeatmapMetadata) -> Self {
+        PyBeatmapMetadata {
+            author: metadata.author,
+            creator: metadata.creator,
+            title_romanized: metadata.title_romanized,
+            title_original: metadata.title_original,
+            difficulty: metadata.difficulty,
+            tags: metadata.tags,
+        }
+    }
+}
+
+#[pyclass]
+#[derive(Debug, Clone)]
+pub struct PyBeatmapLocation {
+    pub folder: String,
+    pub filename: String,
+    pub audio: String,
+    pub cover: String,
+}
+
+#[pymethods]
+impl PyBeatmapLocation {
+    #[getter]
+    fn folder(&self) -> PyResult<String> {
+        Ok(self.folder.clone())
+    }
+
+    #[getter]
+    fn filename(&self) -> PyResult<String> {
+        Ok(self.filename.clone())
+    }
+
+    #[getter]
+    fn audio(&self) -> PyResult<String> {
+        Ok(self.audio.clone())
+    }
+
+    #[getter]
+    fn cover(&self) -> PyResult<String> {
+        Ok(self.cover.clone())
+    }
+}
+
+impl From<BeatmapLocation> for PyBeatmapLocation {
+    fn from(location: BeatmapLocation) -> Self {
+        PyBeatmapLocation {
+            folder: location.folder,
+            filename: location.filename,
+            audio: location.audio,
+            cover: location.cover,
+        }
+    }
+}
+
+#[pyclass]
+#[derive(Debug, Clone)]
+pub struct PyBeatmapStarRating {
+    pub no_mod: f64,
+    pub dt: f64,
+    pub ht: f64,
+}
+
+#[pymethods]
+impl PyBeatmapStarRating {
+    #[getter]
+    fn no_mod(&self) -> PyResult<f64> {
+        Ok(self.no_mod)
+    }
+
+    #[getter]
+    fn dt(&self) -> PyResult<f64> {
+        Ok(self.dt)
+    }
+
+    #[getter]
+    fn ht(&self) -> PyResult<f64> {
+        Ok(self.ht)
+    }
+}
+
+impl From<BeatmapStarRating> for PyBeatmapStarRating {
+    fn from(star_rating: BeatmapStarRating) -> Self {
+        PyBeatmapStarRating {
+            no_mod: star_rating.no_mod,
+            dt: star_rating.dt,
+            ht: star_rating.ht,
+        }
+    }
+}
+
+#[pyclass]
+#[derive(Debug, Clone)]
+pub struct PyBeatmapStats {
+    pub ar: f32,
+    pub od: f32,
+    pub cs: f32,
+    pub hp: f32,
+    pub total_length: i32,
+    pub star_rating: PyBeatmapStarRating,
+    pub object_count: i32,
+    pub slider_count: i32,
+}
+
+#[pymethods]
+impl PyBeatmapStats {
+    #[getter]
+    fn ar(&self) -> PyResult<f32> {
+        Ok(self.ar)
+    }
+
+    #[getter]
+    fn od(&self) -> PyResult<f32> {
+        Ok(self.od)
+    }
+
+    #[getter]
+    fn cs(&self) -> PyResult<f32> {
+        Ok(self.cs)
+    }
+
+    #[getter]
+    fn hp(&self) -> PyResult<f32> {
+        Ok(self.hp)
+    }
+
+    #[getter]
+    fn total_length(&self) -> PyResult<i32> {
+        Ok(self.total_length)
+    }
+
+    #[getter]
+    fn star_rating(&self) -> PyResult<PyBeatmapStarRating> {
+        Ok(self.star_rating.clone())
+    }
+
+    #[getter]
+    fn object_count(&self) -> PyResult<i32> {
+        Ok(self.object_count)
+    }
+
+    #[getter]
+    fn slider_count(&self) -> PyResult<i32> {
+        Ok(self.slider_count)
+    }
+}
+
+impl From<BeatmapStats> for PyBeatmapStats {
+    fn from(stats: BeatmapStats) -> Self {
+        PyBeatmapStats {
+            ar: stats.ar,
+            od: stats.od,
+            cs: stats.cs,
+            hp: stats.hp,
+            total_length: stats.total_length,
+            star_rating: PyBeatmapStarRating::from(stats.star_rating),
+            object_count: stats.object_count,
+            slider_count: stats.slider_count,
+        }
+    }
+}
+
+#[pyclass]
+#[derive(Debug, Clone)]
+pub struct PyBeatmapTechnicalInfo {
+    pub md5: String,
+    pub id: i32,
+    pub set_id: i32,
+    pub mode: String,
+    pub ranked_status: String,
+}
+
+#[pymethods]
+impl PyBeatmapTechnicalInfo {
+    #[getter]
+    fn md5(&self) -> PyResult<String> {
+        Ok(self.md5.clone())
+    }
+
+    #[getter]
+    fn id(&self) -> PyResult<i32> {
+        Ok(self.id)
+    }
+
+    #[getter]
+    fn set_id(&self) -> PyResult<i32> {
+        Ok(self.set_id)
+    }
+
+    #[getter]
+    fn mode(&self) -> PyResult<String> {
+        Ok(self.mode.clone())
+    }
+
+    #[getter]
+    fn ranked_status(&self) -> PyResult<String> {
+        Ok(self.ranked_status.clone())
+    }
+}
+
+impl From<BeatmapTechnicalInfo> for PyBeatmapTechnicalInfo {
+    fn from(technical: BeatmapTechnicalInfo) -> Self {
+        PyBeatmapTechnicalInfo {
+            md5: technical.md5,
+            id: technical.id,
+            set_id: technical.set_id,
+            mode: technical.mode.to_string(),
+            ranked_status: technical.ranked_status.to_string(),
+        }
+    }
 }
 
 #[pyfunction]
-pub fn get_beatmap_id(process: &Process, state: &mut State) -> PyResult<i32> {
-    Ok(rust_memory::get_beatmap_id(process, state)?)
+pub fn get_beatmap_info(process: &PyProcess, state: &mut PyState) -> PyResult<PyBeatmapInfo> {
+    let beatmap_info = rosu_memory_lib::reader::beatmap::stable::memory::get_beatmap_info(&process.0, &mut state.0);
+    let bm = PyBeatmapInfo::from(beatmap_info.unwrap());
+    Ok(bm)
 }
-
-#[pyfunction]
-pub fn get_beatmap_set_id(process: &Process, state: &mut State) -> PyResult<i32> {
-    Ok(rust_memory::get_beatmap_set_id(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_mode(process: &Process, state: &mut State) -> PyResult<PyGameMode> {
-    Ok(PyGameMode(rust_memory::get_beatmap_mode(process, state)?))
-}
-
-#[pyfunction]
-pub fn get_beatmap_tags(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_beatmap_tags(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_length(process: &Process, state: &mut State) -> PyResult<i32> {
-    Ok(rust_memory::get_beatmap_length(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_drain_time(process: &Process, state: &mut State) -> PyResult<i32> {
-    Ok(rust_memory::get_beatmap_drain_time(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_status(process: &Process, state: &mut State) -> PyResult<PyBeatmapStatus> {
-    Ok(PyBeatmapStatus(rust_memory::get_beatmap_status(process, state)?))
-}
-
-#[pyfunction]
-pub fn get_author(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_author(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_creator(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_creator(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_title_romanized(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_title_romanized(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_title_original(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_title_original(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_difficulty(process: &Process, state: &mut State) -> PyResult<String> {
-    Ok(rust_memory::get_difficulty(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_od(process: &Process, state: &mut State) -> PyResult<f32> {
-    Ok(rust_memory::get_beatmap_od(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_ar(process: &Process, state: &mut State) -> PyResult<f32> {
-    Ok(rust_memory::get_beatmap_ar(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_cs(process: &Process, state: &mut State) -> PyResult<f32> {
-    Ok(rust_memory::get_beatmap_cs(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_hp(process: &Process, state: &mut State) -> PyResult<f32> {
-    Ok(rust_memory::get_beatmap_hp(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_object_count(process: &Process, state: &mut State) -> PyResult<u32> {
-    Ok(rust_memory::get_beatmap_object_count(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_slider_count(process: &Process, state: &mut State) -> PyResult<i32> {
-    Ok(rust_memory::get_beatmap_slider_count(process, state)?)
-}
-
-#[pyfunction]
-pub fn get_beatmap_stats(process: &Process, state: &mut State) -> PyResult<PyBeatmapStats> {
-    let stats = rust_memory::get_beatmap_stats(process, state)?;
-    Ok(PyBeatmapStats {
-        ar: stats.ar,
-        od: stats.od,
-        cs: stats.cs,
-        hp: stats.hp,
-        total_length: stats.total_length,
-        star_rating: stats.star_rating,
-        object_count: stats.object_count,
-        slider_count: stats.slider_count,
-    })
-}
-
-#[pyfunction]
-pub fn get_beatmap_info(process: &Process, state: &mut State) -> PyResult<PyBeatmapInfo> {
-    let info = rust_memory::get_beatmap_info(process, state)?;
-    Ok(PyBeatmapInfo {
-        technical: PyBeatmapTechnicalInfo {
-            md5: info.technical.md5,
-            id: info.technical.id,
-            set_id: info.technical.set_id,
-            mode: PyGameMode(info.technical.mode),
-            ranked_status: PyBeatmapStatus(info.technical.ranked_status),
-        },
-        metadata: PyBeatmapMetadata {
-            author: info.metadata.author,
-            creator: info.metadata.creator,
-            title_romanized: info.metadata.title_romanized,
-            title_original: info.metadata.title_original,
-            difficulty: info.metadata.difficulty,
-            tags: info.metadata.tags,
-        },
-        stats: PyBeatmapStats {
-            ar: info.stats.ar,
-            od: info.stats.od,
-            cs: info.stats.cs,
-            hp: info.stats.hp,
-            total_length: info.stats.total_length,
-            star_rating: info.stats.star_rating,
-            object_count: info.stats.object_count,
-            slider_count: info.stats.slider_count,
-        },
-        location: PyBeatmapLocation {
-            folder: info.location.folder,
-            filename: info.location.filename,
-            audio: info.location.audio,
-            cover: info.location.cover,
-        },
-    })
-} 
