@@ -68,7 +68,7 @@ pub(crate) const SIGNATURES: SignatureBase = SignatureBase {
 impl StaticAddresses {
     pub fn new(p: &Process) -> Result<Self> {
         let start = Instant::now();
-        println!("Reading signatures in parallel...");
+        println!("Reading signatures in parallel with rayon...");
         
         let signatures = [
             ("base", SIGNATURES.base_sig),
@@ -92,7 +92,7 @@ impl StaticAddresses {
             })
             .collect::<Result<_>>()?;
 
-        println!("Time taken: {:?}", start.elapsed());
+        println!("Rayon time taken: {:?}", start.elapsed());
 
         Ok(Self {
             base: results["base"],
