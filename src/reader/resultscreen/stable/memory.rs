@@ -5,7 +5,7 @@ use crate::reader::structs::{Hit, State};
 use crate::reader::resultscreen::common::ResultScreenInfo;
 use crate::reader::resultscreen::stable::offset::RESULT_SCREEN_OFFSET;
 use crate::reader::common::GameState;
-use crate::reader::common::stable::check_game_state;
+use crate::reader::common::stable::memory::check_game_state;
 use crate::reader::common::Error;
 
 pub(crate) fn get_score_base(p: &Process, state: &mut State) -> eyre::Result<i32> {

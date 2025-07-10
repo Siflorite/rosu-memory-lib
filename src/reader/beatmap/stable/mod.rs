@@ -8,7 +8,7 @@ use crate::reader::structs::State;
 use crate::reader::beatmap::stable::offset::*;
 use crate::reader::common::GameState;
 use crate::reader::common::Error;
-use crate::reader::common::stable::check_game_state;
+use crate::reader::common::stable::memory::check_game_state;
 
 pub(crate) fn get_beatmap_addr(p: &Process, state: &mut State) -> eyre::Result<i32>
 {

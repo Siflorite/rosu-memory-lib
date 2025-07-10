@@ -4,7 +4,7 @@ use crate::reader::gameplay::stable::offset::GAMEPLAY_OFFSET;
 use crate::reader::structs::Hit;
 use crate::reader::common::GameState;
 use crate::reader::common::Error;
-use crate::reader::common::stable::check_game_state;
+use crate::reader::common::stable::memory::check_game_state;
 
 pub fn get_base(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
     if check_game_state(p, state, GameState::Playing)? {

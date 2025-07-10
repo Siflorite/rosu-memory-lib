@@ -5,7 +5,7 @@ pub mod gameplay;
 pub mod user;
 
 use std::time::Duration;
-use crate::reader::common::stable::get_game_state;
+use crate::reader::common::stable::memory::get_game_state;
 use crate::reader::common::GameState;
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::State;

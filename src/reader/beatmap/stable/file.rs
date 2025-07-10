@@ -5,7 +5,7 @@ use rosu_mem::process::{Process, ProcessTraits};
 use rosu_map::Beatmap as RmBeatmap;
 use rosu_map::section::hit_objects::HitObjectKind;
 use crate::reader::structs::State;
-use crate::reader::common::stable::get_path_folder;
+use crate::reader::common::stable::memory::get_path_folder;
 use crate::reader::beatmap::common::{BeatmapInfo, BeatmapTechnicalInfo, BeatmapMetadata, BeatmapLocation, BeatmapStatus, BeatmapStats, BeatmapStarRating};
 use crate::reader::beatmap::stable::location::{get_audio, get_filename, get_folder};
 use crate::reader::beatmap::stable::{offset::BEATMAP_OFFSET, get_beatmap_addr};

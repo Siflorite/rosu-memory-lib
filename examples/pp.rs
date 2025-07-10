@@ -2,7 +2,7 @@ use rosu_pp::Beatmap;
 use rosu_memory_lib::init_loop;
 use rosu_memory_lib::reader::beatmap::stable::file::get_beatmap_path;
 use rosu_pp::{Difficulty, Performance};
-use rosu_memory_lib::reader::common::stable::get_menu_mods;
+use rosu_memory_lib::reader::common::stable::memory::get_menu_mods;
 use rosu_mods::GameModsLegacy;
 use std::time::Duration;
 use eyre::Result;

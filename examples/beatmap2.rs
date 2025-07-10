@@ -6,7 +6,6 @@ use rosu_memory_lib::init_loop;
 
 fn main() -> eyre::Result<()> {
     let (mut state, process) = init_loop(500)?;
-    println!("Successfully initialized!");
     let mut beatmap_reader = BeatmapReader::new(&process, &mut state, OsuType::Stable)?;
     loop {
         match beatmap_reader.get_beatmap_info() {
