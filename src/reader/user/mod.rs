@@ -11,7 +11,7 @@ pub struct UserReader<'a> { pub process : &'a Process, pub state : &'a mut State
 
 impl <'a> UserReader<'a> {
     pub fn new(p: &'a Process, state: &'a mut State, osu_type: OsuType) -> Self {
-        Self { process: p, state: state, osu_type: osu_type }
+        Self { process: p, state, osu_type }
     }
 
     pub fn get_user_info(&mut self) -> eyre::Result<UserInfo> {

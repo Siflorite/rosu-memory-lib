@@ -11,7 +11,7 @@ pub struct ResultScreenReader<'a> { pub process : &'a Process, pub state : &'a m
 
 impl<'a> ResultScreenReader<'a> {
     pub fn new(p: &'a Process, state: &'a mut State, osu_type: OsuType) -> Self {
-        Self { process: p, state: state, osu_type: osu_type }
+        Self { process: p, state, osu_type }
     }
 
     pub fn get_result_screen_info(&mut self) -> eyre::Result<ResultScreenInfo> {

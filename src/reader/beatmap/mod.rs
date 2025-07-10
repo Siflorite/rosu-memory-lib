@@ -24,7 +24,7 @@ pub struct BeatmapReader<'a> { pub process : &'a Process, pub state : &'a mut St
 
 impl<'a> BeatmapReader<'a> {
     pub fn new(p: &'a Process, state: &'a mut State, osu_type: OsuType) -> eyre::Result<Self> {
-        Ok(Self { process: p, state: state, osu_type: osu_type })
+        Ok(Self { process: p, state, osu_type })
     }
 
     pub fn get_beatmap_info(&mut self) -> eyre::Result<BeatmapInfo> {

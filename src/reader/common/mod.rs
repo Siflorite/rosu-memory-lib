@@ -121,7 +121,7 @@ pub struct CommonReader<'a> { pub process : &'a Process, pub state : &'a mut Sta
 
 impl<'a> CommonReader<'a> {
     pub fn new(p: &'a Process, state: &'a mut State, osu_type: OsuType) -> Self {
-        Self { process: p, state: state, osu_type: osu_type }
+        Self { process: p, state, osu_type }
     }
 
     pub fn get_game_state(&mut self) -> eyre::Result<GameState> {

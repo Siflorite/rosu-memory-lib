@@ -11,7 +11,7 @@ pub struct GameplayReader<'a> { pub process : &'a Process, pub state : &'a mut S
 
 impl<'a> GameplayReader<'a> {
     pub fn new(p: &'a Process, state: &'a mut State, osu_type: OsuType) -> Self {
-        Self { process: p, state: state, osu_type: osu_type }
+        Self { process: p, state, osu_type }
     }
 
     pub fn get_score_gameplay(&mut self) -> eyre::Result<i32> {
