@@ -2,7 +2,7 @@
 
 
 #[derive(Debug, Clone)]
-pub struct UserProfile {
+pub struct UserInfo {
     pub id: i32,
     pub username: String,
     pub pp: i32,

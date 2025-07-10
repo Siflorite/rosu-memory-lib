@@ -1,6 +1,6 @@
 use rosu_mem::process::{Process, ProcessTraits};
 use crate::reader::structs::State;
-use crate::reader::user::common::UserProfile;
+use crate::reader::user::common::UserInfo;
 use crate::reader::user::stable::offset::USER_PROFILE_OFFSET;
 
 pub fn get_user_profile_base(p: &Process, state: &mut State) -> eyre::Result<i32> 
@@ -65,14 +65,14 @@ pub fn get_user_accuracy(p: &Process, state: &mut State) -> eyre::Result<f64> {
     Ok(p.read_f64(user_profile_base + USER_PROFILE_OFFSET.accuracy)?)
 }
 
-pub fn get_user_profile(p: &Process, state: &mut State) -> eyre::Result<UserProfile> {
+pub fn get_user_info(p: &Process, state: &mut State) -> eyre::Result<UserInfo> {
     let user_profile_base = get_user_profile_base(p, state)?;
 
 
 
-    let user_profile = UserProfile {
+    let user_profile = UserInfo {
         id: p.read_i32(user_profile_base + USER_PROFILE_OFFSET.id)?,
-        username: p.read_string(p.read_i32(user_profile_base + USER_PROFILE_OFFSET.username)?)?, // need a fix idk how it show weirdly
+        username: p.read_string(p.read_i32(user_profile_base + USER_PROFILE_OFFSET.username)?)?, // TODO: need a fix idk how it show weirdly
         pp: p.read_i32(user_profile_base + USER_PROFILE_OFFSET.pp)?,
         rankedscore: p.read_i64(user_profile_base + USER_PROFILE_OFFSET.rankedscore)?,
         level: p.read_f32(user_profile_base + USER_PROFILE_OFFSET.level)?,
