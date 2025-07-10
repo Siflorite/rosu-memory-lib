@@ -48,7 +48,7 @@ impl CalculatorState {
             
             // Convert mod bits to human-readable format
             let mods_readable = GameModsLegacy::from_bits(self.current_mods as u32).to_string();
-            println!("Mods: {}", mods_readable);
+            println!("Mods: {mods_readable}");
             true
         } else {
             false
@@ -58,7 +58,7 @@ impl CalculatorState {
     /// Attempts to load a new beatmap if the path has changed
     fn update_beatmap(&mut self, new_path: String) -> Result<bool> {
         if new_path != self.current_beatmap_path {
-            println!("Loading new beatmap: {}", new_path);
+            println!("Loading new beatmap: {new_path}");
             
             // Load and validate the new beatmap
             let beatmap = Beatmap::from_path(&new_path)?;
