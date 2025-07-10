@@ -202,6 +202,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "rosu-memory-lib"
+version = "1.0.3"
+dependencies = [
+ "eyre",
+ "log",
+ "rayon",
+ "rosu-map",
+ "rosu-mem",
+ "rosu-pp",
+ "serde",
+ "serde_json",
+ "serde_repr",
+ "simplelog",
+]
+
+[[package]]
 name = "rosu-mods"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -215,22 +231,6 @@ checksum = "46d32ddc712a7aa3f5541549cdb8a3ca050a902b654e3e15af7d29849689d14e"
 dependencies = [
  "rosu-map",
  "rosu-mods",
-]
-
-[[package]]
-name = "rosu_memory_lib"
-version = "1.0.3"
-dependencies = [
- "eyre",
- "log",
- "rayon",
- "rosu-map",
- "rosu-mem",
- "rosu-pp",
- "serde",
- "serde_json",
- "serde_repr",
- "simplelog",
 ]
 
 [[package]]

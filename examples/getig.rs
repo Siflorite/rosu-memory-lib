@@ -1,4 +1,4 @@
-use rosu_memory_lib::reader::beatmap::stable::memory::get_beatmap_info;
+use rosu_memory_lib::reader::gameplay::stable::memory::get_ig_time;
 use rosu_memory_lib::init_loop;
 
 
@@ -6,8 +6,8 @@ fn main() -> eyre::Result<()> {
     let (mut state, process) = init_loop(500)?;
     println!("Successfully initialized!");
     loop {
-        match get_beatmap_info(&process, &mut state) {
-                Ok(beatmap_info) => println!("Current beatmap info: {beatmap_info:?}"),
+        match get_ig_time(&process, &mut state) {
+                Ok(ig_time) => println!("Current ig time: {ig_time:?}"),
                 Err(e) => println!("Error: {e:?}"),
         }
         std::thread::sleep(std::time::Duration::from_millis(1000));
