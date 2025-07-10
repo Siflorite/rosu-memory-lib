@@ -126,28 +126,28 @@ impl<'a> CommonReader<'a> {
 
     pub fn get_game_state(&mut self) -> eyre::Result<GameState> {
         match self.osu_type {
-            OsuType::Stable => stable::memory::get_game_state(self.process, &mut self.state),
+            OsuType::Stable => stable::memory::get_game_state(self.process, self.state),
             _ => Err(eyre::eyre!("Unsupported osu type for now")),
         }
     }
 
     pub fn get_menu_mods(&mut self) -> eyre::Result<i32> {
         match self.osu_type {
-            OsuType::Stable => stable::memory::get_menu_mods(self.process, &mut self.state),
+            OsuType::Stable => stable::memory::get_menu_mods(self.process, self.state),
             _ => Err(eyre::eyre!("Unsupported osu type for now")),
         }
     }
     
     pub fn get_path_folder(&mut self) -> eyre::Result<String> {
         match self.osu_type {
-            OsuType::Stable => stable::memory::get_path_folder(self.process, &mut self.state),
+            OsuType::Stable => stable::memory::get_path_folder(self.process, self.state),
             _ => Err(eyre::eyre!("Unsupported osu type for now")),
         }
     }
     
     pub fn check_game_state(&mut self, g_state: GameState) -> eyre::Result<bool> {
         match self.osu_type {
-            OsuType::Stable => stable::memory::check_game_state(self.process, &mut self.state, g_state),
+            OsuType::Stable => stable::memory::check_game_state(self.process, self.state, g_state),
             _ => Err(eyre::eyre!("Unsupported osu type for now")),
         }
     }
