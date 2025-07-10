@@ -210,6 +210,7 @@ dependencies = [
  "rayon",
  "rosu-map",
  "rosu-mem",
+ "rosu-mods",
  "rosu-pp",
  "serde",
  "serde_json",

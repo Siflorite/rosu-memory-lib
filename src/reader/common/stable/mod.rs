@@ -26,3 +26,11 @@ pub(crate) fn get_path_folder(p: &Process, state: &mut State) -> eyre::Result<St
     // custom user path (absolute path)
     Ok(path)
 }
+
+pub fn get_menu_mods(p: &Process, state: &mut State) -> eyre::Result<i32> 
+{    
+    let menu_mods_ptr = p.read_i32(state.addresses.menu_mods + COMMON_OFFSET.mods_ptr)?;
+    Ok(p.read_i32(menu_mods_ptr)?)
+}
+
+ 

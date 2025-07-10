@@ -46,6 +46,7 @@ pub fn get_score_gameplay(p: &Process, state: &mut State) -> Result<i32, eyre::E
 
 
 pub fn get_mods(p: &Process, state: &mut State) -> Result<u32, eyre::Error> {
+
     let base2 = get_base2(p, state)?;
     let mods_xor_base = p.read_i32(base2 + GAMEPLAY_OFFSET.mods)?;
     let mods_xor1 = p.read_u64(mods_xor_base + GAMEPLAY_OFFSET.mods_xor)?;

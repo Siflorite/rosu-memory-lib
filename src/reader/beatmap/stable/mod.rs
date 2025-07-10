@@ -12,7 +12,8 @@ use crate::reader::common::stable::check_game_state;
 
 pub(crate) fn get_beatmap_addr(p: &Process, state: &mut State) -> eyre::Result<i32>
 {
-    match check_game_state(p, state, GameState::SongSelect)? || check_game_state(p, state, GameState::Editor)? {
+    match check_game_state(p, state, GameState::SongSelect)? || check_game_state(p, state, GameState::Editor)? 
+    || check_game_state(p, state, GameState::Playing)? || check_game_state(p, state, GameState::ResultScreen)? {
         true => Ok(p.read_i32(p.read_i32(state.addresses.base - BEATMAP_OFFSET.ptr)?)?),
         false => Err(eyre::eyre!(Error::NotAvailable("Not in song select".to_string()))),
     }

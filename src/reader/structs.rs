@@ -113,21 +113,7 @@ impl StaticAddresses {
 
 }
 
-/* for pp counter for later
-#[derive(Default)]
-pub struct InnerValues {
-    pub gradual_performance_current: Option<GradualPerformance<'static>>,
-    pub current_beatmap_perf: Option<PerformanceAttributes>,
-}
 
-
-impl InnerValues {
-    pub fn reset(&mut self) {
-        self.current_beatmap_perf = None;
-        self.gradual_performance_current = None;
-    }
-}
-*/
 #[derive(Default,Clone)]
 pub struct State {
     pub addresses: StaticAddresses,
