@@ -112,7 +112,7 @@ pub fn get_result_max_combo(p: &Process, state: &mut State) -> eyre::Result<i16>
     Ok(p.read_i16(score_base + RESULT_SCREEN_OFFSET.max_combo)?)
 }
 
-pub fn get_result_screen(p: &Process, state: &mut State) -> eyre::Result<ResultScreenInfo> {
+pub fn get_result_screen_info(p: &Process, state: &mut State) -> eyre::Result<ResultScreenInfo> {
     let score_base = get_score_base(p, state)?;
 
     let hit = get_result_hits(p, state)?;

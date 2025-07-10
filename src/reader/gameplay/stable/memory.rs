@@ -5,6 +5,7 @@ use crate::reader::structs::Hit;
 use crate::reader::common::GameState;
 use crate::reader::common::Error;
 use crate::reader::common::stable::memory::check_game_state;
+use crate::reader::gameplay::common::GameplayInfo;
 
 pub fn get_base(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
     if check_game_state(p, state, GameState::Playing)? {
@@ -82,13 +83,9 @@ pub fn get_username(p: &Process, state: &mut State) -> Result<String, eyre::Erro
     Ok(username)
 }
 
-
 pub fn get_ig_time(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
-    let playtime_ptr = p.read_i32(state.addresses.playtime + GAMEPLAY_OFFSET.ig_time)?;
-    let ig_time = p.read_i32(playtime_ptr)?;
-    Ok(ig_time)
+    crate::reader::common::stable::memory::get_ig_time(p, state)
 }
-
 
 pub fn get_retries(p: &Process, state: &mut State) -> Result<i32, eyre::Error> {
     let igt_addr = p.read_i32(state.addresses.base - GAMEPLAY_OFFSET.ruleset)?;
@@ -148,3 +145,31 @@ pub fn get_hits(p: &Process, state: &mut State) -> Result<Hit, eyre::Error> {
     })
 }
 
+pub fn get_gameplay_info(p: &Process, state: &mut State) -> Result<GameplayInfo, eyre::Error> {
+    let base = get_base(p, state)?;
+    let base2 = get_base2(p, state)?;
+
+    let hp = p.read_f64(p.read_i32(base + GAMEPLAY_OFFSET.hp_base)?+ GAMEPLAY_OFFSET.hp)?;
+    let mods = get_mods(p, state)?;
+ 
+    
+    Ok(
+        GameplayInfo {
+        score: p.read_i32(base2 + GAMEPLAY_OFFSET.score).unwrap(),
+        mods,
+        combo: p.read_i16(base2 + GAMEPLAY_OFFSET.combo).unwrap(),
+        max_combo: p.read_i16(base2 + GAMEPLAY_OFFSET.max_combo).unwrap(),
+        hp,
+        username: p.read_string(base2 + GAMEPLAY_OFFSET.username).unwrap(),
+        ig_time: get_ig_time(p, state)?, // different base
+        retries: get_retries(p, state)?, // different base
+        hits : Hit {
+            _300: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._300)?,
+            _100: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._100)?,
+            _50: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._50)?,
+            _miss: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._miss)?,
+            _geki: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._geki)?,
+            _katu: p.read_i16(base2 + GAMEPLAY_OFFSET.hits._katu)?,
+        },
+    })
+}

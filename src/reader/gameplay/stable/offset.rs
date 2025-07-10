@@ -15,7 +15,6 @@ pub struct GameplayOffset {
     pub max_combo: i32,
     pub hp: i32,
     pub username: i32,
-    pub ig_time: i32,
     pub retries: i32,
     pub hits: GameplayHitsOffset,
 }
@@ -35,7 +34,6 @@ pub const GAMEPLAY_OFFSET: GameplayOffset = GameplayOffset {
     max_combo: 0x68,
     hp: 0x1C,
     username: 0x28,
-    ig_time: 0x5,
     retries: 0x8,
     hits: GAMEPLAY_HITS_OFFSET,
 };

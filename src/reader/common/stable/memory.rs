@@ -32,4 +32,7 @@ pub fn get_menu_mods(p: &Process, state: &mut State) -> eyre::Result<i32>
     Ok(p.read_i32(menu_mods_ptr)?)
 }
 
- 
+pub fn get_ig_time(p: &Process, state: &mut State) -> eyre::Result<i32> {
+    let playtime_ptr = p.read_i32(state.addresses.playtime + COMMON_OFFSET.ig_time)?;
+    Ok(p.read_i32(playtime_ptr)?)
+}
