@@ -16,12 +16,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 rosu-mem = "2.0.0"
-serde = { version = "1.0.219", default-features = false, features = ["derive"] }
-serde_json = "1.0.140"
-serde_repr = "0.1.20"
-log = "0.4"
-simplelog = "0.12"
 rosu-pp = "3.1.0"
 rosu-map = "0.2.1"
-rayon = "1.10.0"
 rosu-mods = "0.3.1"
+rayon = "1.10.0"

@@ -2,7 +2,6 @@ pub mod stable;
 use crate::reader::structs::State;
 use crate::Error;
 use rosu_mem::process::Process;
-use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Default)]
 pub enum OsuType {
@@ -11,7 +10,7 @@ pub enum OsuType {
     Lazer,
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Default)]
 pub enum GameMode {
     Osu,
     Taiko,

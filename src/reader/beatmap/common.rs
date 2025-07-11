@@ -1,8 +1,6 @@
-use serde::{Deserialize, Serialize};
-
 use crate::common::GameMode;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapInfo {
     pub metadata: BeatmapMetadata,
     pub location: BeatmapLocation,
@@ -10,7 +8,7 @@ pub struct BeatmapInfo {
     pub technical: BeatmapTechnicalInfo,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapMetadata {
     pub author: String,
     pub creator: String,
@@ -19,7 +17,7 @@ pub struct BeatmapMetadata {
     pub difficulty: String,
     pub tags: String,
 }
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapTechnicalInfo {
     pub md5: String,
     pub id: i32,
@@ -27,7 +25,7 @@ pub struct BeatmapTechnicalInfo {
     pub mode: GameMode,
     pub ranked_status: BeatmapStatus,
 }
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapLocation {
     pub folder: String,
     pub filename: String,
@@ -47,14 +45,14 @@ impl BeatmapLocation {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapStarRating {
     pub no_mod: f64,
     pub dt: f64,
     pub ht: f64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone)]
 pub struct BeatmapStats {
     pub ar: f32,
     pub od: f32,
@@ -66,7 +64,7 @@ pub struct BeatmapStats {
     pub slider_count: i32,
 }
 
-#[derive(Debug, Default, PartialEq, Eq, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, Copy, Clone)]
 #[repr(i16)]
 pub enum BeatmapStatus {
     #[default]
