@@ -56,6 +56,14 @@ beatmap = get_beatmap_info(process, state)
 print(f"Playing: {beatmap.metadata.title_romanized}")
 ```
 
+## Projects Using It
+
+Here are some projects that use rosu-memory-lib:
+
+- [rosu-snippets](https://github.com/Glubus/rosu-snippets) - Create your own snippets for efficient mapping in mania
+
+*If you're using rosu-memory-lib in your project, feel free to submit a PR to add it to this list!*
+
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and pull requests.
