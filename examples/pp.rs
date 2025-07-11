@@ -1,9 +1,9 @@
-use rosu_memory_lib::Error;
 use rosu_mem::process::Process;
 use rosu_memory_lib::init_loop;
 use rosu_memory_lib::reader::beatmap::stable::file::get_beatmap_path;
 use rosu_memory_lib::reader::common::stable::memory::get_menu_mods;
 use rosu_memory_lib::reader::structs::State;
+use rosu_memory_lib::Error;
 use rosu_mods::GameModsLegacy;
 use rosu_pp::Beatmap;
 use rosu_pp::{Difficulty, Performance};
