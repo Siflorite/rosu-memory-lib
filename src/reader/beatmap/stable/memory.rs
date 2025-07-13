@@ -45,7 +45,6 @@ pub fn stats(p: &Process, state: &mut State) -> Result<BeatmapStats, Error> {
         &mut buffer,
     )?;
 
-
     Ok(BeatmapStats {
         ar: f32::from_le_bytes(buffer[0..4].try_into().unwrap()),
         cs: f32::from_le_bytes(buffer[4..8].try_into().unwrap()),
