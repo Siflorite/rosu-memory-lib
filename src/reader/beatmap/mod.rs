@@ -3,6 +3,7 @@ pub mod stable;
 
 use std::path::PathBuf;
 
+use crate::impl_osu_accessor;
 use crate::reader::beatmap::common::BeatmapInfo;
 use crate::reader::beatmap::common::BeatmapStarRating;
 use crate::reader::beatmap::common::BeatmapStats;
@@ -32,227 +33,34 @@ impl<'a> BeatmapReader<'a> {
         })
     }
 
-    pub fn get_beatmap_info(&mut self) -> Result<BeatmapInfo, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_info(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_path(&mut self) -> Result<PathBuf, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::file::get_beatmap_path(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_audio_path(&mut self) -> Result<PathBuf, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::file::get_audio_path(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_md5(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_md5(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_id(&mut self) -> Result<i32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_id(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_set_id(&mut self) -> Result<i32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_set_id(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_mode(&mut self) -> Result<GameMode, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_mode(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_tags(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_tags(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_length(&mut self) -> Result<i32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_length(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_drain_time(&mut self) -> Result<i32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => {
-                stable::memory::get_beatmap_drain_time(self.process, self.state)
-            }
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_status(&mut self) -> Result<BeatmapStatus, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_status(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_author(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_author(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_creator(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_creator(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_title_romanized(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_title_romanized(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_title_original(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_title_original(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_difficulty(&mut self) -> Result<String, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_difficulty(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_od(&mut self) -> Result<f32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_od(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_ar(&mut self) -> Result<f32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_ar(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_cs(&mut self) -> Result<f32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_cs(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_hp(&mut self) -> Result<f32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_hp(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_object_count(&mut self) -> Result<u32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => {
-                stable::memory::get_beatmap_object_count(self.process, self.state)
-            }
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_slider_count(&mut self) -> Result<i32, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => {
-                stable::memory::get_beatmap_slider_count(self.process, self.state)
-            }
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_star_rating(&mut self) -> Result<BeatmapStarRating, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => {
-                stable::file::get_beatmap_star_rating(self.process, self.state)
-            }
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
-    }
-
-    pub fn get_beatmap_stats(&mut self) -> Result<BeatmapStats, Error> {
-        match self.osu_type {
-            OsuClientKind::Stable => stable::memory::get_beatmap_stats(self.process, self.state),
-            _ => Err(Error::Unsupported(
-                "Unsupported osu type for now".to_string(),
-            )),
-        }
+    impl_osu_accessor! {
+        fn id() -> i32 => stable::memory::id,
+        fn set_id() -> i32 => stable::memory::set_id,
+        fn tags() -> String => stable::memory::tags,
+        fn length() -> i32 => stable::memory::length,
+        fn drain_time() -> i32 => stable::memory::drain_time,
+        fn author() -> String => stable::memory::author,
+        fn creator() -> String => stable::memory::creator,
+        fn md5() -> String => stable::memory::md5,
+        fn title_romanized() -> String => stable::memory::title_romanized,
+        fn title() -> String => stable::memory::title,
+        fn difficulty() -> String => stable::memory::difficulty,
+        fn od() -> f32 => stable::memory::od,
+        fn ar() -> f32 => stable::memory::ar,
+        fn cs() -> f32 => stable::memory::cs,
+        fn hp() -> f32 => stable::memory::hp,
+        fn object_count() -> u32 => stable::memory::object_count,
+        fn slider_count() -> i32 => stable::memory::slider_count,
+        fn folder() -> String => stable::memory::folder,
+        fn filename() -> String => stable::memory::filename,
+        fn audio() -> String => stable::memory::audio,
+        fn cover() -> String => stable::memory::cover,
+        fn mode() -> GameMode => stable::memory::mode,
+        fn status() -> BeatmapStatus => stable::memory::status,
+        fn info() -> BeatmapInfo => stable::memory::info,
+        fn stats() -> BeatmapStats => stable::memory::stats,
+        fn path() -> PathBuf => stable::file::path,
+        fn audio_path() -> PathBuf => stable::file::audio_path,
+        fn star_rating() -> BeatmapStarRating => stable::file::star_rating,
     }
 }
