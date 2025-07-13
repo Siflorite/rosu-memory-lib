@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 #[cfg(feature = "parallel-read")]
 use rayon::prelude::*;
 
