@@ -28,7 +28,7 @@ pub fn info(p: &Process, state: &mut State) -> Result<UserInfo, Error> {
 
     let user_profile = UserInfo {
         id: p.read_i32(user_profile_base + USER_PROFILE_OFFSET.id)?,
-        username: p.read_string(user_profile_base + USER_PROFILE_OFFSET.username)?, 
+        username: p.read_string(user_profile_base + USER_PROFILE_OFFSET.username)?,
         pp: p.read_i32(user_profile_base + USER_PROFILE_OFFSET.pp)?,
         rankedscore: p.read_i64(user_profile_base + USER_PROFILE_OFFSET.rankedscore)?,
         level: p.read_f32(user_profile_base + USER_PROFILE_OFFSET.level)?,
