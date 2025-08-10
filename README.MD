@@ -1,6 +1,7 @@
 # rosu-memory-lib
 
 A modular Rust library for reading osu! memory, forked from [rosu-memory](https://github.com/486c/rosu-memory).
+Forked from original [rosu-memory-lib v1.2.0](https://github.com/Glubus/rosu-memory-lib), to fix the breaking signature change ([the same with gosumemory](https://github.com/Glubus/rosu-memory-lib), [fixed in tosu](https://github.com/tosuapp/tosu/blob/33af090bba8ea0c51c267ecf2cba34e0f80775d7/packages/tosu/src/memory/stable.ts)) for personal use.
 
 ## Overview
 
@@ -76,3 +77,4 @@ Contributions are welcome! Feel free to submit issues and pull requests.
 ## License
 
 Same as original rosu_memory
+
