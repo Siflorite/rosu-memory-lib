@@ -51,16 +51,21 @@ pub(crate) struct SignatureBase {
     user_profile_sig: &'static str,
 }
 
+// fixing some outdated signatures
 pub(crate) const SIGNATURES: SignatureBase = SignatureBase {
     base_sig: "F8 01 74 04 83 65",
     status_sig: "48 83 F8 04 73 1E",
     menu_mods_sig: "C8 FF ?? ?? ?? ?? ?? 81 0D ?? ?? ?? ?? 00 08 00 00",
     rulesets_sig: "7D 15 A1 ?? ?? ?? ?? 85 C0",
     playtime_sig: "5E 5F 5D C3 A1 ?? ?? ?? ?? 89 ?? 04",
-    skin_sig: "75 21 8B 1D",
-    chat_checker_sig: "0A D7 23 3C 00 00 ?? 01",
-    audio_time_base_sig: "DB 5C 24 34 8B 44 24 34",
-    ig_time_base_sig: "EB 0A A1 ?? ?? ?? ?? A3",
+    // skin_sig: "75 21 8B 1D", 
+    skin_sig: "74 2C 85 FF 75 28 A1 ?? ?? ?? ?? 8D 15",
+    // chat_checker_sig: "0A D7 23 3C 00 00 ?? 01",
+    chat_checker_sig: "8B CE 83 3D ?? ?? ?? ?? 00 75 ?? 80",
+    // audio_time_base_sig: "DB 5C 24 34 8B 44 24 34",
+    audio_time_base_sig: "55 8B EC 83 EC 08 A1 ?? ?? ?? ?? 85 C0",
+    // ig_time_base_sig: "EB 0A A1 ?? ?? ?? ?? A3",
+    ig_time_base_sig: "A1 ?? ?? ?? ?? 89 46 04 8B D6 E8",
     settings_sig: "83 E0 20 85 C0 7E 2F",
     user_profile_sig: "FF 15 ?? ?? ?? ?? A1 ?? ?? ?? ?? 8B 48 54 33 D2",
 };
